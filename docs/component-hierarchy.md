@@ -61,5 +61,4 @@
 | "/charts/shared" | "ChartsHomeContainer" |
 | "/charts/new" | "OneChartContainer" |
 | "/charts/:chartId/edit" | "OneChartContainer" |
-| "/charts/:chartId/show" | "OneChartContainer" |
 | "/charts/:chartId/share" | "ShareContainer" |

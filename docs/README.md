@@ -32,16 +32,15 @@ dashingly uses React.js, Redux, react-d3, Ruby on Rails, and Postgresql to creat
   + Sign In as Guest
 - Styling
 
-### Phase 1: Uploading Data (2 day)
+### Phase 1: Charts (3 days)
+- Features
++ Create, update, delete, and persist charts
+- Styling
+
+### Phase 2: Uploading Data (2 day)
 - Features
   + Upload CSV, TSV, or JSON
   + Persist to database
-- Styling
-
-### Phase 2: Charts (3 days)
-- Features
-  + Using uploaded data
-  + Create, update, delete, and persist charts
 - Styling
 
 ### Phase 3: Share Charts (2 days)
