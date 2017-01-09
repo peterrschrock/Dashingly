@@ -25,14 +25,14 @@ dashingly uses React.js, Redux, react-d3, Ruby on Rails, and Postgresql to creat
 * [API endpoints](./api-endpoints.md)
 
 ## Implementation Timeline
-### Phase 0: User Authentication, Rails API Backend (3 days)
+### Phase 0: User Authentication, Rails API Backend (2 days)
 - Features
   + Create Account
   + Sign In
   + Sign In as Guest
 - Styling
 
-### Phase 1: Uploading Data (1 day)
+### Phase 1: Uploading Data (2 day)
 - Features
   + Upload CSV, TSV, or JSON
   + Persist to database
@@ -51,6 +51,7 @@ dashingly uses React.js, Redux, react-d3, Ruby on Rails, and Postgresql to creat
 - Styling
 
 ### Phase 3.5: Polish, Polish, Polish
+
 
 ### Phase 4 Bonus: Dashboards (? days)
 - Add charts to dashboard

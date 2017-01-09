@@ -49,7 +49,6 @@
 | "/sign-up" | "AuthenticationContainer" |
 | "/sign-in" | "AuthenticationContainer" |
 | "/upload" | "UploadContainer" |
-
 | "/dashboards" | "DashboardsHomeContainer" |
 | "/dashboards/shared" | "DashboardsHomeContainer" |
 | "/dashboards/new" | "OneDashboardContainer" |
@@ -58,8 +57,6 @@
 | "/dashboards/:dashboardId/share" | "ShareContainer" |
 | "/dashboards/new/addchart/chartPos" | "OneDashboardContainer" |
 | "/dashboards/:dashboardId/edit/addchart/chartPos" | "OneDashboardContainer" |
-<!-- add chart? -->
-
 | "/charts" | "ChartsHomeContainer" |
 | "/charts/shared" | "ChartsHomeContainer" |
 | "/charts/new" | "OneChartContainer" |
