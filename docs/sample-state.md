@@ -45,7 +45,7 @@
     1: {
       owner: "Principal",
       access: ["Andrea", "Bob", "Cassandra"],
-      title: "Teachers HR Data"
+      title: "Teachers HR Data",
       charts: [1]
     }
   },
