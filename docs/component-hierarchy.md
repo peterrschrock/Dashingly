@@ -3,7 +3,7 @@
 **AuthenticationContainer**
  - Authentication Component
 
- **NavBar Component**
+**NavBar Component**
 
 **UploadContainer**
  - Upload Component
@@ -28,8 +28,6 @@
     + AddChart Component
     + EditRemoveChart Component
 
-
-
 **ChartsHomeContainer**
  - ChartIndex Component
   + ChartItem Component
@@ -37,27 +35,34 @@
  - DashboardModOptions Component
 
 **OneChartContainer**
- - ChartAndTypes Component
-  + ChartItem Component
-  + ChartTypes Component
- - Chart Options
+ - ChartItem Component
+ - ChartTypes Component
+ - ChartValues Component
   + Y-axis Component
+ - ChartModification Component
 
 
 ## Routes
 
 |Path   | Component   |
 |-------|-------------|
-| "/sign-up" | "AuthFormContainer" |
-| "/sign-in" | "AuthFormContainer" |
-| "/home" | "HomeContainer" |
-| "/home/note/:noteId" | "NotesContainer" |
-| "/home/notebook/:notebookId/note/:noteId" | "NotebookContainer" |
-| "/home/tag/:tagId/note/:notedId" | "TagContainer" |
-| "/home/search-results" | "SearchResultsContainer"
-| "/new-note" | "NewNoteContainer" |
-| "/search" | "Search" |
-| "/new-notebook" | "NewNotebook" |
-| "/new-tag" | "NewTag" |
-| "/tag-search" | "TagSearch" |
-| "/notebook-search" | "NotebookSearch" |
+| "/sign-up" | "AuthenticationContainer" |
+| "/sign-in" | "AuthenticationContainer" |
+| "/upload" | "UploadContainer" |
+
+| "/dashboards" | "DashboardsHomeContainer" |
+| "/dashboards/shared" | "DashboardsHomeContainer" |
+| "/dashboards/new" | "OneDashboardContainer" |
+| "/dashboards/:dashboardId/edit" | "OneDashboardContainer" |
+| "/dashboards/:dashboardId/show" | "OneDashboardContainer" |
+| "/dashboards/:dashboardId/share" | "ShareContainer" |
+| "/dashboards/new/addchart/chartPos" | "OneDashboardContainer" |
+| "/dashboards/:dashboardId/edit/addchart/chartPos" | "OneDashboardContainer" |
+<!-- add chart? -->
+
+| "/charts" | "ChartsHomeContainer" |
+| "/charts/shared" | "ChartsHomeContainer" |
+| "/charts/new" | "OneChartContainer" |
+| "/charts/:chartId/edit" | "OneChartContainer" |
+| "/charts/:chartId/show" | "OneChartContainer" |
+| "/charts/:chartId/share" | "ShareContainer" |
