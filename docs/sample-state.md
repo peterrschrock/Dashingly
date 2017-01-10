@@ -3,12 +3,11 @@
 
 {
   currentUser: {
-    id: 1,
     username: User1
+    errors: ["password too short"]
   },
 
   forms: {
-    auth: {errors: ["password too short"]},
     createChart: {errors: "No X-axis variable selected"}
     upload: {errors: "Data Type not recognized"}
     editDash: {errors: "Title can't be blank"}
