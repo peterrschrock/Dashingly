@@ -2,7 +2,7 @@
 
 
 {
-  currentUser: {
+  session: {
     username: User1
     errors: ["password too short"]
   },

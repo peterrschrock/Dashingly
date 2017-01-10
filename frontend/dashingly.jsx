@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 // import {login, signup, logout} from './util/session_api_util.js';
 import configureStore from './store/store';
 import Root from './components/root';
+require('font-awesome/css/font-awesome.css');
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -12,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // window.login = login;
   // window.signup = signup;
   // window.logout = logout;
-  // window.store = store;
+  window.store = store;
 });
 
 
