@@ -8,7 +8,13 @@ require('font-awesome/css/font-awesome.css');
 
 document.addEventListener('DOMContentLoaded', () => {
   const root = document.getElementById('root');
-  const store = configureStore();
+  let store;
+  if(window.currentUser){
+    const preloadedState = { session: { username: window.currentUser } };
+    store = configureStore(preloadedState);
+  } else {
+    store = configureStore();
+  }
   ReactDOM.render(<Root store={store}/>, root);
   // window.login = login;
   // window.signup = signup;

@@ -1,5 +1,4 @@
 import React from 'react';
-import CreateSessionFormContainer from './auth/create_session_form_container';
 
 import {Icon} from 'react-fa';
 import AreaChart from 'react-icons/lib/fa/area-chart';
@@ -23,12 +22,11 @@ import Superscript from 'react-icons/lib/fa/superscript';
 import Trash from 'react-icons/lib/fa/trash';
 import Add from 'react-icons/lib/md/add';
 import Home from 'react-icons/lib/md/home';
+// <PieChart name="AreaChart"/>
 
 const App = ({ children }) => {
   return <div>
-    <PieChart name="AreaChart"/>
-    <h1> dashingly </h1>
-    <CreateSessionFormContainer/>
+    <h1> app rendering... </h1>
     {children}
   </div>;
 };
