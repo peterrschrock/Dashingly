@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
   } else {
     store = configureStore();
   }
+  // window.currentUser = store.getState().session.username;
   ReactDOM.render(<Root store={store}/>, root);
   // window.login = login;
   // window.signup = signup;

@@ -13,15 +13,15 @@ export const login = user => dispatch => (
 
 export const logout = () => dispatch => (
   APIUtil.logout()
-  .then(() => receiveCurrentUser(null),
-        (errors) => receiveErrors(errors)
+  .then(() => dispatch(receiveCurrentUser(null)),
+        (errors) => dispatch(receiveErrors(errors))
   )
 );
 
 export const signup = user => dispatch => (
   APIUtil.signup(user.username, user.password)
-  .then(thisUser => receiveCurrentUser(thisUser),
-        (errors) => receiveErrors(errors)
+  .then(thisUser => dispatch(receiveCurrentUser(thisUser)),
+        (errors) => dispatch(receiveErrors(errors))
   )
 );
 

@@ -8,18 +8,25 @@ import CreateSessionFormContainer from './create_session_form/create_session_for
 
 
 const Root = ({store}) => {
-  const _redirect_to_home= (nextState,replace) => {
+  const _redirectToHome= (nextState,replace) => {
     const currentUser = store.getState().session.username;
-    if(currentUser){
+    if(store.getState().session.username){
       replace("/");
+    }
+  };
+
+  const _redirectToLogin = (nextState, replace) => {
+    const currentUser = store.getState().session.username;
+    if(!store.getState().session.username) {
+      replace("/signup");
     }
   };
 
   return <Provider store={store}>
     <Router history={ hashHistory }>
-      <Route path="/" component={App}>
-        <Route path="/login" component={CreateSessionFormContainer} onEnter={_redirect_to_home}></Route>
-        <Route path="/signup" component={CreateSessionFormContainer} onEnter={_redirect_to_home}></Route>
+      <Route path="/" component={App} >
+        <Route path="/login" component={CreateSessionFormContainer} onEnter={_redirectToHome}></Route>
+        <Route path="/signup" component={CreateSessionFormContainer} onEnter={_redirectToHome}></Route>
       </Route>
     </Router>
   </Provider>;

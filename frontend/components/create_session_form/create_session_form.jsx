@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router';
+import {Link, hashHistory} from 'react-router';
 // const HomepageBackground = require('../../../app/assets/images/background/homepage.jpg');
 // <img src={HomepageBackground} />
 // TODO add error handling
@@ -14,10 +14,19 @@ class CreateSessionForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentDidUpdate() {
+		this.redirectIfLoggedIn();
+	}
+
+	redirectIfLoggedIn() {
+		if (this.props.username) {
+			hashHistory.push("/");
+		}
+	}
+
   handleSubmit(e){
     e.preventDefault();
-    this.props.whichAction(this.state)
-      .then(this.cleanState());
+    this.props.whichAction(this.state);
   }
 
   cleanState(){
@@ -52,18 +61,22 @@ class CreateSessionForm extends React.Component {
     }
   }
 
+
   render() {
-    return <div>
-      <h1>dashingly</h1><br/>
-      <h2>{this.header()}</h2>
-      <h4>{this.whichLink()}</h4>
-      <form onSubmit={this.handleSubmit}>
-        <h4>Username:</h4>
-        <input type="text" value={this.state.username} onChange={this.refresh("username")}></input><br/>
-        <h4>Password:</h4>
-        <input type="password" value={this.state.password} onChange={this.refresh("password")}></input><br/><br/>
-        <input type="submit" value={this.header()}></input>
-      </form>
+    return <div className="full-screen">
+      <section>
+        <h1 className="company-title">dashingly</h1>
+        <h3 className="maverick">business analytics for mavericks</h3>
+        <section className="auth-box">
+          <h2>{this.header()}</h2>
+          <form onSubmit={this.handleSubmit} className="auth-form">
+            <input className="auth-field" placeholder="Username..." type="text" value={this.state.username} onChange={this.refresh("username")}></input>
+            <input className="auth-field" placeholder="Password..." type="password" value={this.state.password} onChange={this.refresh("password")}></input>
+            <input className="auth-submit" type="submit" value={this.header()}></input>
+          </form>
+          <h4>{this.whichLink()}</h4>
+        </section>
+      </section>
     </div>;
   }
 }

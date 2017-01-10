@@ -1,4 +1,6 @@
 import React from 'react';
+import NavBarContainer from './nav_bar/nav_bar_container';
+
 
 import {Icon} from 'react-fa';
 import AreaChart from 'react-icons/lib/fa/area-chart';
@@ -25,8 +27,9 @@ import Home from 'react-icons/lib/md/home';
 // <PieChart name="AreaChart"/>
 
 const App = ({ children }) => {
+
   return <div>
-    <h1> app rendering... </h1>
+    <NavBarContainer />
     {children}
   </div>;
 };
