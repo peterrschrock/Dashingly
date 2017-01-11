@@ -6,7 +6,7 @@ class Api::SessionsController < ApplicationController
       login(@user)
       render "api/users/show"
     else
-      render json: ["Username and Password don't match"], status: 401
+      render json: "Username and Password don't match", status: 401
     end
   end
 

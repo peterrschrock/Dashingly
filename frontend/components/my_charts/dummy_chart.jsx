@@ -1,24 +1,10 @@
-// 
-// const D3-Basic = require('react-d3-basic')
-//
-// (function() {
-//   let
-// })
-//
-// <Chart
-//     title={"Taiwan refuse disposal"}
-//     width={500}
-//     height={300}
-//     margins= {margins}
-//     >
-//     <LineChart
-//       margins= {margins}
-//       title={"Taiwan refuse disposal"}
-//       data={data}
-//       width={500}
-//       height={300}
-//       chartSeries={chartSeries}
-//       x={x}
-//       xScale={"time"}
-//     />
-//   </Chart>
+const D3Basic = require('react-d3-basic');
+
+const chartData = [{
+  name: "series1",
+  values: [{x:0, y: 10}, {x:15, y:20}]
+}];
+
+export const dummyChart = () => (
+  <D3Basic.ScatterChart data={chartData} width={500} height={400} title="ScatterChart"/>
+);

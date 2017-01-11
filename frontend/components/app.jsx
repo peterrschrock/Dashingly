@@ -2,6 +2,13 @@ import React from 'react';
 import NavBarContainer from './nav_bar/nav_bar_container';
 
 
+const D3Basic = require('react-d3-basic');
+
+const chartData = [{
+  name: "series1",
+  values: [{x:0, y: 10}, {x:15, y:20}]
+}];
+
 import {Icon} from 'react-fa';
 import AreaChart from 'react-icons/lib/fa/area-chart';
 import BarChart from 'react-icons/lib/fa/bar-chart';
@@ -25,6 +32,7 @@ import Trash from 'react-icons/lib/fa/trash';
 import Add from 'react-icons/lib/md/add';
 import Home from 'react-icons/lib/md/home';
 // <PieChart name="AreaChart"/>
+// <D3Basic.ScatterChart data={chartData} width={500} height={400} title="ScatterChart"/>
 
 const App = ({ children }) => {
 
