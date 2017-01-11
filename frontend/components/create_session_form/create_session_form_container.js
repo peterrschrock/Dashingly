@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import { signup, login} from '../../actions/session_actions.js';
+import { signup, login, guestLogin} from '../../actions/session_actions.js';
 import CreateSessionForm from './create_session_form';
 
 const mapStateToProps = ({session}) => ({
@@ -13,7 +13,8 @@ const mapDispatchToProps = (dispatch, {location}) => {
 
   return {
     whichForm: thisForm,
-    whichAction: user => dispatch(thisAction(user))
+    whichAction: user => dispatch(thisAction(user)),
+    guestLogin: () => dispatch(guestLogin())
   };
 
 };

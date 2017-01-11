@@ -25,6 +25,13 @@ export const signup = user => dispatch => (
   )
 );
 
+export const guestLogin = user => dispatch => (
+  APIUtil.guestLogin()
+    .then(thisUser => dispatch(receiveCurrentUser(thisUser)),
+          (errors) => dispatch(receiveErrors(errors))
+        )
+);
+
 export const receiveCurrentUser = user => ({
   type: RECEIVE_CURRENT_USER,
   user

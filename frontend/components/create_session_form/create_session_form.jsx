@@ -10,8 +10,9 @@ import {Link, hashHistory} from 'react-router';
 class CreateSessionForm extends React.Component {
   constructor(props) {
     super(props);
-    this.cleanState();
+    this.state = {username: "", password: ""};
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleGuest = this.handleGuest.bind(this);
   }
 
   componentDidUpdate() {
@@ -29,15 +30,11 @@ class CreateSessionForm extends React.Component {
     this.props.whichAction(this.state);
   }
 
-  cleanState(){
-    this.state = {username: "", password: ""};
+  handleGuest(e){
+    e.preventDefault();
+    this.state.username ="guest";
+    this.props.guestLogin();
   }
-
-  // handleLoggedIn(){
-  //   if(this.props.username) {
-  //     this.props.
-  //   }
-  // }
 
   refresh(field){
     return e => this.setState({
@@ -73,6 +70,9 @@ class CreateSessionForm extends React.Component {
             <input className="auth-field" placeholder="Username..." type="text" value={this.state.username} onChange={this.refresh("username")}></input>
             <input className="auth-field" placeholder="Password..." type="password" value={this.state.password} onChange={this.refresh("password")}></input>
             <input className="auth-submit" type="submit" value={this.header()}></input>
+          </form>
+          <form onSubmit={this.handleGuest} className="guest-acc">
+            <input type="submit" value="Use As Guest"></input>
           </form>
           {this.whichLink()}
         </section>
