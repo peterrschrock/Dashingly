@@ -72,7 +72,7 @@ class CreateSessionForm extends React.Component {
             <input className="auth-submit" type="submit" value={this.header()}></input>
           </form>
           <form onSubmit={this.handleGuest} className="guest-acc">
-            <input type="submit" value="Use As Guest"></input>
+            <input type="submit" className="guest-acc-submit" value="Use As Guest"></input>
           </form>
           {this.whichLink()}
         </section>
