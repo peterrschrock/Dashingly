@@ -55,9 +55,9 @@ class CreateSessionForm extends React.Component {
 
   whichLink(){
     if(this.props.whichForm === 'signup') {
-      return <Link to="/login"> Or Log In</Link>;
+      return <Link to="/login" className="toggle-user-type"> Or Log In</Link>;
     } else {
-      return <Link to="/signup"> Or Sign Up</Link>;
+      return <Link to="/signup" className="toggle-user-type"> Or Sign Up</Link>;
     }
   }
 
@@ -74,7 +74,7 @@ class CreateSessionForm extends React.Component {
             <input className="auth-field" placeholder="Password..." type="password" value={this.state.password} onChange={this.refresh("password")}></input>
             <input className="auth-submit" type="submit" value={this.header()}></input>
           </form>
-          <h4>{this.whichLink()}</h4>
+          {this.whichLink()}
         </section>
       </section>
     </div>;

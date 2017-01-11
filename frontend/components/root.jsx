@@ -16,7 +16,6 @@ const Root = ({store}) => {
   };
 
   const _redirectToLogin = (nextState, replace) => {
-    const currentUser = store.getState().session.username;
     if(!store.getState().session.username) {
       replace("/signup");
     }

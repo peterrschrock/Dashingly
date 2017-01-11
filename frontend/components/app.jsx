@@ -28,7 +28,7 @@ import Home from 'react-icons/lib/md/home';
 
 const App = ({ children }) => {
 
-  return <div>
+  return <div className="god-div">
     <NavBarContainer />
     {children}
   </div>;
