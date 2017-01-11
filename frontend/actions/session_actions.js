@@ -7,28 +7,30 @@ export const RECEIVE_ERRORS = "RECEIVE_ERRORS";
 export const login = user => dispatch => (
   APIUtil.login(user.username, user.password)
   .then(thisUser => dispatch(receiveCurrentUser(thisUser)),
-        errors => dispatch(receiveErrors(errors))
+        errors => {
+          return dispatch(receiveErrors(errors));
+        }
   )
 );
 
 export const logout = () => dispatch => (
   APIUtil.logout()
   .then(() => dispatch(receiveCurrentUser(null)),
-        (errors) => dispatch(receiveErrors(errors))
+        errors => dispatch(receiveErrors(errors))
   )
 );
 
 export const signup = user => dispatch => (
   APIUtil.signup(user.username, user.password)
   .then(thisUser => dispatch(receiveCurrentUser(thisUser)),
-        (errors) => dispatch(receiveErrors(errors))
+        errors => dispatch(receiveErrors(errors))
   )
 );
 
 export const guestLogin = user => dispatch => (
   APIUtil.guestLogin()
     .then(thisUser => dispatch(receiveCurrentUser(thisUser)),
-          (errors) => dispatch(receiveErrors(errors))
+          errors => dispatch(receiveErrors(errors))
         )
 );
 
@@ -39,5 +41,5 @@ export const receiveCurrentUser = user => ({
 
 export const receiveErrors = errors => ({
   type: RECEIVE_ERRORS,
-  errors
+  errors: errors.responseText
 });
