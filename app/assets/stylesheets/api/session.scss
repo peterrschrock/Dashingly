@@ -70,26 +70,38 @@ form.auth-form {
   border-radius: 5px;
 }
 
-.auth-submit, .guest-acc-submit {
+.auth-submit, .guest-acc-submit, .toggle-user-type {
   background-color: transparent;
   border: 3px solid;
+  border-color: black;
   font-size: 20px;
-  font-weight: bold;
+  text-align: center;
+  color: transparent;
+  -webkit-text-stroke-color: black;
+  font-family: 'Indie Flower', cursive;
+  -webkit-text-stroke-width: 1px;
   margin-top: 10px;
   border-radius: 5px;
+}
+
+.auth-box h2 {
+  color: transparent;
+  -webkit-text-stroke-color: black;
+  font-family: 'Indie Flower', cursive;
+  -webkit-text-stroke-width: 2px;
+  font-size: 30px;
+}
+
+.auth-submit, .guest-acc-submit {
   width: 200px;
 }
 
-.auth-field:hover {
-  background-color: #964744;
+.toggle-user-type {
+  text-decoration: none;
+  width: 194px;
 }
 
-.auth-submit:hover {
-  background-color: #964744;
-  cursor: pointer;
-}
-
-.guest-acc-submit:hover {
+.auth-submit:hover, .auth-field:hover, .guest-acc-submit:hover, .toggle-user-type:hover {
   background-color: #964744;
   cursor: pointer;
 }
@@ -107,21 +119,4 @@ input::-webkit-input-placeholder { /* Chrome */
 :-moz-placeholder { /* Firefox 4 - 18 */
   color: black;
   opacity: 1;
-}
-
-.toggle-user-type {
-  text-decoration: none;
-  border: 3px solid;
-  border-radius: 5px;
-  font-size: 20px;
-  font-weight: bold;
-  margin-top: 10px;
-  color: black;
-  width: 194px;
-  text-align: center;
-}
-
-.toggle-user-type:hover {
-  background-color: #964744;
-  cursor: pointer;
 }

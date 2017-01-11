@@ -22,28 +22,33 @@
 .navBarHeader li, button {
   font-size: 18px;
   text-decoration: none;
-  color: black;
   margin: 0;
   padding: 0;
   width: 16.6666%;
   background-color: transparent;
-  border: 5px solid;
+  color: transparent;
+  border: 0px;
   padding: 10px 0;
   font-family: 'Indie Flower', cursive;
+  -webkit-text-stroke-width: .7px;
+  -webkit-text-stroke-color: black;
 }
 
 .logo-title {
   font-size: 32px;
   -webkit-text-stroke-width: 1px;
   color: transparent;
-  -webkit-text-stroke-width: .5px;
   font-weight: bold;
   -webkit-text-stroke-color: black;
   font-family: 'Indie Flower', cursive;
 }
 
 .logo, .nav-icon {
-  margin-right: 2%;
+  margin-right: 5%;
+}
+
+.nav-icon {
+  color: black;
 }
 
 .navBarHeader button {
