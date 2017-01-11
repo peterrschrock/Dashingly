@@ -55,6 +55,17 @@ class CreateSessionForm extends React.Component {
     }
   }
 
+  renderErrors() {
+    if(this.props.errors.length) {
+      return (
+        <ul className='form-errors'>
+          {this.props.errors.map( (error, idx) => <li key={idx}>{error}</li> ) }
+        </ul>
+      );
+    } else {
+      return <div></div>;
+    }
+  }
 
   render() {
     return <div className="full-screen">
@@ -66,7 +77,7 @@ class CreateSessionForm extends React.Component {
           <form onSubmit={this.handleSubmit} className="auth-form">
             <input className="auth-field" placeholder="Username..." type="text" value={this.state.username} onChange={this.refresh("username")}></input>
             <input className="auth-field" placeholder="Password..." type="password" value={this.state.password} onChange={this.refresh("password")}></input>
-            <section className="error-box"><h5 className="errors">{this.props.errors}</h5></section>
+            <section className="error-box"><h5 className="errors">{this.renderErrors()}</h5></section>
             <input className="auth-submit" type="submit" value={this.header()}></input>
           </form>
           <form onSubmit={this.handleGuest} className="guest-acc">

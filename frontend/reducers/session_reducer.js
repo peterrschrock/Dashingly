@@ -4,7 +4,7 @@ import lodash from 'lodash';
 
 const _emptyVessel = {
   username: null,
-  errors: ""
+  errors: []
 };
 
 const SessionReducer = (state = _emptyVessel, action) => {
