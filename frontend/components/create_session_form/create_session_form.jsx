@@ -62,8 +62,8 @@ class CreateSessionForm extends React.Component {
   render() {
     return <div className="full-screen">
       <section>
-        <h1 className="company-title">dashingly</h1>
-        <h3 className="maverick">business analytics for mavericks</h3>
+        <h1 className="company-title">Dashingly</h1>
+        <h3 className="maverick">Business Analytics For Mavericks</h3>
         <section className="auth-box">
           <h2>{this.header()}</h2>
           <form onSubmit={this.handleSubmit} className="auth-form">

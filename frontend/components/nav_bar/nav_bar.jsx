@@ -48,16 +48,23 @@ class NavBar extends React.Component {
     hashHistory.push("/upload");
   }
 
+  renderLogo() {
+    return <li className="masthead">
+      <img alt="logo" className="logo" height="40" width="" src="assets/logo.jpg"></img>
+      <h2 className="logo-title">Dashingly</h2>
+    </li>;
+  }
+
   loggedInRender() {
     if(this.props.username) {
       return <div className="nav-bar-div">
         <ul className="navBarHeader">
-          <h2 className="masthead">dashingly</h2>
-          <button onClick={this.redirectToDashboards}><Dashboard className="nav-icon"/> My Dashboards</button>
-          <button onClick={this.redirectToAllCharts}><AllCharts className="nav-icon"/> My Charts</button>
-          <button onClick={this.redirectToCreateChart}><InsertChart className="nav-icon"/> Create Chart</button>
-          <button onClick={this.redirectToUpload}><Upload className="nav-icon"/> Upload</button>
-          <button onClick={this.handleLogout}><SignOut className="nav-icon"/> Logout</button>
+          {this.renderLogo()}
+          <button onClick={this.redirectToDashboards}><Dashboard className="nav-icon"/>My Dashboards</button>
+          <button onClick={this.redirectToAllCharts}><AllCharts className="nav-icon"/>My Charts</button>
+          <button onClick={this.redirectToCreateChart}><InsertChart className="nav-icon"/>Create Chart</button>
+          <button onClick={this.redirectToUpload}><Upload className="nav-icon"/>Upload Data</button>
+          <button onClick={this.handleLogout}><SignOut className="nav-icon"/>Logout</button>
         </ul>
       </div>;
     } else {
