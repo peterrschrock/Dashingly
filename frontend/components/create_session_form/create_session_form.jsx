@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link, hashHistory} from 'react-router';
+import {bindAll} from 'lodash';
 
 // TODO add error handling
 
@@ -8,8 +9,7 @@ class CreateSessionForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {username: "", password: ""};
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleGuest = this.handleGuest.bind(this);
+    bindAll(this, 'handleSubmit', 'handleGuest');
   }
 
   componentDidUpdate() {

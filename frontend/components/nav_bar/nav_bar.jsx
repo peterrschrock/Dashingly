@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router';
 import {hashHistory} from 'react-router';
+import bindAll from 'lodash';
 
 import Upload from 'react-icons/lib/fa/upload';
 import Dashboard from 'react-icons/lib/fa/dashboard';
@@ -13,11 +14,7 @@ import AllCharts from 'react-icons/lib/fa/list-ol';
 class NavBar extends React.Component {
   constructor(props){
     super(props);
-    this.handleLogout = this.handleLogout.bind(this);
-    this.redirectToDashboards = this.redirectToDashboards.bind(this);
-    this.redirectToAllCharts = this.redirectToAllCharts.bind(this);
-    this.redirectToCreateChart = this.redirectToCreateChart.bind(this);
-    this.redirectToUpload = this.redirectToUpload.bind(this);
+    bindAll(this, 'handleLogout', 'redirectToDashboards', 'redirectToAllCharts', 'redirectToCreateChart', 'redirectToUpload')
   }
 
   handleLogout(e){

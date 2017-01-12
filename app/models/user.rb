@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
 
   # TODO Add Validations as needed
 
+  has_many :datasets
+
   def self.find_by_credentials(username, password)
     @user = User.find_by_username(username)
     if @user && @user.has_password?(password)
