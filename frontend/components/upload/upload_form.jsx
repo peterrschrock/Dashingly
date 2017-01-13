@@ -25,7 +25,7 @@ class UploadForm extends React.Component {
       let reader = new FileReader();
       reader.readAsText(files[0]);
       reader.onload = () => {
-        const jsonResult = JSON.parse(reader.result);
+        let jsonResult = JSON.parse(reader.result);
         this.setState({data: jsonResult});
       };
     }
