@@ -1,5 +1,5 @@
 class Dataset < ActiveRecord::Base
-  validates: :dataset, :user_id, :title, presence:true
+  validates :data, :user_id, :title, presence:true
 
   belongs_to :user
 end

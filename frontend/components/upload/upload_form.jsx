@@ -17,14 +17,18 @@ class UploadForm extends React.Component {
 
   handleDrop(files){
     // TODO is file array or file?
-    files.preventDefault();
     const exten = this.getFileExtension(files[0].name);
     if(exten === "csv") {
       // TODO Papa parse
-    } else {
-      this.setState({ data: files[0]});
     }
+    let reader = new FileReader();
+    reader.readAsText(files[0]);
+    reader.onload = () => {
+      this.setState({data: reader.result});
+      console.log(this.state);
+    };
   }
+
 
   uploadFile(e) {
     e.preventDefault();
@@ -49,13 +53,15 @@ class UploadForm extends React.Component {
 
   render() {
     return <div className="upload-container">
-      <Dropzone ref="dropzone" accept="application/json, text/csv" onDrop={this.handleDrop} multiple="false" maxSize="100000">
+      <Dropzone ref="dropzone" accept="application/json, text/csv" onDrop={this.handleDrop} multiple={false} maxSize={100000}>
         Drop csv, tsv, or json files here to upload!
       </Dropzone>
-      <button type="button" onClick={this.handleManualUpload} value="Select File"></button>
-      <input type="text" value={this.state.title} onChange={this.refresh("title")}>Title:</input>
+      <button type="button" onClick={this.handleManualUpload}>Select File</button>
+      <input type="text" value={this.state.title} placeholder="Title Data..." onChange={this.refresh("title")}></input>
       <form onSubmit={this.uploadFile} >
       </form>
     </div>;
   }
 }
+
+export default UploadForm;

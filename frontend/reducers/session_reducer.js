@@ -9,6 +9,7 @@ const _emptyVessel = {
 };
 
 const SessionReducer = (state = _emptyVessel, action) => {
+  debugger
   Object.freeze(state);
   switch (action.type) {
     case RECEIVE_CURRENT_USER:
