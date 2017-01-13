@@ -12,7 +12,7 @@ class UploadForm extends React.Component {
       user_id: this.props.user_id,
       data: {}
     };
-    bindAll(this, 'handleDrop', 'handleManualUpload');
+    bindAll(this, 'handleDrop', 'handleManualUpload', 'uploadFile');
   }
 
   handleDrop(files){
@@ -58,7 +58,8 @@ class UploadForm extends React.Component {
       </Dropzone>
       <button type="button" onClick={this.handleManualUpload}>Select File</button>
       <input type="text" value={this.state.title} placeholder="Title Data..." onChange={this.refresh("title")}></input>
-      <form onSubmit={this.uploadFile} >
+      <form onSubmit={this.uploadFile}>
+        <input type="submit" value="Upload"></input>
       </form>
     </div>;
   }

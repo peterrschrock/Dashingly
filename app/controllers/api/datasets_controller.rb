@@ -1,5 +1,9 @@
+require 'json'
+
+
 class Api::DatasetsController < ApplicationController
   def create
+    debugger
     @dataset = Dataset.new(dataset_params)
     if @dataset.save!
       render "api/datasets/show"
@@ -36,6 +40,7 @@ class Api::DatasetsController < ApplicationController
   private
 
   def dataset_params
-    params.require(:dataset).permit(:user_id, :title, :data, :id)
+    parsed_params = JSON.parse(params, symbolize_names: true)
+    parsed_params.require(:dataset).permit(:user_id, :title, :data)
   end
 end

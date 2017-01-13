@@ -1,5 +1,5 @@
 import {RECEIVE_DATASETS, RECEIVE_DATASET, DELETE_DATASET, RECEIVE_ERRORS} from '../actions/datasets_actions';
-import {merge} from 'lodash/merge';
+import {merge} from 'lodash';
 
 const _noData = {
   datasets: {},
