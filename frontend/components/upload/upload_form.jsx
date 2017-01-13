@@ -18,17 +18,17 @@ class UploadForm extends React.Component {
 
   handleDrop(files, header = true){
     const exten = this.getFileExtension(files[0].name);
-    if(exten === "csv") {
-      const papaJSON = Papa.parse(files[0], {dynamicTyping: true, header: header});
-      this.setState({data: papaJSON});
-    } else {
-      let reader = new FileReader();
-      reader.readAsText(files[0]);
-      reader.onload = () => {
-        let jsonResult = JSON.parse(reader.result);
-        this.setState({data: jsonResult});
-      };
-    }
+    let jsonResult;
+    let reader = new FileReader();
+    reader.readAsText(files[0]);
+    reader.onload = () => {
+      if(exten === "csv" || exten === "txt") {
+        jsonResult = Papa.parse(reader.result, {dynamicTyping: true, header: header, skipEmptyLines: true}).data;
+      } else {
+        jsonResult = JSON.parse(reader.result);
+      }
+      this.setState({data: jsonResult});
+    };
   }
 
 
@@ -56,7 +56,7 @@ class UploadForm extends React.Component {
   render() {
     return <div className="upload-container">
       <Dropzone ref="dropzone" accept="application/json, text/csv, text/plain" onDrop={this.handleDrop} multiple={false} maxSize={100000}>
-        Drop csv, tsv, or json files here to upload!
+        Drop csv, txt, or json data files here to upload!
       </Dropzone>
       <button type="button" onClick={this.handleManualUpload}>Select File</button>
       <input type="text" value={this.state.title} placeholder="Title Data..." onChange={this.refresh("title")}></input>

@@ -1,5 +1,5 @@
 export const createDataset = (datasetEl) => {
-  console.log(datasetEl);
+  // console.log(datasetEl);
   return $.ajax({
     method: "POST",
     url: `api/users/${datasetEl.user_id}/datasets`,
