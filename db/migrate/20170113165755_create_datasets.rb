@@ -6,6 +6,6 @@ class CreateDatasets < ActiveRecord::Migration
       t.jsonb :data, null:false
       t.timestamps null: false
     end
-    add_index :data, :user_id
+    add_index :datasets, :user_id
   end
 end

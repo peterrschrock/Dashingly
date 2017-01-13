@@ -4,9 +4,7 @@ import UploadForm from './upload_form';
 
 const mapStateToProps = store => {
   return {
-  datasets: store.data.username,
-  errors: store.data.errors,
-  user_id: store.session.id
+    user_id: store.session.id
 };};
 
 const mapDispatchToProps = dispatch => ({

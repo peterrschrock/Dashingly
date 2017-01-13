@@ -3,7 +3,7 @@ require 'json'
 
 class Api::DatasetsController < ApplicationController
   def create
-    debugger
+
     @dataset = Dataset.new(dataset_params)
     if @dataset.save!
       render "api/datasets/show"
@@ -13,7 +13,7 @@ class Api::DatasetsController < ApplicationController
   end
 
   def destroy
-    @dataset = Dataset.find(id: dataset_params[:id])
+    @dataset = Dataset.find(id: params[:id])
     if @dataset
       @dataset.destroy
       render json: "api/datasets/show"
@@ -40,7 +40,8 @@ class Api::DatasetsController < ApplicationController
   private
 
   def dataset_params
-    parsed_params = JSON.parse(params, symbolize_names: true)
-    parsed_params.require(:dataset).permit(:user_id, :title, :data)
+    params.require(:datasets).permit(:user_id, :title).tap do |whitelisted|
+      whitelisted[:data] = params[:datasets][:data ]
+    end
   end
 end

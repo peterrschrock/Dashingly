@@ -1,10 +1,11 @@
 export const createDataset = (datasetEl) => {
-  debugger
+  console.log(datasetEl);
   return $.ajax({
     method: "POST",
     url: `api/users/${datasetEl.user_id}/datasets`,
-    data: JSON.stringify({dataset: datasetEl}),
-    contentType: 'application/json'
+    data: JSON.stringify({datasets: datasetEl}),
+    contentType: "application/json; charset=utf-8",
+    dataType: "json"
   });
 };
 

@@ -2,6 +2,7 @@ import React from 'react';
 import {hashHistory} from 'react-router';
 import {bindAll} from 'lodash';
 import Dropzone from 'react-dropzone';
+import Papa from 'papaparse';
 
 
 class UploadForm extends React.Component {
@@ -15,18 +16,19 @@ class UploadForm extends React.Component {
     bindAll(this, 'handleDrop', 'handleManualUpload', 'uploadFile');
   }
 
-  handleDrop(files){
-    // TODO is file array or file?
+  handleDrop(files, header = true){
     const exten = this.getFileExtension(files[0].name);
     if(exten === "csv") {
-      // TODO Papa parse
+      const papaJSON = Papa.parse(files[0], {dynamicTyping: true, header: header});
+      this.setState({data: papaJSON});
+    } else {
+      let reader = new FileReader();
+      reader.readAsText(files[0]);
+      reader.onload = () => {
+        const jsonResult = JSON.parse(reader.result);
+        this.setState({data: jsonResult});
+      };
     }
-    let reader = new FileReader();
-    reader.readAsText(files[0]);
-    reader.onload = () => {
-      this.setState({data: reader.result});
-      console.log(this.state);
-    };
   }
 
 
@@ -53,7 +55,7 @@ class UploadForm extends React.Component {
 
   render() {
     return <div className="upload-container">
-      <Dropzone ref="dropzone" accept="application/json, text/csv" onDrop={this.handleDrop} multiple={false} maxSize={100000}>
+      <Dropzone ref="dropzone" accept="application/json, text/csv, text/plain" onDrop={this.handleDrop} multiple={false} maxSize={100000}>
         Drop csv, tsv, or json files here to upload!
       </Dropzone>
       <button type="button" onClick={this.handleManualUpload}>Select File</button>
