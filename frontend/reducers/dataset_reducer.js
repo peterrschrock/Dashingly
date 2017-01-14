@@ -13,7 +13,7 @@ const DatasetReducer = (state = _noData, action) => {
     case RECEIVE_DATASETS:
       return merge({}, _noData, action.datasets);
     case RECEIVE_DATASET:
-      return merge({}, state, {datasets: {[action.dataset.id]: action.dataset}, errors: []});
+      return merge({}, state, {datasets: action.dataset, errors: []});
     case RECEIVE_ERRORS:
       return merge({}, state, {errors: action.errors});
     case DELETE_DATASET:

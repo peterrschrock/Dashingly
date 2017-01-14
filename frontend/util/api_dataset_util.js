@@ -12,20 +12,20 @@ export const createDataset = (datasetEl) => {
 export const deleteDataset = (userId,datasetId) => (
   $.ajax({
     method: "DELETE",
-    url: `api/users/${userId}/datasets/datasetId`,
+    url: `api/users/${userId}/datasets/${datasetId}`,
   })
 );
 
 export const getDatasets = userId => (
   $.ajax({
     method: "GET",
-    url: "api/users/userId/datasets",
+    url: `api/users/${userId}/datasets`,
   })
 );
 
 export const getDataset = (userId, datasetId) => (
   $.ajax({
     method: "GET",
-    url: "api/users/userId/datasets/datasetId",
+    url: `api/users/${userId}/datasets/${datasetId}`,
   })
 );

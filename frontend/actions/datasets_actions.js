@@ -4,10 +4,13 @@ export const RECEIVE_DATASET = "RECEIVE_DATASET";
 export const DELETE_DATASET = "DELETE_DATASET";
 export const RECEIVE_ERRORS = "RECEIVE_ERRORS";
 
-export const receiveDatasets = (datasets) => ({
-  type: RECEIVE_DATASETS,
-  datasets
-});
+export const receiveDatasets = (datasets) => {
+  // console.log(datasets);
+  return {
+    type: RECEIVE_DATASETS,
+    datasets
+  };
+};
 
 export const receiveDataset = dataset => ({
   type: RECEIVE_DATASET,

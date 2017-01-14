@@ -23,7 +23,8 @@ class Api::DatasetsController < ApplicationController
   end
 
   def index
-    @datasets = @current_user.datasets
+    # debugger
+    @datasets = current_user.datasets
     render "api/datasets/index"
   end
 

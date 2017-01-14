@@ -6,7 +6,7 @@ import CreateSessionFormContainer from './create_session_form/create_session_for
 // import MyDashboardsContainer from './my_dashboards/my_dashboards_container';
 // import MyChartsContainer from './my_charts/my_charts_container';
 // import ChartFormContainer from './chart/single_chart_container';
-import UploadFormContainer from './upload/upload_form_container';
+import UploadPage from './upload_page';
 
 // <Route path="/dashboards/me" component={MyDashboardsContainer} onEnter={_redirectToLogin}></Route>
 // <Route path="/charts" component={MyChartsContainer} onEnter={_redirectToLogin}></Route>
@@ -31,7 +31,7 @@ const Root = ({store}) => {
   return <Provider store={store}>
     <Router history={ hashHistory }>
       <Route path="/" component={App} >
-        <Route path="/upload" component={UploadFormContainer} onEnter={_redirectToLogin}></Route>
+        <Route path="/upload" component={UploadPage} onEnter={_redirectToLogin}></Route>
         <Route path="/login" component={CreateSessionFormContainer} onEnter={_redirectToHome}></Route>
         <Route path="/signup" component={CreateSessionFormContainer} onEnter={_redirectToHome}></Route>
       </Route>
