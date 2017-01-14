@@ -36,8 +36,8 @@ class myDatasets extends React.Component {
     const self = this;
     return Object.keys(this.props.data.datasets).map(datasetId => {
       // debugger
-      return <li key={datasetId} >
-        <button onClick={() => this.setState({datasetSelector: datasetId})}>
+      return <li key={datasetId} className="dataset-titles">
+        <button className="dataset-title-buttons" onClick={() => this.setState({datasetSelector: datasetId})}>
           {datasets[datasetId].title}
         </button>
       </li>;
@@ -72,7 +72,7 @@ class myDatasets extends React.Component {
   renderRows(dataset){
     // debugger
     return <div className="table-holder">
-      <h3>{dataset.title}</h3>
+      <h3 className="dataset-titles">{dataset.title}</h3>
       <table id="data-view-table">
         <tbody>
           <tr>{this.renderColumnNames(dataset)}</tr>

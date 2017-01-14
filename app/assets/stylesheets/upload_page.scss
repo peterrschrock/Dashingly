@@ -3,7 +3,9 @@
   flex-direction: row;
   justify-content: center;
   // align-items: center;
-  margin: 70px 0 25px 0;
+  // margin-top: 75px;
+  max-height: calc(100% - 567px);
+
 }
 
 #upload-metadata button, input, form {
@@ -15,10 +17,25 @@
 
 }
 
+.dataset-titles, .dataset-title-buttons {
+  border: 3px;
+  width: 100%;
+}
+
+.dataset-titles:hover, .dataset-title-buttons:hover {
+  background-color: #E4B395;
+  cursor: pointer;
+
+}
+
+.dataset-titles {
+  // font
+}
+
 .upload-page {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: flex-end;
   background: url('/assets/upload.jpg') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -35,7 +52,8 @@
 #mydata-holder{
   display: flex;
   flex-direction: row;
-  align-items: flex-end;
+  align-items: flex-start;
+  height: 300px;
 }
 
 #my-datasets{
@@ -43,20 +61,24 @@
   flex-direction: column;
   justify-content: center;
   border: 3px;
-  background-color: transparent;
+  border-color: black;
+  background-color: #FAFBFD;
   width: 16.66666%;
   display: flex;
   align-items: center;
-
+  justify-content: flex-start;
+  height: 100%;
 
 }
 
 #list-datasets{
-  height: 300px;
+  // height: 300px;
   overflow: auto;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   float: none;
+  width: 100%;
 }
 
 #data-view-table {
@@ -66,7 +88,7 @@
 .table-holder {
   overflow: auto;
   width: 83.3333%;
-  height: 400px;
+  height: 100%;
 }
 
 table, th, td {
@@ -89,6 +111,6 @@ table {
 }
 
 td:hover, th:hover {
-  background-color: #656B6E;
+  // background-color: #AFB4B6;
   font-weight: bold;
 }
