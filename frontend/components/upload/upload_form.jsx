@@ -55,14 +55,19 @@ class UploadForm extends React.Component {
 
   render() {
     return <div className="upload-container">
-      <Dropzone ref="dropzone" accept="application/json, text/csv, text/plain" onDrop={this.handleDrop} multiple={false} maxSize={100000}>
-        Drop csv, txt, or json data files here to upload!
-      </Dropzone>
-      <button type="button" onClick={this.handleManualUpload}>Select File</button>
-      <input type="text" value={this.state.title} placeholder="Title Data..." onChange={this.refresh("title")}></input>
-      <form onSubmit={this.uploadFile}>
-        <input type="submit" value="Upload"></input>
-      </form>
+      <section id="uploaded-data">
+        <Dropzone id="dropzone" ref="dropzone" accept="application/json, text/csv, text/plain" onDrop={this.handleDrop} multiple={false} maxSize={100000}>
+          Drop csv, txt, or json data files here to upload!
+        </Dropzone>
+        <button type="button" onClick={this.handleManualUpload}>Or Select File</button>
+      </section>
+
+      <section id="upload-metadata">
+        <input type="text" value={this.state.title} placeholder="Title Data..." onChange={this.refresh("title")}></input>
+        <form onSubmit={this.uploadFile}>
+          <input type="submit" value="Upload"></input>
+        </form>
+      </section>
     </div>;
   }
 }

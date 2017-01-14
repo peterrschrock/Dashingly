@@ -1,0 +1,94 @@
+.upload-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  // align-items: center;
+  margin: 70px 0 25px 0;
+}
+
+#upload-metadata button, input, form {
+  margin: 10px;
+  padding: 10px;
+}
+
+#uploaded-data{
+
+}
+
+.upload-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background: url('/assets/upload.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+  min-height: 100%;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
+  // z-index: -101;
+}
+
+#mydata-holder{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
+
+#my-datasets{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 3px;
+  background-color: transparent;
+  width: 16.66666%;
+  display: flex;
+  align-items: center;
+
+
+}
+
+#list-datasets{
+  height: 300px;
+  overflow: auto;
+  display: flex;
+  justify-content: center;
+  float: none;
+}
+
+#data-view-table {
+
+}
+
+.table-holder {
+  overflow: auto;
+  width: 83.3333%;
+  height: 400px;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    background-color: #FAFBFD;
+}
+
+th, td {
+    padding: 15px;
+}
+
+th {
+    text-align: left;
+}
+
+table {
+    border-spacing: 5px;
+    width: 100%;
+}
+
+td:hover, th:hover {
+  background-color: #656B6E;
+  font-weight: bold;
+}

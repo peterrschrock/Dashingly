@@ -1,5 +1,5 @@
 import React from 'react';
-import NavBarContainer from './nav_bar/nav_bar_container';
+// import NavBarContainer from './nav_bar/nav_bar_container';
 // import {LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts';
 // const data = [
 //       {name: 'Page A', uv: 4000, pv: 2400, amt: 2400},
@@ -55,10 +55,10 @@ import Add from 'react-icons/lib/md/add';
 import Home from 'react-icons/lib/md/home';
 // <PieChart name="AreaChart"/>
 
+// <NavBarContainer />
 const App = ({ children }) => {
 
   return <div className="god-div">
-    <NavBarContainer />
     {children}
   </div>;
 };

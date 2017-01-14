@@ -21,7 +21,7 @@ class myDatasets extends React.Component {
 
   renderColumnNames(dataset) {
     // debugger
-    return Object.keys(dataset).map((colName, idx) => {
+    return Object.keys(dataset.data[0]).map((colName, idx) => {
       return <th key={`${dataset.title}${idx}`}>{colName}</th>;
     });
   }
@@ -40,7 +40,6 @@ class myDatasets extends React.Component {
         <button onClick={() => this.setState({datasetSelector: datasetId})}>
           {datasets[datasetId].title}
         </button>
-        <button><Trash className="nav-icon"/>Delete {datasets[datasetId].title}</button>
       </li>;
     });
   }
@@ -48,7 +47,7 @@ class myDatasets extends React.Component {
   GottenDatasets() {
     // debugger
     if(Object.keys(this.props.data.datasets).length > 0) {
-      return <ul>
+      return <ul id="list-datasets">
         {this.renderDatasets()}
       </ul>;
     } else {
@@ -72,18 +71,21 @@ class myDatasets extends React.Component {
 
   renderRows(dataset){
     // debugger
-    return <table id="data-view-table">
-      <tbody>
-        <tr>{this.renderColumnNames(dataset)}</tr>
-        {this.renderDataRows(dataset)}
-      </tbody>
-    </table>;
+    return <div className="table-holder">
+      <h3>{dataset.title}</h3>
+      <table id="data-view-table">
+        <tbody>
+          <tr>{this.renderColumnNames(dataset)}</tr>
+          {this.renderDataRows(dataset)}
+        </tbody>
+      </table>
+    </div>;
   }
 
   renderDataView(){
     // debugger
     if(this.state.datasetSelector === -1) {
-      return <table></table>;
+      return <div></div>;
     } else {
       let datasetSelected = this.props.data.datasets[this.state.datasetSelector];
       // debugger
@@ -92,9 +94,10 @@ class myDatasets extends React.Component {
   }
 
   render() {
-    return <div>
-      <section>
+    return <div id="mydata-holder">
+      <section id="my-datasets">
         <h3>My Datasets</h3>
+        <h5>Click to View</h5>
         {this.GottenDatasets()}
       </section>
       {this.renderDataView()}
