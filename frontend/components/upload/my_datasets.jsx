@@ -8,39 +8,37 @@ class myDatasets extends React.Component {
   constructor(props) {
     super(props);
 
-    this.store = {datasetSelector: -1};
+    this.state = {datasetSelector: -1};
 
     this.props.getDatasets(this.props.user_id);
-    bindAll(this, 'selectDatasetView', 'renderDatasets', 'GottenDatasets', 'renderDataView', 'renderRows', 'renderRow', 'renderDataRows');
+    bindAll(this, 'renderDatasets', 'GottenDatasets', 'renderDataView', 'renderRows', 'renderRow', 'renderDataRows');
   }
 
-  selectDatasetView(datasetId){
-    this.store = {datasetSelector: datasetId};
-    console.log(this.store.datasetSelector);
-  }
+  // selectDatasetView(datasetId){
+  //   this.setState({datasetSelector: datasetId});
+  // }
 
 
   renderColumnNames(dataset) {
     // debugger
     return Object.keys(dataset).map((colName, idx) => {
-      return <li key={`${dataset.title}${idx}`}>{colName}</li>;
+      return <th key={`${dataset.title}${idx}`}>{colName}</th>;
     });
   }
 
-  componentDidMount() {
-    this.store = {datasetSelector: 1};
-    console.log(this.store.datasetSelector);
-  }
+  // componentDidMount() {
+  //   this.state.datasetSelector = 1;
+  // }
 
   renderDatasets(){
     // debugger
     let datasets = this.props.data.datasets;
+    const self = this;
     return Object.keys(this.props.data.datasets).map(datasetId => {
       // debugger
       return <li key={datasetId} >
-        <button onClick={() => this.selectDatasetView(datasetId)}>
-          <li key={datasets[datasetId].title}>{datasets[datasetId].title}</li>
-          {this.renderColumnNames(datasets[datasetId])}
+        <button onClick={() => this.setState({datasetSelector: datasetId})}>
+          {datasets[datasetId].title}
         </button>
         <button><Trash className="nav-icon"/>Delete {datasets[datasetId].title}</button>
       </li>;
@@ -61,31 +59,33 @@ class myDatasets extends React.Component {
   renderRow(rowObj, rowIdx) {
     // debugger
     return Object.keys(rowObj).map((datapointKey, colIdx) => {
-      return <li key={`${rowIdx}--$${colIdx}`}>{rowObj[datapointKey]}</li>;
+      return <td key={`${rowIdx}--$${colIdx}`}>{rowObj[datapointKey]}</td>;
     });
   }
 
   renderDataRows(dataset) {
     // debugger
     return dataset.data.map((rowObj, rowIdx) => {
-      return <ul key={`datarow${rowIdx}`}>{this.renderRow(rowObj, rowIdx)}</ul>;
+      return <tr key={`datarow${rowIdx}`}>{this.renderRow(rowObj, rowIdx)}</tr>;
     });
   }
 
   renderRows(dataset){
     // debugger
-    return <ul>
-      <ul>{this.renderColumnNames(dataset)}</ul>
-      <ul>{this.renderDataRows(dataset)}</ul>
-    </ul>;
+    return <table id="data-view-table">
+      <tbody>
+        <tr>{this.renderColumnNames(dataset)}</tr>
+        {this.renderDataRows(dataset)}
+      </tbody>
+    </table>;
   }
 
   renderDataView(){
     // debugger
-    if(this.store.datasetSelector === -1) {
-      return <ul></ul>;
+    if(this.state.datasetSelector === -1) {
+      return <table></table>;
     } else {
-      let datasetSelected = this.props.data.datasets[this.store.datasetSelector];
+      let datasetSelected = this.props.data.datasets[this.state.datasetSelector];
       // debugger
       return this.renderRows(datasetSelected);
     }
