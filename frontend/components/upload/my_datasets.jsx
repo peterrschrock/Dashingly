@@ -48,7 +48,6 @@ class myDatasets extends React.Component {
     // debugger
     if(Object.keys(this.props.data.datasets).length > 0) {
       return <ul id="list-datasets">
-        <li id="dummy-10"></li>
         {this.renderDatasets()}
       </ul>;
     } else {

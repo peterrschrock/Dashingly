@@ -3,7 +3,7 @@ import {Link} from 'react-router';
 import {hashHistory} from 'react-router';
 import {bindAll} from 'lodash';
 
-import Upload from 'react-icons/lib/fa/upload';
+import CloudUpload from 'react-icons/lib/fa/cloud-upload';
 import Dashboard from 'react-icons/lib/fa/dashboard';
 import SignOut from 'react-icons/lib/fa/sign-out';
 import InsertChart from 'react-icons/lib/md/insert-chart';
@@ -60,7 +60,7 @@ class NavBar extends React.Component {
           <button onClick={this.redirectToDashboards}><Dashboard className="nav-icon"/>My Dashboards</button>
           <button onClick={this.redirectToAllCharts}><AllCharts className="nav-icon"/>My Charts</button>
           <button onClick={this.redirectToCreateChart}><InsertChart className="nav-icon"/>Create Chart</button>
-          <button onClick={this.redirectToUpload}><Upload className="nav-icon"/>Upload Data</button>
+          <button onClick={this.redirectToUpload}><CloudUpload className="nav-icon"/>Upload Data</button>
           <button onClick={this.handleLogout}><SignOut className="nav-icon"/>Logout</button>
         </ul>
       </div>;

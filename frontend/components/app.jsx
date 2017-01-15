@@ -38,7 +38,7 @@ import BarChart from 'react-icons/lib/fa/bar-chart';
 import PieChart from 'react-icons/lib/fa/pie-chart';
 import Table from 'react-icons/lib/fa/table';
 
-import Upload from 'react-icons/lib/fa/upload';
+import CloudUpload from 'react-icons/lib/fa/cloud-upload';
 import Dashboard from 'react-icons/lib/fa/dashboard';
 import Lock from 'react-icons/lib/fa/lock';
 import Unlock from 'react-icons/lib/fa/unlock';

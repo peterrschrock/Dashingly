@@ -4,6 +4,7 @@ import {bindAll} from 'lodash';
 import Dropzone from 'react-dropzone';
 import Papa from 'papaparse';
 
+import CloudUpload from 'react-icons/lib/fa/cloud-upload';
 
 class UploadForm extends React.Component {
   constructor(props) {
@@ -55,17 +56,16 @@ class UploadForm extends React.Component {
 
   render() {
     return <div className="upload-container">
-      <section id="uploaded-data">
-        <Dropzone id="dropzone" ref="dropzone" accept="application/json, text/csv, text/plain" onDrop={this.handleDrop} multiple={false} maxSize={100000}>
-          Drop csv, txt, or json data files here to upload!
-        </Dropzone>
-        <button type="button" onClick={this.handleManualUpload}>Or Select File</button>
-      </section>
+      <Dropzone className="dropzone" activeClassName="active-dz" ref="dropzone" accept="application/json, text/csv, text/plain" onDrop={this.handleDrop} multiple={false} maxSize={100000}>
+        <h5 className="dropzone-instructions">Drop csv, txt, or json data files here to upload!</h5>
+        <h5 className="dropzone-instructions">Or click to open a file.</h5>
+        <h5 className="dropzone-instructions"><CloudUpload id="cloud-nav-icon"></CloudUpload></h5>
+      </Dropzone>
 
       <section id="upload-metadata">
-        <input type="text" value={this.state.title} placeholder="Title Data..." onChange={this.refresh("title")}></input>
         <form onSubmit={this.uploadFile}>
-          <input type="submit" value="Upload"></input>
+          <input id="title-input-field" type="text" value={this.state.title} placeholder="Title Data..." onChange={this.refresh("title")}></input>
+          <input id="upload-submit-button" type="submit" value="Upload"></input>
         </form>
       </section>
     </div>;

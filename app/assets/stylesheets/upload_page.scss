@@ -4,8 +4,9 @@
   justify-content: center;
   // align-items: center;
   // margin-top: 75px;
-  max-height: calc(100% - 567px);
-
+  height: calc(100% - 367px);
+  position: absolute;
+  top: 75px;
 }
 
 #upload-metadata button, input, form {
@@ -13,8 +14,58 @@
   padding: 10px;
 }
 
-#uploaded-data{
+#upload-metadata {
+  display: flex;
+  justify-content: center;
+}
 
+.dropzone{
+  height: calc(70px + 40%);
+  width: calc(100px + 35%);
+  border: 3px;
+  border-style: dashed;
+  border-radius: 10px;
+}
+
+.dropzone:hover{
+  border-color: green;
+  border-style: solid;
+  cursor: pointer;
+}
+
+#upload-submit-button{
+  width: calc(100px + 10%);
+  height: 35px;
+  background-color: transparent;
+  border: 3px;
+  border-radius: 5px;
+  border-color: black;
+}
+
+#title-input-field {
+  width: calc(100px + 10%);
+  height: 10px;
+  background-color: transparent;
+  border: 3px;
+  border-radius: 5px;
+  border-color: black;
+}
+
+.active-dz {
+  border-style: solid;
+  border-color: green;
+  background-color: green;
+}
+
+.dropzone-instructions {
+  font-family: sans-serif;
+  text-align: center;
+  font-size: 16px;
+}
+
+#cloud-nav-icon {
+  font-size: 30px;
+  align-items: center;
 }
 
 .dataset-titles, .dataset-title-buttons {
