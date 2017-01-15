@@ -3,6 +3,13 @@ export const RECEIVE_DATASETS = "RECEIVE_DATASETS";
 export const RECEIVE_DATASET = "RECEIVE_DATASET";
 export const DELETE_DATASET = "DELETE_DATASET";
 export const RECEIVE_ERRORS = "RECEIVE_ERRORS";
+export const CHANGE_VIEW = "CHANGE_VIEW";
+
+export const changeView = datasetId => ({
+  type: CHANGE_VIEW,
+  datasetId
+});
+
 
 export const receiveDatasets = (datasets) => {
   // console.log(datasets);
@@ -34,9 +41,9 @@ export const createDataset = dataset => dispatch => (
   )
 );
 
-export const deleteDataset = datasetId => dispatch => (
-  APIUtil.deleteDataset(datasetId)
-    .then(dataset => dispatch(removeDataset(dataset.id)),
+export const deleteDataset = (userId, datasetId) => dispatch => (
+  APIUtil.deleteDataset(userId, datasetId)
+    .then(dataset => dispatch(removeDataset(dataset)),
     errors => dispatch(receiveErrors(errors))
   )
 );

@@ -1,9 +1,10 @@
-import {RECEIVE_DATASETS, RECEIVE_DATASET, DELETE_DATASET, RECEIVE_ERRORS} from '../actions/datasets_actions';
+import {RECEIVE_DATASETS, RECEIVE_DATASET, DELETE_DATASET, RECEIVE_ERRORS, CHANGE_VIEW} from '../actions/datasets_actions';
 import {merge} from 'lodash';
 
 const _noData = {
   datasets: {},
-  errors: []
+  errors: [],
+  datasetView: "0"
   // TODO ordering of datasets?
 };
 
@@ -13,7 +14,11 @@ const DatasetReducer = (state = _noData, action) => {
     case RECEIVE_DATASETS:
       return merge({}, _noData, action.datasets);
     case RECEIVE_DATASET:
-      return merge({}, state, {datasets: action.dataset, errors: []});
+      let uploadedObj = {};
+      uploadedObj[action.dataset.id] = action.dataset;
+      return merge({}, state, {datasets: uploadedObj, errors: [], datasetView: action.dataset.id});
+    case CHANGE_VIEW:
+      return merge({}, state, {datasetView: action.datasetId});
     case RECEIVE_ERRORS:
       return merge({}, state, {errors: action.errors});
     case DELETE_DATASET:

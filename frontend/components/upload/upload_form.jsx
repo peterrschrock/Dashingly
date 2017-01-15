@@ -14,7 +14,7 @@ class UploadForm extends React.Component {
       user_id: this.props.user_id,
       data: {}
     };
-    bindAll(this, 'handleDrop', 'handleManualUpload', 'uploadFile');
+    bindAll(this, 'uploadButtonClass','handleDrop', 'handleManualUpload', 'uploadFile');
   }
 
   handleDrop(files, header = true){
@@ -35,7 +35,12 @@ class UploadForm extends React.Component {
 
   uploadFile(e) {
     e.preventDefault();
-    this.props.upload(this.state);
+    this.props.upload(this.state).then(this.setState({
+      title: "",
+      user_id: this.props.user_id,
+      data: {}
+      }
+    ));
   }
 
 
@@ -54,6 +59,14 @@ class UploadForm extends React.Component {
     });
   }
 
+  uploadButtonClass(){
+    if(this.state.title.length > 0 && Object.keys(this.state.data).length > 0) {
+      return <input className="green-upload" id="upload-submit-button" type="submit" value="Upload"></input>;
+    } else {
+      return <input className="greyed-upload" id="upload-submit-button" type="submit" value="Upload"></input>;
+    }
+  }
+
   render() {
     return <div className="upload-container">
       <Dropzone className="dropzone" activeClassName="active-dz" ref="dropzone" accept="application/json, text/csv, text/plain" onDrop={this.handleDrop} multiple={false} maxSize={100000}>
@@ -63,9 +76,9 @@ class UploadForm extends React.Component {
       </Dropzone>
 
       <section id="upload-metadata">
-        <form onSubmit={this.uploadFile}>
-          <input id="title-input-field" type="text" value={this.state.title} placeholder="Title Data..." onChange={this.refresh("title")}></input>
-          <input id="upload-submit-button" type="submit" value="Upload"></input>
+        <form id="upload-metadata-form" onSubmit={this.uploadFile}>
+          <input id="title-input-field" type="text" value={this.state.title} placeholder="Title Data... (*Required)" onChange={this.refresh("title")}></input>
+          {this.uploadButtonClass()}
         </form>
       </section>
     </div>;

@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {getDatasets, getDataset} from '../../actions/datasets_actions.js';
+import {getDatasets, getDataset, changeView, deleteDataset} from '../../actions/datasets_actions.js';
 import myDatasets from './my_datasets';
 
 const mapStateToProps = store => {
@@ -10,7 +10,9 @@ const mapStateToProps = store => {
 
 const mapDispatchToProps = dispatch => ({
   getDatasets: userId => dispatch(getDatasets(userId)),
-  getDataset: (userId, datasetId) => dispatch(getDataset(userId, datasetId))
+  getDataset: (userId, datasetId) => dispatch(getDataset(userId, datasetId)),
+  changeView: datasetId => dispatch(changeView(datasetId)),
+  deleteDataset: datasetId => dispatch(deleteDataset(datasetId))
 });
 
 

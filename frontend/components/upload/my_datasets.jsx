@@ -3,20 +3,15 @@ import {bindAll} from 'lodash';
 
 import Spinner from 'react-icons/lib/fa/spinner';
 import Trash from 'react-icons/lib/fa/trash';
+import Close from 'react-icons/lib/fa/close';
 
 class myDatasets extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {datasetSelector: -1};
-
     this.props.getDatasets(this.props.user_id);
     bindAll(this, 'renderDatasets', 'GottenDatasets', 'renderDataView', 'renderRows', 'renderRow', 'renderDataRows');
   }
-
-  // selectDatasetView(datasetId){
-  //   this.setState({datasetSelector: datasetId});
-  // }
 
 
   renderColumnNames(dataset) {
@@ -26,10 +21,6 @@ class myDatasets extends React.Component {
     });
   }
 
-  // componentDidMount() {
-  //   this.state.datasetSelector = 1;
-  // }
-
   renderDatasets(){
     // debugger
     let datasets = this.props.data.datasets;
@@ -37,7 +28,7 @@ class myDatasets extends React.Component {
     return Object.keys(this.props.data.datasets).map(datasetId => {
       // debugger
       return <li key={datasetId} className="dataset-titles">
-        <button className="dataset-title-buttons" onClick={() => this.setState({datasetSelector: datasetId})}>
+        <button className="dataset-title-buttons" onClick={() => this.props.changeView(datasetId)}>
           {datasets[datasetId].title}
         </button>
       </li>;
@@ -51,7 +42,7 @@ class myDatasets extends React.Component {
         {this.renderDatasets()}
       </ul>;
     } else {
-      return <Spinner/>;
+      return <div></div>;
     }
   }
 
@@ -69,10 +60,14 @@ class myDatasets extends React.Component {
     });
   }
 
+  // <button onClick={this.props.deleteDataset(this.props.user_id, this.props.data.datasetView)}><Trash/></button>
   renderRows(dataset){
     // debugger
     return <div className="table-holder">
-      <h3 className="dataset-title-view">{dataset.title}</h3>
+      <div className= "table-header-options">
+        <h3 className="dataset-title-view">{dataset.title}</h3>
+        <button id="close-data-view" onClick={() => this.props.changeView("0")}><Close className="nav-icon"/></button>
+      </div>
       <div className="table-header-rows">
         <table id="data-view-table">
           <tbody>
@@ -86,10 +81,10 @@ class myDatasets extends React.Component {
 
   renderDataView(){
     // debugger
-    if(this.state.datasetSelector === -1) {
+    if(this.props.data.datasetView === "0") {
       return <div></div>;
     } else {
-      let datasetSelected = this.props.data.datasets[this.state.datasetSelector];
+      let datasetSelected = this.props.data.datasets[this.props.data.datasetView];
       // debugger
       return this.renderRows(datasetSelected);
     }
