@@ -48,6 +48,7 @@ class myDatasets extends React.Component {
     // debugger
     if(Object.keys(this.props.data.datasets).length > 0) {
       return <ul id="list-datasets">
+        <li id="dummy-10"></li>
         {this.renderDatasets()}
       </ul>;
     } else {
@@ -72,13 +73,15 @@ class myDatasets extends React.Component {
   renderRows(dataset){
     // debugger
     return <div className="table-holder">
-      <h3 className="dataset-titles">{dataset.title}</h3>
-      <table id="data-view-table">
-        <tbody>
-          <tr>{this.renderColumnNames(dataset)}</tr>
-          {this.renderDataRows(dataset)}
-        </tbody>
-      </table>
+      <h3 className="dataset-title-view">{dataset.title}</h3>
+      <div className="table-header-rows">
+        <table id="data-view-table">
+          <tbody>
+            <tr>{this.renderColumnNames(dataset)}</tr>
+            {this.renderDataRows(dataset)}
+          </tbody>
+        </table>
+      </div>
     </div>;
   }
 
