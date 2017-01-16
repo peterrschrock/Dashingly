@@ -46,7 +46,7 @@ class NavBar extends React.Component {
   }
 
   renderLogo() {
-    return <li className="masthead">
+    return <li id="masthead" className="nav-icon-button" >
       <img alt="logo" className="logo" height="40" width="" src="assets/logo.jpg"></img>
       <h2 className="logo-title">Dashingly</h2>
     </li>;
@@ -57,11 +57,11 @@ class NavBar extends React.Component {
       return <div className="nav-bar-div">
         <ul className="navBarHeader">
           {this.renderLogo()}
-          <button onClick={this.redirectToDashboards}><Dashboard className="nav-icon"/>My Dashboards</button>
-          <button onClick={this.redirectToAllCharts}><AllCharts className="nav-icon"/>My Charts</button>
-          <button onClick={this.redirectToCreateChart}><InsertChart className="nav-icon"/>Create Chart</button>
-          <button onClick={this.redirectToUpload}><CloudUpload className="nav-icon"/>Upload Data</button>
-          <button onClick={this.handleLogout}><SignOut className="nav-icon"/>Logout</button>
+          <button className="nav-icon-button" onClick={this.redirectToDashboards}><Dashboard className="nav-icon"/>My Dashboards</button>
+          <button className="nav-icon-button" onClick={this.redirectToAllCharts}><AllCharts className="nav-icon"/>My Charts</button>
+          <button className="nav-icon-button" onClick={this.redirectToCreateChart}><InsertChart className="nav-icon"/>Create Chart</button>
+          <button className="nav-icon-button" onClick={this.redirectToUpload}><CloudUpload className="nav-icon"/>Upload Data</button>
+          <button className="nav-icon-button" onClick={this.handleLogout}><SignOut className="nav-icon"/>Logout</button>
         </ul>
       </div>;
     } else {

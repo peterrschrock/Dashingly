@@ -9,12 +9,13 @@ export const createDataset = (datasetEl) => {
   });
 };
 
-export const deleteDataset = (userId,datasetId) => (
-  $.ajax({
+export const deleteDataset = (userId,datasetId) => {
+  debugger
+  return $.ajax({
     method: "DELETE",
     url: `api/users/${userId}/datasets/${datasetId}`,
-  })
-);
+  });
+};
 
 export const getDatasets = userId => (
   $.ajax({

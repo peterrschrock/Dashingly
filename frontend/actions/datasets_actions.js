@@ -41,12 +41,13 @@ export const createDataset = dataset => dispatch => (
   )
 );
 
-export const deleteDataset = (userId, datasetId) => dispatch => (
-  APIUtil.deleteDataset(userId, datasetId)
-    .then(dataset => dispatch(removeDataset(dataset)),
+export const deleteDataset = (userId, datasetId) => dispatch => {
+  debugger
+  return APIUtil.deleteDataset(userId, datasetId)
+    .then(dataset => dispatch(removeDataset(dataset.id)),
     errors => dispatch(receiveErrors(errors))
-  )
-);
+  );
+};
 
 export const getDataset = (userId, datasetId) => dispatch => (
   APIUtil.getDataset(userId, datasetId)

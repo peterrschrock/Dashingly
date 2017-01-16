@@ -12,7 +12,7 @@ const mapDispatchToProps = dispatch => ({
   getDatasets: userId => dispatch(getDatasets(userId)),
   getDataset: (userId, datasetId) => dispatch(getDataset(userId, datasetId)),
   changeView: datasetId => dispatch(changeView(datasetId)),
-  deleteDataset: datasetId => dispatch(deleteDataset(datasetId))
+  deleteDataset: (userId, datasetId) => dispatch(deleteDataset(userId, datasetId))
 });
 
 

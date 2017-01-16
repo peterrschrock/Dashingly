@@ -9,7 +9,7 @@
   top: 75px;
 }
 
-#upload-metadata button, input, form {
+#upload-metadata button, #upload-metadata input, #upload-metadata form {
   margin: 10px;
   padding: 10px;
 }
@@ -83,7 +83,13 @@
   font-family: sans-serif;
   font-size: 14px;
   color: black;
+  background-color: transparent;
+  border-style: none;
+}
 
+.dataset-titles-buttons {
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 .dataset-titles:hover, .dataset-title-buttons:hover {
@@ -104,8 +110,39 @@
   flex-direction: row;
 }
 
-#close-data-view{
-  
+#closer-icon, #trash-dataset-icon{
+  color: black;
+  font-size: 20px;
+  margin: 0px;
+  padding: 0px;
+  background-color: transparent;
+  border-style: none;
+}
+
+#closer-button, #trash-dataset-button{
+  margin: 0px;
+  padding: 0px;
+  width: auto;
+  background-color: transparent;
+  border-style: none;
+}
+
+#closer-button{
+  position: absolute;
+  right: 15px;
+}
+
+#trash-dataset-button {
+  position: absolute;
+  right: 50px;
+}
+
+#closer-icon:hover, #trash-dataset-icon:hover{
+  color: #E4B395;
+}
+
+#closer-button:hover, #trash-dataset-button:hover {
+  cursor: pointer;
 }
 
 
@@ -141,7 +178,7 @@
   border: 3px;
   border-color: black;
   background-color: #FAFBFD;
-  width: 16.6%;
+  width: 150px;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -161,7 +198,7 @@
 
 .table-holder {
 
-  width: 83.3%;
+  width: calc(100% - 150px);
   height: 100%;
   // overflow: auto;
 }

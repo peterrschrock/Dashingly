@@ -60,13 +60,13 @@ class myDatasets extends React.Component {
     });
   }
 
-  // <button onClick={this.props.deleteDataset(this.props.user_id, this.props.data.datasetView)}><Trash/></button>
   renderRows(dataset){
     // debugger
     return <div className="table-holder">
       <div className= "table-header-options">
         <h3 className="dataset-title-view">{dataset.title}</h3>
-        <button id="close-data-view" onClick={() => this.props.changeView("0")}><Close className="nav-icon"/></button>
+        <button  id="trash-dataset-button" onClick={() => this.props.deleteDataset(this.props.user_id, parseInt(this.props.data.datasetView))}><Trash id="trash-dataset-icon"/></button>
+        <button id="closer-button" onClick={() => this.props.changeView("0")}><Close id="closer-icon"/></button>
       </div>
       <div className="table-header-rows">
         <table id="data-view-table">
@@ -85,7 +85,6 @@ class myDatasets extends React.Component {
       return <div></div>;
     } else {
       let datasetSelected = this.props.data.datasets[this.props.data.datasetView];
-      // debugger
       return this.renderRows(datasetSelected);
     }
   }
