@@ -5,12 +5,10 @@ import {ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, Legend} fro
 class ChartElement extends React.Component {
   constructor(props) {
     super(props);
-    // this.props.getDatasets(this.props.user_id);
     bindAll(this, 'data');
   }
 
   data(){
-    debugger
     return this.props.data.datasets["1"].data;
   }
 

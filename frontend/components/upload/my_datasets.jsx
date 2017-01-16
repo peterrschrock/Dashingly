@@ -65,7 +65,7 @@ class myDatasets extends React.Component {
     return <div className="table-holder">
       <div className= "table-header-options">
         <h3 className="dataset-title-view">{dataset.title}</h3>
-        <button  id="trash-dataset-button" onClick={() => this.props.deleteDataset(this.props.user_id, parseInt(this.props.data.datasetView))}><Trash id="trash-dataset-icon"/></button>
+        <button  id="trash-dataset-button" onClick={() => this.props.deleteDataset(parseInt(this.props.data.datasetView))}><Trash id="trash-dataset-icon"/></button>
         <button id="closer-button" onClick={() => this.props.changeView("0")}><Close id="closer-icon"/></button>
       </div>
       <div className="table-header-rows">

@@ -2,18 +2,17 @@ export const createDataset = (datasetEl) => {
   // console.log(datasetEl);
   return $.ajax({
     method: "POST",
-    url: `api/users/${datasetEl.user_id}/datasets`,
+    url: `api/datasets`,
     data: JSON.stringify({datasets: datasetEl}),
     contentType: "application/json; charset=utf-8",
     dataType: "json"
   });
 };
 
-export const deleteDataset = (userId,datasetId) => {
-  debugger
+export const deleteDataset = (datasetId) => {
   return $.ajax({
     method: "DELETE",
-    url: `api/users/${userId}/datasets/${datasetId}`,
+    url: `api/datasets/${datasetId}`,
   });
 };
 
@@ -24,9 +23,9 @@ export const getDatasets = userId => (
   })
 );
 
-export const getDataset = (userId, datasetId) => (
+export const getDataset = (datasetId) => (
   $.ajax({
     method: "GET",
-    url: `api/users/${userId}/datasets/${datasetId}`,
+    url: `api/datasets/${datasetId}`,
   })
 );

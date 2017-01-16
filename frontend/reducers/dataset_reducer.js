@@ -1,5 +1,5 @@
-import {RECEIVE_DATASETS, RECEIVE_DATASET, DELETE_DATASET, RECEIVE_ERRORS, CHANGE_VIEW} from '../actions/datasets_actions';
-import {merge} from 'lodash';
+import {RECEIVE_DATASETS, RECEIVE_DATASET, DELETE_DATASET, RECEIVE_DATA_ERRORS, CHANGE_VIEW} from '../actions/datasets_actions';
+import {omit, merge} from 'lodash';
 
 const _noData = {
   datasets: {},
@@ -19,10 +19,13 @@ const DatasetReducer = (state = _noData, action) => {
       return merge({}, state, {datasets: uploadedObj, errors: [], datasetView: action.dataset.id});
     case CHANGE_VIEW:
       return merge({}, state, {datasetView: action.datasetId});
-    case RECEIVE_ERRORS:
+    case RECEIVE_DATA_ERRORS:
+      debugger
       return merge({}, state, {errors: action.errors});
     case DELETE_DATASET:
-      return {datasets: state.filter(dataset => dataset.id !== action.datasetId), errors: [] };
+      debugger
+      const newDatasets = omit(state.datasets, action.datasetId);
+      return merge({}, _noData, {datasets: newDatasets, errors: []});
     default:
       return state;
   }

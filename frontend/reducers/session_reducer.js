@@ -1,5 +1,5 @@
 
-import {RECEIVE_ERRORS, RECEIVE_CURRENT_USER} from '../actions/session_actions';
+import {RECEIVE_SESSION_ERRORS, RECEIVE_CURRENT_USER} from '../actions/session_actions';
 import merge from 'lodash/merge';
 
 const _emptyVessel = {
@@ -13,7 +13,7 @@ const SessionReducer = (state = _emptyVessel, action) => {
   switch (action.type) {
     case RECEIVE_CURRENT_USER:
       return merge({}, _emptyVessel, action.user);
-    case RECEIVE_ERRORS:
+    case RECEIVE_SESSION_ERRORS:
       return merge({}, _emptyVessel, {errors: action.errors});
     default:
       return state;

@@ -13,10 +13,12 @@ class Api::DatasetsController < ApplicationController
   end
 
   def destroy
-    @dataset = Dataset.find(id: params[:id])
+    debugger
+    @dataset = Dataset.find(params["id"])
     if @dataset
       @dataset.destroy
-      render json: "api/datasets/show"
+      render json: @dataset
+      # render json: ""
     else
       render(json: "No dataset to delete!", status: 404)
     end

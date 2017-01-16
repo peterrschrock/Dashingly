@@ -10,9 +10,9 @@ const mapStateToProps = store => {
 
 const mapDispatchToProps = dispatch => ({
   getDatasets: userId => dispatch(getDatasets(userId)),
-  getDataset: (userId, datasetId) => dispatch(getDataset(userId, datasetId)),
+  getDataset: (datasetId) => dispatch(getDataset(datasetId)),
   changeView: datasetId => dispatch(changeView(datasetId)),
-  deleteDataset: (userId, datasetId) => dispatch(deleteDataset(userId, datasetId))
+  deleteDataset: (datasetId) => dispatch(deleteDataset(datasetId))
 });
 
 

@@ -2,7 +2,7 @@ import * as APIUtil from '../util/api_dataset_util.js';
 export const RECEIVE_DATASETS = "RECEIVE_DATASETS";
 export const RECEIVE_DATASET = "RECEIVE_DATASET";
 export const DELETE_DATASET = "DELETE_DATASET";
-export const RECEIVE_ERRORS = "RECEIVE_ERRORS";
+export const RECEIVE_DATA_ERRORS = "RECEIVE_DATA_ERRORS";
 export const CHANGE_VIEW = "CHANGE_VIEW";
 
 export const changeView = datasetId => ({
@@ -30,7 +30,7 @@ export const removeDataset = datasetId => ({
 });
 
 export const receiveErrors = errors => ({
-  type: RECEIVE_ERRORS,
+  type: RECEIVE_DATA_ERRORS,
   errors
 });
 
@@ -41,16 +41,15 @@ export const createDataset = dataset => dispatch => (
   )
 );
 
-export const deleteDataset = (userId, datasetId) => dispatch => {
-  debugger
-  return APIUtil.deleteDataset(userId, datasetId)
-    .then(dataset => dispatch(removeDataset(dataset.id)),
-    errors => dispatch(receiveErrors(errors))
-  );
-};
+export const deleteDataset = (datasetId) => dispatch => (
+  APIUtil.deleteDataset(datasetId)
+    .then((dataset) => dispatch(removeDataset(dataset.id)),
+    errors => console.log(errors)
+  )
+);
 
-export const getDataset = (userId, datasetId) => dispatch => (
-  APIUtil.getDataset(userId, datasetId)
+export const getDataset = (datasetId) => dispatch => (
+  APIUtil.getDataset(datasetId)
     .then(dataset => dispatch(receiveDataset(dataset)),
     errors => dispatch(receiveErrors(errors))
   )
