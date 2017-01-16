@@ -20,10 +20,8 @@ const DatasetReducer = (state = _noData, action) => {
     case CHANGE_VIEW:
       return merge({}, state, {datasetView: action.datasetId});
     case RECEIVE_DATA_ERRORS:
-      debugger
       return merge({}, state, {errors: action.errors});
     case DELETE_DATASET:
-      debugger
       const newDatasets = omit(state.datasets, action.datasetId);
       return merge({}, _noData, {datasets: newDatasets, errors: []});
     default:

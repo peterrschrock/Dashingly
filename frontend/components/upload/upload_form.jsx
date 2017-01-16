@@ -69,7 +69,7 @@ class UploadForm extends React.Component {
 
   render() {
     return <div className="upload-container">
-      <Dropzone className="dropzone" activeClassName="active-dz" ref="dropzone" accept="application/json, text/csv, text/plain" onDrop={this.handleDrop} multiple={false} maxSize={100000}>
+      <Dropzone className="dropzone" activeClassName="active-dz" ref="dropzone" accept="application/json, text/csv, text/plain, text/tab-separated-values" onDrop={this.handleDrop} multiple={false} maxSize={10000000}>
         <h5 className="dropzone-instructions">Drop csv, txt, or json data files here to upload!</h5>
         <h5 className="dropzone-instructions">Or click to open a file.</h5>
         <h5 className="dropzone-instructions"><CloudUpload id="cloud-nav-icon"></CloudUpload></h5>

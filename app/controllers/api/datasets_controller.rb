@@ -13,7 +13,6 @@ class Api::DatasetsController < ApplicationController
   end
 
   def destroy
-    debugger
     @dataset = Dataset.find(params["id"])
     if @dataset
       @dataset.destroy
