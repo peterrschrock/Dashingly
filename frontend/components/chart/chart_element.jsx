@@ -5,21 +5,50 @@ import {ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, Legend} fro
 class ChartElement extends React.Component {
   constructor(props) {
     super(props);
-    bindAll(this, 'data');
+    bindAll(this, 'dataKey', 'rowKey', 'columnKey', 'completeChart', 'renderChart');
   }
 
-  data(){
-    return this.props.data.datasets["1"].data;
+  dataKey(){
+    return this.props.datasets[this.props.chartNewState.dataset_id].data;
   }
+
+  rowKey(){
+    return this.props.chartNewState.x_data;
+  }
+
+  columnKey(){
+    return this.props.chartNewState.y_data;
+  }
+
+  completeChart(){
+    const thisChart = this.props.chartNewState;
+    let outcome = true;
+    Object.keys(thisChart).forEach(keyChart => {
+      if(thisChart[keyChart] === ""){
+        outcome = false;
+      }
+    });
+    return outcome;
+  }
+
+  renderChart(){
+    if(this.completeChart()) {
+      return <ScatterChart width={400} height={400} margin={{top: 20, right: 20, bottom: 20, left: 20}}>
+        	<XAxis dataKey={this.rowKey()} name='stature' unit='cm'/>
+        	<YAxis dataKey={this.columnKey()} name='weight' unit='kg'/>
+        	<Scatter name='A school' data={this.dataKey()} fill='#8884d8'/>
+        	<CartesianGrid />
+        	<Tooltip cursor={{strokeDasharray: '3 3'}}/>
+        </ScatterChart>;
+      } else {
+          return <h2> Not Enough Data</h2>;
+      }
+  }
+
+
 
   render(){
-    return <ScatterChart width={400} height={400} margin={{top: 20, right: 20, bottom: 20, left: 20}}>
-      	<XAxis dataKey={'row1'} name='stature' unit='cm'/>
-      	<YAxis dataKey={'row2'} name='weight' unit='kg'/>
-      	<Scatter name='A school' data={this.data()} fill='#8884d8'/>
-      	<CartesianGrid />
-      	<Tooltip cursor={{strokeDasharray: '3 3'}}/>
-      </ScatterChart>;
+    return this.renderChart();
   }
 }
 

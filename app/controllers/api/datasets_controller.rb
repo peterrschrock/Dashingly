@@ -31,7 +31,6 @@ class Api::DatasetsController < ApplicationController
 
   def show
     @dataset = Dataset.find(id: dataset_params[:id])
-    # TODO do I need to prevent access to users who don't own the data in any way?
     if @dataset
       render "api/datasets/show"
     else

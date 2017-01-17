@@ -11,10 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170113165755) do
+ActiveRecord::Schema.define(version: 20170117174627) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "charts", force: :cascade do |t|
+    t.string   "title",      null: false
+    t.string   "x_name",     null: false
+    t.string   "y_name",     null: false
+    t.integer  "dataset_id", null: false
+    t.string   "x_data",     null: false
+    t.string   "y_data",     null: false
+    t.integer  "user_id",    null: false
+    t.string   "chartType",  null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "charts", ["user_id"], name: "index_charts_on_user_id", using: :btree
 
   create_table "datasets", force: :cascade do |t|
     t.integer  "user_id",    null: false

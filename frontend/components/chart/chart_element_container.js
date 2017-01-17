@@ -4,12 +4,11 @@ import ChartElement from './chart_element';
 
 const mapStateToProps = store => {
   return {
-    user_id: store.session.id,
-    data: store.data
+    datasets: store.data.datasets,
+    chartNewState: store.chartsInfo.chartNewState,
 };};
 
 const mapDispatchToProps = dispatch => ({
-  getDatasets: userId => dispatch(getDatasets(userId))
 });
 
 

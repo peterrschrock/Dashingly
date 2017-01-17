@@ -6,7 +6,9 @@ class ChartForm extends React.Component {
   constructor(props) {
     super(props);
 
-    bindAll(this, 'handleSubmitChart','renderDatasetTitles', 'renderColumnOptions', 'handleDataChange', 'handleXDataSource', 'handleYDataSource', 'handleTitleChange', 'handleXNameChange', 'handleYNameChange');
+    bindAll(this, 'handleUserId', 'handleSubmitChart','renderDatasetTitles', 'renderColumnOptions', 'handleDataChange', 'handleXDataSource', 'handleYDataSource', 'handleTitleChange', 'handleXNameChange', 'handleYNameChange');
+
+    this.handleUserId();
   }
 
   renderDatasetTitles(){
@@ -21,13 +23,17 @@ class ChartForm extends React.Component {
   }
 
   renderColumnOptions() {
-    if(this.props.chartNewState.data_id === "") {
+    if(this.props.chartNewState.dataset_id === "") {
       return <option></option>;
     } else{
-      return Object.keys(this.props.datasets[this.props.chartNewState.data_id].data[0]).map(columnName => {
+      return Object.keys(this.props.datasets[this.props.chartNewState.dataset_id].data[0]).map(columnName => {
         return <option key={`${columnName}columnName`} value={columnName}>{columnName}</option>;
       });
     }
+  }
+
+  handleUserId(){
+    this.props.receiveUserId(this.props.user_id);
   }
 
   handleXDataSource(event) {

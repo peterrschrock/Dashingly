@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {createChart, updateChart, receiveChartTitle, receiveXAxis, receiveYAxis, receiveDataId, receiveXData, receiveYData} from '../../actions/chart_actions';
+import {createChart, updateChart, receiveUserId, receiveChartTitle, receiveXAxis, receiveYAxis, receiveDataId, receiveXData, receiveYData} from '../../actions/chart_actions';
 import ChartForm from './chart_form';
 
 const mapStateToProps = (store, {location}) => {
@@ -19,6 +19,7 @@ const mapDispatchToProps = (dispatch) => ({
   receiveDataId: data_id => dispatch(receiveDataId(data_id)),
   receiveXData: x_data => dispatch(receiveXData(x_data)),
   receiveYData: y_data => dispatch(receiveYData(y_data)),
+  receiveUserId: userId => dispatch(receiveUserId(userId)),
   createChart: chartObj => dispatch(createChart(chartObj)),
   updateChart: chartObj => dispatch(updateChart(chartObj))
 });

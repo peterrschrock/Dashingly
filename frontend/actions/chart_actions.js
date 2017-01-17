@@ -6,6 +6,12 @@ export const RECEIVE_Y_AXIS_TITLE = "RECEIVE_Y_AXIS_TITLE";
 export const RECEIVE_DATA_ID = "RECEIVE_DATA_ID";
 export const RECEIVE_X_DATA = "RECEIVE_X_DATA";
 export const RECEIVE_Y_DATA = "RECEIVE_Y_DATA";
+export const RECEIVE_USER_ID = "RECEIVE_USER_ID";
+
+export const receiveUserId = userId => ({
+  type: RECEIVE_USER_ID,
+  userId
+});
 
 export const receiveChartType = chartType => ({
   type: RECEIVE_CHART_TYPE,
