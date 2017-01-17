@@ -19,7 +19,7 @@ const Root = ({store}) => {
   const _redirectToHome= (nextState,replace) => {
     const currentUser = store.getState().session.username;
     if(store.getState().session.username){
-      replace("/");
+      replace("/upload");
     }
   };
 

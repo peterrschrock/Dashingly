@@ -18,7 +18,7 @@ class CreateSessionForm extends React.Component {
 
 	redirectIfLoggedIn() {
 		if (this.props.username) {
-			hashHistory.push("/");
+			hashHistory.push("/upload");
 		}
 	}
 
