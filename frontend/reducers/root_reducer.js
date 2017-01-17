@@ -7,7 +7,7 @@ import ChartReducer from './chart_reducer';
 const RootReducer = combineReducers({
   session: SessionReducer,
   data: DatasetReducer,
-  chart: ChartReducer
+  chartsInfo: ChartReducer
 });
 
 export default RootReducer;

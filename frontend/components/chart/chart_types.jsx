@@ -14,7 +14,7 @@ class ChartTypes extends React.Component {
   }
 
   setChartType(newChartType){
-    this.props.changeChartType(newChartType);
+    this.props.receiveChartType(newChartType);
   }
 
   render(){

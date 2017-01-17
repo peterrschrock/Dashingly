@@ -1,17 +1,17 @@
 import {connect} from 'react-redux';
-import {changeChartType} from '../../actions/chart_actions';
+import {receiveChartType} from '../../actions/chart_actions';
 import ChartTypes from './chart_types';
 
 const mapStateToProps = store => {
   return {
     user_id: store.session.id,
-    chartViewed: store.charts.chartViewed,
-    chartType: store.charts.chartData[store.charts.chartViewed].chartType
+    chartNewState: store.chartsInfo.chartNewState
   };
 };
 
 const mapDispatchToProps = dispatch => ({
-  changeChartType: (chartType) => dispatch(changeChartType(chartType))
+  receiveChartType: chartType => dispatch(receiveChartType(chartType)),
+  formType: location.pathname.slice(2)
 });
 
 
