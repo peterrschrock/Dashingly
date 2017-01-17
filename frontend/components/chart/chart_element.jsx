@@ -1,11 +1,11 @@
 import React from 'react';
 import {bindAll} from 'lodash';
-import {LineChart, Line, ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts';
+import {PieChart, Pie, AreaChart, Area, BarChart, Bar, LineChart, Line, ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts';
 
 class ChartElement extends React.Component {
   constructor(props) {
     super(props);
-    bindAll(this, 'dataKey', 'rowKey', 'columnKey', 'completeChart', 'renderChart', 'renderScatterChart', 'renderLineChart');
+    bindAll(this, 'dataKey', 'rowKey', 'columnKey', 'completeChart', 'renderChart', 'renderScatterChart', 'renderLineChart', 'renderBarChart', 'renderAreaChart', 'renderPieChart');
   }
 
   dataKey(){
@@ -45,12 +45,42 @@ class ChartElement extends React.Component {
     return <LineChart width={600} height={400} data={this.dataKey()}
             margin={{top: 5, right: 30, left: 20, bottom: 5}}>
      <XAxis dataKey={this.rowKey()}/>
-     <YAxis dataKey={this.columnKey()}/>
+     <YAxis/>
      <CartesianGrid strokeDasharray="3 3"/>
      <Tooltip/>
      <Legend />
      <Line type="monotone" dataKey={this.columnKey()} stroke="#8884d8" activeDot={{r: 8}}/>
     </LineChart>;
+  }
+
+  renderBarChart(){
+    return <BarChart width={600} height={400} data={this.dataKey()}
+            margin={{top: 5, right: 30, left: 20, bottom: 5}}>
+     <XAxis dataKey={this.rowKey()}/>
+     <YAxis/>
+     <CartesianGrid strokeDasharray="3 3"/>
+     <Tooltip/>
+     <Legend />
+     <Bar dataKey={this.columnKey()} fill="#8884d8" />
+    </BarChart>;
+  }
+
+  renderAreaChart(){
+    return <AreaChart width={600} height={400} data={this.dataKey()}
+            margin={{top: 10, right: 30, left: 0, bottom: 0}}>
+      <XAxis dataKey={this.rowKey()}/>
+      <YAxis/>
+      <CartesianGrid strokeDasharray="3 3"/>
+      <Tooltip/>
+      <Area type='monotone' dataKey={this.columnKey()} stroke='#8884d8' fill='#8884d8' />
+    </AreaChart>;
+  }
+
+  renderPieChart(){
+    return <PieChart width={600} height={400}>
+      <Pie isAnimationActive={false} data={this.dataKey()} fill="#8884d8" label/>
+      <Tooltip/>
+     </PieChart>;
   }
 
   renderChart(){
@@ -61,6 +91,12 @@ class ChartElement extends React.Component {
           return this.renderScatterChart();
         case "LINE":
           return this.renderLineChart();
+        case "BAR":
+          return this.renderBarChart();
+        case "AREA":
+          return this.renderAreaChart();
+        case "PIE":
+          return this.renderPieChart();
         default:
           return <h2> Not Enough Data</h2>;
       }
