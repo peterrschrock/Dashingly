@@ -20,14 +20,13 @@ export const logout = () => dispatch => (
   )
 );
 
-export const signup = user => dispatch => (
-  APIUtil.signup(user)
+export const signup = user => dispatch => {
+  return APIUtil.signup(user)
   .then(thisUser => dispatch(receiveCurrentUser(thisUser)),
-        errors => {
-          return dispatch(receiveErrors(errors));
-        }
-  )
-);
+  errors => {
+    return dispatch(receiveErrors(errors));
+  });
+};
 
 export const guestLogin = user => dispatch => (
   APIUtil.guestLogin()
