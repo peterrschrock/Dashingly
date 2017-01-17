@@ -23,7 +23,7 @@ class UploadForm extends React.Component {
     let reader = new FileReader();
     reader.readAsText(files[0]);
     reader.onload = () => {
-      if(exten === "csv" || exten === "txt") {
+      if(exten === "csv" || exten === "txt" || exten === "tsv") {
         jsonResult = Papa.parse(reader.result, {dynamicTyping: true, header: header, skipEmptyLines: true}).data;
       } else {
         jsonResult = JSON.parse(reader.result);

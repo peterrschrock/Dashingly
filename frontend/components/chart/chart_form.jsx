@@ -1,15 +1,12 @@
 import React from 'react';
 import {bindAll} from 'lodash';
+import {withRouter, Link} from 'react-router';
 
 class ChartForm extends React.Component {
   constructor(props) {
     super(props);
 
-    bindAll(this, 'renderDatasetTitles', 'renderColumnOptions', 'handleDataChange', 'handleXDataSource', 'handleYDataSource');
-  }
-
-  renderColumnOptions() {
-
+    bindAll(this, 'handleSubmitChart','renderDatasetTitles', 'renderColumnOptions', 'handleDataChange', 'handleXDataSource', 'handleYDataSource', 'handleTitleChange', 'handleXNameChange', 'handleYNameChange');
   }
 
   renderDatasetTitles(){
@@ -41,25 +38,52 @@ class ChartForm extends React.Component {
     this.props.receiveYData(event.target.value);
   }
 
+  handleTitleChange(event){
+    this.props.receiveChartTitle(event.target.value);
+  }
+
+  handleXNameChange(event){
+    this.props.receiveXAxis(event.target.value);
+  }
+
+  handleYNameChange(event){
+    this.props.receiveYAxis(event.target.value);
+  }
+
+  handleSubmitChart(){
+    debugger
+    if(this.props.formType === "new") {
+      let toSubmit = this.props.chartNewState;
+      delete toSubmit.id;
+      this.props.createChart(toSubmit);
+    } else {
+      this.props.updateChart(this.props.chartNewState);
+    }
+  }
+
   render(){
-    return <form>
+    return <form onSubmit={() => this.handleSubmitChart()}>
       <select value={this.props.chartNewState.data_id} onChange={this.handleDataChange}>
+        <option selected disabled hidden value=""></option>
         {this.renderDatasetTitles()}
       </select>
 
       <select value={this.props.chartNewState.x_axis} onChange={this.handleXDataSource}>
+        <option selected disabled hidden value=""></option>
         {this.renderColumnOptions()}
       </select>
 
       <select value={this.props.chartNewState.y_axis} onChange={this.handleYDataSource}>
+        <option selected disabled hidden value=""></option>
         {this.renderColumnOptions()}
       </select>
 
-      <input type="text"></input>
-      <input type="text"></input>
-      <input type="text"></input>
+      <input type="text" onChange={this.handleTitleChange}></input>
+      <input type="text" onChange={this.handleXNameChange}></input>
+      <input type="text" onChange={this.handleYNameChange}></input>
+      <input type="submit" value="Save Changes"></input>
     </form>;
   }
 }
 
-export default ChartForm;
+export default withRouter(ChartForm);

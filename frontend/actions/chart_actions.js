@@ -41,3 +41,11 @@ export const receiveYData = y_data => ({
   type: RECEIVE_Y_DATA,
   y_data
 });
+
+export const createChart = chartObj => dispatch => (
+  APIUtil.createChart(chartObj)
+);
+
+export const updateChart = chartObj => dispatch => (
+  APIUtil.updateChart(chartObj)
+);

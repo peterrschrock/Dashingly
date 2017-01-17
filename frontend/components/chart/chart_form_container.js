@@ -1,23 +1,26 @@
 import {connect} from 'react-redux';
-import {receiveChartTitle, receiveXAxis, receiveYAxis, receiveDataId, receiveXData, receiveYData} from '../../actions/chart_actions';
+import {createChart, updateChart, receiveChartTitle, receiveXAxis, receiveYAxis, receiveDataId, receiveXData, receiveYData} from '../../actions/chart_actions';
 import ChartForm from './chart_form';
 
-const mapStateToProps = store => {
+const mapStateToProps = (store, {location}) => {
+  // debugger
   return {
     user_id: store.session.id,
     chartNewState: store.chartsInfo.chartNewState,
-    datasets: store.data.datasets
+    datasets: store.data.datasets,
+    formType: location.pathname.slice(1).split("/")[1]
   };
 };
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   receiveChartTitle: title => dispatch(receiveChartTitle(title)),
   receiveXAxis: x_axis => dispatch(receiveXAxis(x_axis)),
   receiveYAxis: y_axis => dispatch(receiveYAxis(y_axis)),
   receiveDataId: data_id => dispatch(receiveDataId(data_id)),
   receiveXData: x_data => dispatch(receiveXData(x_data)),
   receiveYData: y_data => dispatch(receiveYData(y_data)),
-  formType: location.pathname.slice(2)
+  createChart: chartObj => dispatch(createChart(chartObj)),
+  updateChart: chartObj => dispatch(updateChart(chartObj))
 });
 
 

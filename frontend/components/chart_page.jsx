@@ -6,11 +6,11 @@ import NavBarContainer from './nav_bar/nav_bar_container';
 import ChartFormContainer from './chart/chart_form_container';
 
 
-const UploadPage = ({ children }) => {
+const UploadPage = ({ children, location }) => {
 
   return <div className="upload-page">
     <NavBarContainer/>
-    <ChartFormContainer/>
+    <ChartFormContainer location={location}/>
     <ChartTypesContainer />
     {children}
   </div>;

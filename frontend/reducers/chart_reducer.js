@@ -4,7 +4,7 @@ import {merge} from 'lodash';
 const _noCharts = {
   errors: [],
   chartViewed: "0",
-  chartNewState: {title: "", x_axis_title: "", y_axis_title: "", chartType: "", data_id:"", x_data: "", y_data: ""}
+  chartNewState: {id:"", title: "", x_axis_title: "", y_axis_title: "", chartType: "", data_id:"", x_data: "", y_data: ""}
 };
 
 const ChartReducer = (state = _noCharts, action) => {
@@ -29,7 +29,7 @@ const ChartReducer = (state = _noCharts, action) => {
       let newXData = merge({}, state.chartNewState, {x_data: action.x_data});
       return merge({}, state, {chartNewState: newXData});
     case RECEIVE_Y_DATA:
-      let newYData = merge({}, state.chartNewState, {title: action.y_data});
+      let newYData = merge({}, state.chartNewState, {y_data: action.y_data});
       return merge({}, state, {chartNewState: newYData});
     default:
       return state;
