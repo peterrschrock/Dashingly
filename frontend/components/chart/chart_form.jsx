@@ -84,9 +84,9 @@ class ChartForm extends React.Component {
         {this.renderColumnOptions()}
       </select>
 
-      <input type="text" onChange={this.handleTitleChange}></input>
-      <input type="text" onChange={this.handleXNameChange}></input>
-      <input type="text" onChange={this.handleYNameChange}></input>
+      <input type="text" onChange={this.handleTitleChange} value={this.props.chartNewState.title}></input>
+      <input type="text" onChange={this.handleXNameChange} value={this.props.chartNewState.x_name}></input>
+      <input type="text" onChange={this.handleYNameChange} value={this.props.chartNewState.y_name}></input>
       <input type="submit" value="Save Changes"></input>
     </form>;
   }

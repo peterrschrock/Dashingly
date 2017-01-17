@@ -4,7 +4,7 @@ import {merge} from 'lodash';
 const _noCharts = {
   errors: [],
   chartViewed: "0",
-  chartNewState: {user_id: "", title: "", x_name: "", y_name: "", chartType: "", dataset_id:"", x_data: "", y_data: ""}
+  chartNewState: {user_id: "", title: "Title", x_name: "X Axis Name", y_name: "Y Axis Name", chartType: "", dataset_id:"", x_data: "", y_data: ""}
 };
 
 const ChartReducer = (state = _noCharts, action) => {
