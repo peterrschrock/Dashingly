@@ -21,6 +21,8 @@ class ChartForm extends React.Component {
     if(this.props.formType !== "new"){
       this.props.changeViewChart(this.props.formType);
       this.delayChartData();
+    } else {
+      this.getChartToEdit({user_id: "", title: "Title", x_name: "X Axis Name", y_name: "Y Axis Name", chartType: "", dataset_id:"", x_data: "", y_data: ""});
     }
   }
 
