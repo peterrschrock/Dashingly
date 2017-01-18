@@ -1,1 +1,1 @@
-json.datasets Hash[@charts.map{ |chart| [chart.id, chart]}]
+json.charts Hash[@charts.map{ |chart| [chart.id, chart]}]

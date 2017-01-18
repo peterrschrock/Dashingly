@@ -32,7 +32,7 @@ class ChartElement extends React.Component {
   }
 
   renderScatterChart(){
-    return <ScatterChart width={600} height={400} margin={{top: 20, right: 20, bottom: 20, left: 20}}>
+    return <ScatterChart className="chart-show" width={600} height={400} margin={{top: 20, right: 20, bottom: 20, left: 20}}>
       <XAxis dataKey={this.rowKey()} name='stature' unit='cm'/>
       <YAxis dataKey={this.columnKey()} name='weight' unit='kg'/>
       <Scatter name='A school' data={this.dataKey()} fill='#8884d8'/>
@@ -42,7 +42,7 @@ class ChartElement extends React.Component {
   }
 
   renderLineChart(){
-    return <LineChart width={600} height={400} data={this.dataKey()}
+    return <LineChart className="chart-show" width={600} height={400} data={this.dataKey()}
             margin={{top: 5, right: 30, left: 20, bottom: 5}}>
      <XAxis dataKey={this.rowKey()}/>
      <YAxis/>
@@ -54,7 +54,7 @@ class ChartElement extends React.Component {
   }
 
   renderBarChart(){
-    return <BarChart width={600} height={400} data={this.dataKey()}
+    return <BarChart className="chart-show" width={600} height={400} data={this.dataKey()}
             margin={{top: 5, right: 30, left: 20, bottom: 5}}>
      <XAxis dataKey={this.rowKey()}/>
      <YAxis/>
@@ -66,7 +66,7 @@ class ChartElement extends React.Component {
   }
 
   renderAreaChart(){
-    return <AreaChart width={600} height={400} data={this.dataKey()}
+    return <AreaChart className="chart-show" width={600} height={400} data={this.dataKey()}
             margin={{top: 10, right: 30, left: 0, bottom: 0}}>
       <XAxis dataKey={this.rowKey()}/>
       <YAxis/>
@@ -77,8 +77,8 @@ class ChartElement extends React.Component {
   }
 
   renderPieChart(){
-    return <PieChart width={600} height={400}>
-      <Pie isAnimationActive={false} data={this.dataKey()} fill="#8884d8" label/>
+    return <PieChart className="chart-show" width={600} height={400}>
+      <Pie data={this.dataKey()} nameKey={this.rowKey()} valueKey={this.columnKey()} fill="#8884d8" label/>
       <Tooltip/>
      </PieChart>;
   }
@@ -106,7 +106,7 @@ class ChartElement extends React.Component {
   }
 
   render(){
-    return this.renderChart();
+    return <div className="chart-element-holder">{this.renderChart()}</div>;
   }
 }
 

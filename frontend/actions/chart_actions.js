@@ -7,6 +7,8 @@ export const RECEIVE_DATA_ID = "RECEIVE_DATA_ID";
 export const RECEIVE_X_DATA = "RECEIVE_X_DATA";
 export const RECEIVE_Y_DATA = "RECEIVE_Y_DATA";
 export const RECEIVE_USER_ID = "RECEIVE_USER_ID";
+export const RECEIVE_CHARTS = "RECEIVE_CHARTS";
+export const RECEIVE_CHART = "RECEIVE_CHART";
 
 export const receiveUserId = userId => ({
   type: RECEIVE_USER_ID,
@@ -48,10 +50,29 @@ export const receiveYData = y_data => ({
   y_data
 });
 
+export const receiveChart = chart => ({
+  type: RECEIVE_CHART,
+  chart
+});
+
 export const createChart = chartObj => dispatch => (
   APIUtil.createChart(chartObj)
+    .then(chart => dispatch(receiveChart(chart)))
 );
 
 export const updateChart = chartObj => dispatch => (
   APIUtil.updateChart(chartObj)
+    .then(chart => dispatch(receiveChart(chart)))
+);
+
+export const receiveCharts = charts => {
+  return {
+    type: RECEIVE_CHARTS,
+    charts
+  };
+};
+
+export const getCharts = userId => dispatch => (
+  APIUtil.getCharts(userId)
+    .then(charts => dispatch(receiveCharts(charts)))
 );

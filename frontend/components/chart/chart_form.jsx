@@ -2,13 +2,22 @@ import React from 'react';
 import {bindAll} from 'lodash';
 import {withRouter, Link} from 'react-router';
 
+import PieChart from 'react-icons/lib/fa/pie-chart';
+import AreaChart from 'react-icons/lib/fa/area-chart';
+import BarChart from 'react-icons/lib/fa/bar-chart';
+import LineChart from 'react-icons/lib/fa/line-chart';
+
 class ChartForm extends React.Component {
   constructor(props) {
     super(props);
 
-    bindAll(this, 'handleUserId', 'handleSubmitChart','renderDatasetTitles', 'renderColumnOptions', 'handleDataChange', 'handleXDataSource', 'handleYDataSource', 'handleTitleChange', 'handleXNameChange', 'handleYNameChange');
+    bindAll(this, 'setChartType', 'handleUserId', 'handleSubmitChart','renderDatasetTitles', 'renderColumnOptions', 'handleDataChange', 'handleXDataSource', 'handleYDataSource', 'handleTitleChange', 'handleXNameChange', 'handleYNameChange');
 
     this.handleUserId();
+  }
+
+  setChartType(newChartType){
+    this.props.receiveChartType(newChartType);
   }
 
   renderDatasetTitles(){
@@ -57,7 +66,6 @@ class ChartForm extends React.Component {
   }
 
   handleSubmitChart(){
-    debugger
     if(this.props.formType === "new") {
       let toSubmit = this.props.chartNewState;
       delete toSubmit.id;
@@ -68,7 +76,7 @@ class ChartForm extends React.Component {
   }
 
   render(){
-    return <form onSubmit={() => this.handleSubmitChart()}>
+    return <form className="chart-form-holder" onSubmit={() => this.handleSubmitChart()}>
       <select value={this.props.chartNewState.data_id} onChange={this.handleDataChange}>
         <option selected disabled hidden value=""></option>
         {this.renderDatasetTitles()}
@@ -87,6 +95,13 @@ class ChartForm extends React.Component {
       <input type="text" onChange={this.handleTitleChange} value={this.props.chartNewState.title}></input>
       <input type="text" onChange={this.handleXNameChange} value={this.props.chartNewState.x_name}></input>
       <input type="text" onChange={this.handleYNameChange} value={this.props.chartNewState.y_name}></input>
+      <div className="chart-type-button-holder">
+        <button onClick={() => this.setChartType("PIE")}><PieChart/></button>
+        <button onClick={() => this.setChartType("AREA")}><AreaChart/></button>
+        <button onClick={() => this.setChartType("BAR")}><BarChart/></button>
+        <button onClick={() => this.setChartType("LINE")}><LineChart/></button>
+        <button onClick={() => this.setChartType("SCATTER")}></button>
+      </div>
       <input type="submit" value="Save Changes"></input>
     </form>;
   }

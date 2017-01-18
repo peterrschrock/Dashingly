@@ -1,0 +1,38 @@
+.chart-page {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background: url('/assets/chart.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+  min-height: 100%;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
+  // z-index: -101;
+}
+
+
+.chart-element-holder{
+  // background-color:
+  width: auto;
+  margin: 50px;
+}
+
+
+.chart-form-holder {
+  display: flex;
+  flex-direction: column;
+  margin: 50px;
+}
+
+.chart-type-button-holder{
+
+}
+
+.chart-show {
+}

@@ -13,3 +13,10 @@ export const updateChart = (chartObj) => {
     data: {chart: chartObj}
   });
 };
+
+export const getCharts = userId => (
+  $.ajax({
+    method: "GET",
+    url: `api/users/${userId}/charts`,
+  })
+);

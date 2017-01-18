@@ -1,5 +1,6 @@
 import React from 'react';
-// import NavBarContainer from './nav_bar/nav_bar_container';
+// import {getDatasets} from './actions/datasets_actions';
+import DownloadUserData from './download_user_data/download_user_data_container';
 // import {LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts';
 // const data = [
 //       {name: 'Page A', uv: 4000, pv: 2400, amt: 2400},
@@ -59,6 +60,7 @@ import Home from 'react-icons/lib/md/home';
 const App = ({ children }) => {
 
   return <div className="god-div">
+    <DownloadUserData />
     {children}
   </div>;
 };
