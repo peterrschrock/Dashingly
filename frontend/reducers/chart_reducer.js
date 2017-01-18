@@ -1,4 +1,4 @@
-import {RECEIVE_CHART, RECEIVE_CHARTS, RECEIVE_USER_ID, RECEIVE_CHART_TYPE, RECEIVE_CHART_TITLE, RECEIVE_X_AXIS_TITLE, RECEIVE_Y_AXIS_TITLE, RECEIVE_DATA_ID, RECEIVE_X_DATA, RECEIVE_Y_DATA} from '../actions/chart_actions';
+import {CHANGE_VIEW_CHART, RECEIVE_CHART, RECEIVE_CHARTS, RECEIVE_USER_ID, RECEIVE_CHART_TYPE, RECEIVE_CHART_TITLE, RECEIVE_X_AXIS_TITLE, RECEIVE_Y_AXIS_TITLE, RECEIVE_DATA_ID, RECEIVE_X_DATA, RECEIVE_Y_DATA} from '../actions/chart_actions';
 import {merge} from 'lodash';
 
 const _noCharts = {
@@ -42,8 +42,9 @@ const ChartReducer = (state = _noCharts, action) => {
       newChart[action.chart.id] = action.chart;
       let newChartsArr = merge({}, state.charts, newChart);
       return merge({}, state, {charts: newChartsArr});
-    case UPDATE_CHART:
-      return;
+    case CHANGE_VIEW_CHART:
+      return merge({}, state, {chartViewed: action.chartId});
+
     default:
       return state;
   }

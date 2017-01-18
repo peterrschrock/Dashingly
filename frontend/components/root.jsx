@@ -25,7 +25,17 @@ const Root = ({store}) => {
 
   const _redirectToLogin = (nextState, replace) => {
     if(!store.getState().session.username) {
-      replace("/signup");
+      replace("/login");
+    }
+  };
+
+  const _redirectToLoginSpecificUser = (nextState, replace, chartId) => {
+    if(!store.getState().session.username) {
+      replace("/login");
+    }
+    debugger
+    if(store.getState().session.id !== store.getState().chartsInfo.charts[location.pathname.slice(1).split("/")[1]].user_id) {
+      replace("/charts");
     }
   };
 
@@ -33,6 +43,7 @@ const Root = ({store}) => {
     <Router history={ hashHistory }>
       <Route path="/" component={App} >
         <Route path="/charts/new" component={ChartPage} onEnter={_redirectToLogin}></Route>
+        <Route path="/charts/:chartId/edit" component={ChartPage} onEnter={_redirectToLogin}></Route>
         <Route path="/upload" component={UploadPage} onEnter={_redirectToLogin}></Route>
         <Route path="/login" component={CreateSessionFormContainer} onEnter={_redirectToHome}></Route>
         <Route path="/signup" component={CreateSessionFormContainer} onEnter={_redirectToHome}></Route>

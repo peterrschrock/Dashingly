@@ -11,16 +11,17 @@ class Api::ChartsController < ApplicationController
   end
 
   def update
-    @chart = Chart.find(id: params["id"])
+    @chart = Chart.find(params["id"])
     if @chart
       @chart.update(chart_params)
+      render "api/charts/show"
     else
       render(json: "No chart to update!", status: 422)
     end
   end
 
   def show
-    @chart = Chart.find(id: params[:id])
+    @chart = Chart.find(params[:id])
     if @chart
       render "api/charts/show"
     else

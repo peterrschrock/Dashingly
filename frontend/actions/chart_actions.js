@@ -9,6 +9,7 @@ export const RECEIVE_Y_DATA = "RECEIVE_Y_DATA";
 export const RECEIVE_USER_ID = "RECEIVE_USER_ID";
 export const RECEIVE_CHARTS = "RECEIVE_CHARTS";
 export const RECEIVE_CHART = "RECEIVE_CHART";
+export const CHANGE_VIEW_CHART = "CHANGE_VIEW_CHART";
 
 export const receiveUserId = userId => ({
   type: RECEIVE_USER_ID,
@@ -60,8 +61,8 @@ export const createChart = chartObj => dispatch => (
     .then(chart => dispatch(receiveChart(chart)))
 );
 
-export const updateChart = chartObj => dispatch => (
-  APIUtil.updateChart(chartObj)
+export const updateChart = (chartObj, chartId) => dispatch => (
+  APIUtil.updateChart(chartObj, chartId)
     .then(chart => dispatch(receiveChart(chart)))
 );
 
@@ -76,3 +77,10 @@ export const getCharts = userId => dispatch => (
   APIUtil.getCharts(userId)
     .then(charts => dispatch(receiveCharts(charts)))
 );
+
+export const changeViewChart = chartId => {
+  return {
+    type: CHANGE_VIEW_CHART,
+    chartId
+  };
+};

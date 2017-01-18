@@ -6,10 +6,10 @@ export const createChart = (chartObj) => {
   });
 };
 
-export const updateChart = (chartObj) => {
+export const updateChart = (chartObj, chartId) => {
   return $.ajax({
     method: 'PATCH',
-    url: `api/charts/${chartObj.id}`,
+    url: `api/charts/${chartId}`,
     data: {chart: chartObj}
   });
 };

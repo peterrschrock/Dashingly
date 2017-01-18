@@ -11,9 +11,37 @@ class ChartForm extends React.Component {
   constructor(props) {
     super(props);
 
-    bindAll(this, 'setChartType', 'handleUserId', 'handleSubmitChart','renderDatasetTitles', 'renderColumnOptions', 'handleDataChange', 'handleXDataSource', 'handleYDataSource', 'handleTitleChange', 'handleXNameChange', 'handleYNameChange');
+    bindAll(this, 'delayChartData', 'changeChartToView', 'getChartToEdit', 'setChartType', 'handleUserId', 'handleSubmitChart','renderDatasetTitles', 'renderColumnOptions', 'handleDataChange', 'handleXDataSource', 'handleYDataSource', 'handleTitleChange', 'handleXNameChange', 'handleYNameChange');
 
+    this.changeChartToView();
     this.handleUserId();
+  }
+
+  changeChartToView(){
+    if(this.props.formType !== "new"){
+      this.props.changeViewChart(this.props.formType);
+      this.delayChartData();
+    }
+  }
+
+  delayChartData(){
+
+    if(this.props.charts.length > 0) {
+      this.getChartToEdit(this.props.charts[this.props.formType]);
+    }
+    else {
+      setTimeout(this.delayChartData(), 100);
+    }
+  }
+
+  getChartToEdit(chartObj){
+    this.props.receiveDataId(chartObj.dataset_id.toString());
+    this.props.receiveXData(chartObj.x_data);
+    this.props.receiveYData(chartObj.y_data);
+    this.props.receiveChartTitle(chartObj.title);
+    this.props.receiveXAxis(chartObj.x_name);
+    this.props.receiveYAxis(chartObj.y_name);
+    this.props.receiveChartType(chartObj.chartType);
   }
 
   setChartType(newChartType){
@@ -67,28 +95,23 @@ class ChartForm extends React.Component {
 
   handleSubmitChart(){
     if(this.props.formType === "new") {
-      let toSubmit = this.props.chartNewState;
-      delete toSubmit.id;
-      this.props.createChart(toSubmit);
+      this.props.createChart(this.props.chartNewState);
     } else {
-      this.props.updateChart(this.props.chartNewState);
+      this.props.updateChart(this.props.chartNewState, this.props.chartViewed);
     }
   }
 
   render(){
     return <form className="chart-form-holder" onSubmit={() => this.handleSubmitChart()}>
       <select value={this.props.chartNewState.data_id} onChange={this.handleDataChange}>
-        <option selected disabled hidden value=""></option>
         {this.renderDatasetTitles()}
       </select>
 
       <select value={this.props.chartNewState.x_axis} onChange={this.handleXDataSource}>
-        <option selected disabled hidden value=""></option>
         {this.renderColumnOptions()}
       </select>
 
       <select value={this.props.chartNewState.y_axis} onChange={this.handleYDataSource}>
-        <option selected disabled hidden value=""></option>
         {this.renderColumnOptions()}
       </select>
 
