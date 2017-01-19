@@ -1,11 +1,12 @@
 import {connect} from 'react-redux';
-// import {getCharts} from '../../actions/charts_actions';
-import ChartsIndex from './charts_index';
+import ChartElement from '../chart/chart_element';
 
-const mapStateToProps = store => {
+const mapStateToProps = (store, state) => {
+
+  debugger
   return {
     datasets: store.data.datasets,
-    charts: store.chartsInfo.charts
+    chartState: store.chartsInfo.charts[state.whichChart.currentChart]
 };};
 
 const mapDispatchToProps = dispatch => ({
@@ -15,4 +16,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ChartsIndex);
+)(ChartElement);

@@ -6,22 +6,26 @@ class ChartElement extends React.Component {
   constructor(props) {
     super(props);
     bindAll(this, 'dataKey', 'rowKey', 'columnKey', 'completeChart', 'renderChart', 'renderScatterChart', 'renderLineChart', 'renderBarChart', 'renderAreaChart', 'renderPieChart');
+
+    // debugger
   }
 
   dataKey(){
-    return this.props.datasets[this.props.chartNewState.dataset_id].data;
+    if(this.props.datasets[this.props.chartState.dataset_id]) {
+      return this.props.datasets[this.props.chartState.dataset_id].data;
+    }
   }
 
   rowKey(){
-    return this.props.chartNewState.x_data;
+    return this.props.chartState.x_data;
   }
 
   columnKey(){
-    return this.props.chartNewState.y_data;
+    return this.props.chartState.y_data;
   }
 
   completeChart(){
-    const thisChart = this.props.chartNewState;
+    const thisChart = this.props.chartState;
     let outcome = true;
     Object.keys(thisChart).forEach(keyChart => {
       if(thisChart[keyChart] === ""){
@@ -54,6 +58,7 @@ class ChartElement extends React.Component {
   }
 
   renderBarChart(){
+    // debugger
     return <BarChart className="chart-show" width={600} height={400} data={this.dataKey()}
             margin={{top: 5, right: 30, left: 20, bottom: 5}}>
      <XAxis dataKey={this.rowKey()}/>
@@ -85,8 +90,8 @@ class ChartElement extends React.Component {
 
   renderChart(){
     // debugger
-    if(this.completeChart()) {
-      switch (this.props.chartNewState.chartType) {
+    if(this.completeChart() && this.dataKey()) {
+      switch (this.props.chartState.chartType) {
         case "SCATTER":
           return this.renderScatterChart();
         case "LINE":

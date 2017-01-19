@@ -8,6 +8,7 @@ import CreateSessionFormContainer from './create_session_form/create_session_for
 // import ChartFormContainer from './chart/single_chart_container';
 import UploadPage from './upload_page';
 import ChartPage from './chart_page';
+import ChartsIndexPage from './my_charts/my_charts_container';
 
 // <Route path="/dashboards/me" component={MyDashboardsContainer} onEnter={_redirectToLogin}></Route>
 // <Route path="/charts" component={MyChartsContainer} onEnter={_redirectToLogin}></Route>
@@ -33,7 +34,6 @@ const Root = ({store}) => {
     if(!store.getState().session.username) {
       replace("/login");
     }
-    debugger
     if(store.getState().session.id !== store.getState().chartsInfo.charts[location.pathname.slice(1).split("/")[1]].user_id) {
       replace("/charts");
     }
@@ -42,6 +42,7 @@ const Root = ({store}) => {
   return <Provider store={store}>
     <Router history={ hashHistory }>
       <Route path="/" component={App} >
+        <Route path="/charts" component={ChartsIndexPage} onEnter={_redirectToLogin}></Route>
         <Route path="/charts/new" component={ChartPage} onEnter={_redirectToLogin}></Route>
         <Route path="/charts/:chartId/edit" component={ChartPage} onEnter={_redirectToLogin}></Route>
         <Route path="/upload" component={UploadPage} onEnter={_redirectToLogin}></Route>

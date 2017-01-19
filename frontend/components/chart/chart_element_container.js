@@ -1,11 +1,10 @@
 import {connect} from 'react-redux';
-import {getDatasets} from '../../actions/datasets_actions';
 import ChartElement from './chart_element';
 
-const mapStateToProps = store => {
+const mapStateToProps = (store, state) => {
   return {
     datasets: store.data.datasets,
-    chartNewState: store.chartsInfo.chartNewState,
+    chartState: state.chartState
 };};
 
 const mapDispatchToProps = dispatch => ({

@@ -7,47 +7,56 @@ import AreaChart from 'react-icons/lib/fa/area-chart';
 import BarChart from 'react-icons/lib/fa/bar-chart';
 import LineChart from 'react-icons/lib/fa/line-chart';
 
+import ChartElementContainer from './chart_element_container';
+
 class ChartForm extends React.Component {
   constructor(props) {
     super(props);
+    // debugger
 
-    bindAll(this, 'delayChartData', 'changeChartToView', 'getChartToEdit', 'setChartType', 'handleUserId', 'handleSubmitChart','renderDatasetTitles', 'renderColumnOptions', 'handleDataChange', 'handleXDataSource', 'handleYDataSource', 'handleTitleChange', 'handleXNameChange', 'handleYNameChange');
+    bindAll(this, 'setChartType', 'handleSubmitChart','renderDatasetTitles', 'renderColumnOptions', 'handleDataChange', 'handleXDataSource', 'handleYDataSource', 'handleTitleChange', 'handleXNameChange', 'handleYNameChange');
 
-    this.changeChartToView();
-    this.handleUserId();
+    this.state = {id: null, user_id: this.props.user_id, title: "Title", x_name: "X Axis Name", y_name: "Y Axis Name", chartType: "SCATTER", dataset_id:"", x_data: "", y_data: ""};
+
+    // this.setStateBegin();
   }
 
-  changeChartToView(){
-    if(this.props.formType !== "new"){
-      this.props.changeViewChart(this.props.formType);
-      this.delayChartData();
-    } else {
-      this.getChartToEdit({user_id: "", title: "Title", x_name: "X Axis Name", y_name: "Y Axis Name", chartType: "", dataset_id:"", x_data: "", y_data: ""});
+  // setStateBegin(){
+  //   debugger
+  //   if(this.props.formType !== "new" && this.props.charts.length > 0){
+  //     const chartObj = this.props.charts[this.props.formType];
+  //     this.setState(chartObj);
+  //   } else if(this.props.formType !== "new") {
+  //     setTimeout(this.setStateBegin(), 100);
+  //   } else {
+  //     return ;
+  //   }
+  // }
+
+  componentWillReceiveProps(newProps){
+    // debugger
+    if(newProps.formType !== "new"){
+      if(newProps.charts.length > 0) {
+        const chartObj = newProps.charts[parseInt(newProps.formType)];
+        this.setState(chartObj);
+      }
     }
+    // debugger
   }
 
-  delayChartData(){
 
-    if(this.props.charts.length > 0) {
-      this.getChartToEdit(this.props.charts[this.props.formType]);
-    }
-    else {
-      setTimeout(this.delayChartData(), 100);
-    }
-  }
-
-  getChartToEdit(chartObj){
-    this.props.receiveDataId(chartObj.dataset_id.toString());
-    this.props.receiveXData(chartObj.x_data);
-    this.props.receiveYData(chartObj.y_data);
-    this.props.receiveChartTitle(chartObj.title);
-    this.props.receiveXAxis(chartObj.x_name);
-    this.props.receiveYAxis(chartObj.y_name);
-    this.props.receiveChartType(chartObj.chartType);
-  }
+  // getChartToEdit(chartObj){
+  //   this.setState({dataset_id: chartObj.dataset_id.toString()});
+  //   this.setState({x_data: chartObj.x_data});
+  //   this.props.receiveYData({y_data: chartObj.y_data});
+  //   this.setState({title: chartObj.title});
+  //   this.setState({x_name: chartObj.x_name});
+  //   this.setState({y_name: chartObj.y_name});
+  //   this.setState({chartType: chartObj.chartType});
+  // }
 
   setChartType(newChartType){
-    this.props.receiveChartType(newChartType);
+    this.setState({chartType: newChartType});
   }
 
   renderDatasetTitles(){
@@ -58,77 +67,81 @@ class ChartForm extends React.Component {
   }
 
   handleDataChange(event) {
-    this.props.receiveDataId(event.target.value);
+    this.setState({dataset_id: event.target.value});
   }
 
   renderColumnOptions() {
-    if(this.props.chartNewState.dataset_id === "") {
+    if(this.state.dataset_id === "") {
       return <option></option>;
     } else{
-      return Object.keys(this.props.datasets[this.props.chartNewState.dataset_id].data[0]).map(columnName => {
-        return <option key={`${columnName}columnName`} value={columnName}>{columnName}</option>;
-      });
+      if(this.props.datasets[this.state.dataset_id]){
+        return Object.keys(this.props.datasets[this.state.dataset_id].data[0]).map(columnName => {
+          return <option key={`${columnName}columnName`} value={columnName}>{columnName}</option>;
+          });
+      }
     }
   }
 
-  handleUserId(){
-    this.props.receiveUserId(this.props.user_id);
-  }
-
   handleXDataSource(event) {
-    this.props.receiveXData(event.target.value);
+    this.setState({x_data: event.target.value});
   }
 
   handleYDataSource(event) {
-    this.props.receiveYData(event.target.value);
+    this.setState({y_data: event.target.value});
   }
 
   handleTitleChange(event){
-    this.props.receiveChartTitle(event.target.value);
+    this.setState({title: event.target.value});
   }
 
   handleXNameChange(event){
-    this.props.receiveXAxis(event.target.value);
+    this.setState({x_name: event.target.value});
   }
 
   handleYNameChange(event){
-    this.props.receiveYAxis(event.target.value);
+    this.setState({y_name: event.target.value});
   }
 
-  handleSubmitChart(){
+  handleSubmitChart(e){
+    debugger
+    e.preventDefault();
     if(this.props.formType === "new") {
-      this.props.createChart(this.props.chartNewState);
+      this.props.createChart(this.state);
     } else {
-      this.props.updateChart(this.props.chartNewState, this.props.chartViewed);
+      this.props.updateChart(this.state, this.state.id);
     }
   }
 
   render(){
-    return <form className="chart-form-holder" onSubmit={() => this.handleSubmitChart()}>
-      <select value={this.props.chartNewState.data_id} onChange={this.handleDataChange}>
-        {this.renderDatasetTitles()}
-      </select>
+    return <div>
+      <form className="chart-form-holder" onSubmit={() => this.handleSubmitChart()}>
+        <select value={this.state.dataset_id} onChange={this.handleDataChange}>
+          <option disabled selected value> -- select a dataset -- </option>
+          {this.renderDatasetTitles()}
+        </select>
 
-      <select value={this.props.chartNewState.x_axis} onChange={this.handleXDataSource}>
-        {this.renderColumnOptions()}
-      </select>
+        <select value={this.state.x_axis} onChange={this.handleXDataSource}>
+          {this.renderColumnOptions()}
+        </select>
 
-      <select value={this.props.chartNewState.y_axis} onChange={this.handleYDataSource}>
-        {this.renderColumnOptions()}
-      </select>
+        <select value={this.state.y_axis} onChange={this.handleYDataSource}>
+          {this.renderColumnOptions()}
+        </select>
 
-      <input type="text" onChange={this.handleTitleChange} value={this.props.chartNewState.title}></input>
-      <input type="text" onChange={this.handleXNameChange} value={this.props.chartNewState.x_name}></input>
-      <input type="text" onChange={this.handleYNameChange} value={this.props.chartNewState.y_name}></input>
-      <div className="chart-type-button-holder">
-        <button onClick={() => this.setChartType("PIE")}><PieChart/></button>
-        <button onClick={() => this.setChartType("AREA")}><AreaChart/></button>
-        <button onClick={() => this.setChartType("BAR")}><BarChart/></button>
-        <button onClick={() => this.setChartType("LINE")}><LineChart/></button>
-        <button onClick={() => this.setChartType("SCATTER")}></button>
-      </div>
-      <input type="submit" value="Save Changes"></input>
-    </form>;
+        <input type="text" onChange={this.handleTitleChange} value={this.state.title}></input>
+        <input type="text" onChange={this.handleXNameChange} value={this.state.x_name}></input>
+        <input type="text" onChange={this.handleYNameChange} value={this.state.y_name}></input>
+        <div className="chart-type-button-holder">
+          <button type="button" onClick={() => this.setChartType("PIE")}><PieChart/></button>
+          <button type="button" onClick={() => this.setChartType("AREA")}><AreaChart/></button>
+          <button type="button" onClick={() => this.setChartType("BAR")}><BarChart/></button>
+          <button type="button" onClick={() => this.setChartType("LINE")}><LineChart/></button>
+          <button type="button" onClick={() => this.setChartType("SCATTER")}></button>
+        </div>
+        <input type="submit" value="Save Changes"></input>
+      </form>;
+      < ChartElementContainer chartState={this.state}/>;
+  </div>;
   }
 }
 
