@@ -102,9 +102,7 @@ class ChartForm extends React.Component {
     this.setState({y_name: event.target.value});
   }
 
-  handleSubmitChart(e){
-    debugger
-    e.preventDefault();
+  handleSubmitChart(){
     if(this.props.formType === "new") {
       this.props.createChart(this.state);
     } else {

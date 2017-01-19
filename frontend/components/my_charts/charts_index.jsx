@@ -7,22 +7,42 @@ class ChartsIndex extends React.Component {
   constructor(props){
     super(props);
 
-    bindAll(this, 'chartKeys');
-    this.state = {currentChart: this.chartKeys(this.props.charts)[0]};
+    bindAll(this, 'chartsContainer', 'handleScroll');
+    this.state = {whichChart: 0, charts: null};
+  }
+
+
+  componentDidMount(){
+    if(this.props.charts.length === 0 && Object.keys(this.props.datasets).length === 0){
+      this.props.getCharts(this.props.userId);
+      this.props.getDatasets(this.props.userId);
+    }
   }
 
   componentWillReceiveProps(newProps){
-    debugger
-    this.setState({currentChart: this.chartKeys(newProps.charts)[0]});
+    this.setState({charts: newProps.charts.slice(1)});
+    // TODO why this undefined thing at begining of array?
   }
 
-  chartKeys(charts){
+  handleScroll(scroll){
     debugger
-    return Object.keys(charts);
+  }
+
+
+
+  chartsContainer(){
+    if(this.props.charts.length > 0){
+      return <ChartElementContainer passState={this.state}/>;
+    } else {
+      return <h3>You haven't made any charts yet!</h3>;
+    }
   }
 
   render(){
-    return <ChartElementContainer whichChart={this.state}/>;
+    return <div onScroll={() => this.handleScroll()}>
+      {this.chartsContainer()}
+    </div>;
+
   }
 
 }

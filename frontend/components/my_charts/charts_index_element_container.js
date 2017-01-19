@@ -3,10 +3,9 @@ import ChartElement from '../chart/chart_element';
 
 const mapStateToProps = (store, state) => {
 
-  debugger
   return {
     datasets: store.data.datasets,
-    chartState: store.chartsInfo.charts[state.whichChart.currentChart]
+    chartState: state.passState.charts[state.passState.whichChart]
 };};
 
 const mapDispatchToProps = dispatch => ({

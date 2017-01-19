@@ -4,6 +4,7 @@ import {merge} from 'lodash';
 const _noCharts = {
   errors: [],
   charts: []
+  // TODO make charts an object
 };
 
 const ChartReducer = (state = _noCharts, action) => {

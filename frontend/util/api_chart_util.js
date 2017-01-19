@@ -14,9 +14,9 @@ export const updateChart = (chartObj, chartId) => {
   });
 };
 
-export const getCharts = userId => (
-  $.ajax({
+export const getCharts = userId => {
+  return $.ajax({
     method: "GET",
     url: `api/users/${userId}/charts`,
-  })
-);
+  });
+};
