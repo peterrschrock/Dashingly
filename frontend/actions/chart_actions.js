@@ -3,6 +3,7 @@ export const RECEIVE_CHARTS = "RECEIVE_CHARTS";
 export const RECEIVE_CHART = "RECEIVE_CHART";
 export const CHANGE_VIEW_CHART = "CHANGE_VIEW_CHART";
 export const REMOVE_CHART = "REMOVE_CHART";
+export const UPDATE_CHART = "UPDATE_CHART";
 
 
 export const receiveChart = chart => ({
@@ -15,9 +16,15 @@ export const createChart = chartObj => dispatch => (
     .then(chart => dispatch(receiveChart(chart)))
 );
 
+export const changeChart = chart => ({
+  type: UPDATE_CHART,
+  chart
+});
+
+
 export const updateChart = (chartObj, chartId) => dispatch => (
   APIUtil.updateChart(chartObj, chartId)
-    .then(chart => dispatch(receiveChart(chart)))
+    .then(chart => dispatch(changeChart(chart)))
 );
 
 export const receiveCharts = charts => {
