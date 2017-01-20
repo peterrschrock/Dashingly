@@ -39,5 +39,5 @@ export const getCharts = userId => dispatch => (
 
 export const deleteChart = chartId => dispatch => (
   APIUtil.deleteChart(chartId)
-    .then(chartIdentity => dispatch(removeChart(chartIdentity)))
+    .then(chart => dispatch(removeChart(chart.id)))
 )
