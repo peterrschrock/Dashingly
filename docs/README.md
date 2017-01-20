@@ -1,8 +1,6 @@
 # dashingly
 
-HEROKU Link goes here
-
-[Trello Link](https://trello.com/b/zj1pXuFv/chartio-clone-peter-schrock)
+[Dashingly](https://dashing-ly.heroku.com/login)
 
 <!-- TODO did I actually use react-d3? -->
 dashingly uses React.js, Redux, react-d3, Ruby on Rails, and Postgresql to create a chart making application based on Chartio.
