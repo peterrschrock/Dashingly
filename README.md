@@ -17,10 +17,10 @@ charts with that data. Users can then share their creations with one another.
 * View all charts shared with you.
 
 ##Screenshots
-[Login Screenshot](docs/screenshots/homepage.png)
-[Upload Dataset Screenshot](docs/screenshots/upload.png)
-[Edit Chart Screenshot](docs/screenshots/edit_chart.png)
-[Scrollable Chart View Page](docs/screenshots/charts_index.png)
+![Login Screenshot](docs/screenshots/homepage.png)
+![Upload Dataset Screenshot](docs/screenshots/upload.png)
+![Edit Chart Screenshot](docs/screenshots/edit_chart.png)
+![Scrollable Chart View Page](docs/screenshots/charts_index.png)
 
 ##Technology Stack
 * Dashingly uses a Postgres/Rails backend and a React frontend.
