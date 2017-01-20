@@ -35,7 +35,15 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-
+  // background-color: rgb(207,157,110);
+  // background-color: rgba(207,157,110,.95);
+  padding: 25px;
+  // border-radius: 20px;
+  // background: gba(207,157,110); /* For browsers that do not support gradients */
+  // background: -webkit-linear-gradient(left, rgba(207,199,188, .9) , rgba(207,157,110,.95)); /* For Safari 5.1 to 6.0 */
+  // background: -o-linear-gradient(right, rgba(207,199,188, .9), rgba(207,157,110,.95)); /* For Opera 11.1 to 12.0 */
+  // background: -moz-linear-gradient(right, rgba(207,199,188, .9), rgba(207,157,110,.95)); /* For Firefox 3.6 to 15 */
+  // background: linear-gradient(to right, rgba(207,199,188, .9), rgba(207,157,110,.95)); /* Standard syntax */
 }
 
 
@@ -57,11 +65,47 @@
 .recharts-surface {
   overflow: visible;
   margin: 20px;
-  background-color: rgb(211,200,176);
-  background-color: rgba(211,200,176,.95);
-  border-radius: 10px;
+
 }
 
 tspan {
   margin: 10px;
+}
+
+
+.chart-form-part {
+  margin: 10px 0px;
+  background-color: transparent;
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 5px;
+  border-color: black;
+}
+
+.chart-form-buttons {
+  margin: 10px 0px;
+  background-color: transparent;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.chart-form-button {
+  background-color: transparent;
+  font-size: 20px;
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 5px;
+  border-color: black;
+  margin-left: 3px;
+}
+
+.chart-form-button:hover {
+  cursor: pointer;
+  background-color: #E4B395;
+}
+
+#chart-form-submit-button:hover {
+  cursor: pointer;
+  background-color: #E4B395;
 }

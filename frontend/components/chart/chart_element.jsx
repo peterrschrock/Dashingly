@@ -40,7 +40,7 @@ class ChartElement extends React.Component {
       <ScatterChart className="chart-show">
         <XAxis label={this.props.chartState.x_name} dataKey={this.rowKey()}/>
         <YAxis label={this.props.chartState.y_name} dataKey={this.columnKey()}/>
-        <Scatter name='A school' data={this.dataKey()} fill='#8884d8'/>
+        <Scatter name='A school' data={this.dataKey()} fill='#000000'/>
         <CartesianGrid />
         <Tooltip cursor={{strokeDasharray: '3 3'}}/>
       </ScatterChart>
@@ -49,14 +49,13 @@ class ChartElement extends React.Component {
 
   renderLineChart(){
     return <ResponsiveContainer width="80%" height="100%">
-      <LineChart className="chart-show" width={600} height={400} data={this.dataKey()}
-              margin={{top: 5, right: 30, left: 20, bottom: 5}}>
+      <LineChart className="chart-show" data={this.dataKey()}>
        <XAxis label={this.props.chartState.x_name} dataKey={this.rowKey()}/>
        <YAxis label={this.props.chartState.y_name}/>
        <CartesianGrid strokeDasharray="3 3"/>
        <Tooltip/>
        <Legend />
-       <Line type="monotone" dataKey={this.columnKey()} stroke="#8884d8" activeDot={{r: 8}}/>
+       <Line type="monotone" dataKey={this.columnKey()} stroke="#000000" activeDot={{r: 8}}/>
       </LineChart>
     </ResponsiveContainer>;
   }
@@ -64,35 +63,33 @@ class ChartElement extends React.Component {
   renderBarChart(){
     // debugger
     return <ResponsiveContainer width="80%" height="100%">
-      <BarChart className="chart-show" width={600} height={400} data={this.dataKey()}
-              margin={{top: 5, right: 30, left: 20, bottom: 5}}>
+      <BarChart className="chart-show" data={this.dataKey()}>
        <XAxis label={this.props.chartState.x_name} dataKey={this.rowKey()}/>
        <YAxis label={this.props.chartState.y_name}/>
        <CartesianGrid strokeDasharray="3 3"/>
        <Tooltip/>
        <Legend />
-       <Bar dataKey={this.columnKey()} fill="#8884d8" />
+       <Bar dataKey={this.columnKey()} fill="#000000" />
       </BarChart>
     </ResponsiveContainer>;
   }
 
   renderAreaChart(){
     return <ResponsiveContainer width="80%" height="100%">
-      <AreaChart className="chart-show" width={600} height={400} data={this.dataKey()}
-              margin={{top: 10, right: 30, left: 0, bottom: 0}}>
+      <AreaChart className="chart-show" data={this.dataKey()}>
         <XAxis label={this.props.chartState.x_name} dataKey={this.rowKey()}/>
         <YAxis label={this.props.chartState.y_name}/>
         <CartesianGrid strokeDasharray="3 3"/>
         <Tooltip/>
-        <Area type='monotone' dataKey={this.columnKey()} stroke='#8884d8' fill='#8884d8' />
+        <Area type='monotone' dataKey={this.columnKey()} stroke='#000000' fill='#000000' />
       </AreaChart>
     </ResponsiveContainer>;
   }
 
   renderPieChart(){
     return <ResponsiveContainer width="80%" height="100%">
-      <PieChart className="chart-show" width={600} height={400}>
-        <Pie label data={this.dataKey()} nameKey={this.rowKey()} valueKey={this.columnKey()} fill="#8884d8" label/>
+      <PieChart className="chart-show">
+        <Pie label data={this.dataKey()} nameKey={this.rowKey()} valueKey={this.columnKey()} fill="#000000" label/>
         <Tooltip/>
        </PieChart>
      </ResponsiveContainer>;

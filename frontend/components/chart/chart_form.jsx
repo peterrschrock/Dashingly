@@ -90,32 +90,32 @@ class ChartForm extends React.Component {
   render(){
     return <div className="chart-form-element">
       <form className="chart-form-holder"  onSubmit={() => this.handleSubmitChart()}>
-        <select required value={this.state.dataset_id} ref={(input) => this.input = input} onChange={this.handleDataChange}>
+        <select required value={this.state.dataset_id} className="chart-form-part" ref={(input) => this.input = input} onChange={this.handleDataChange}>
           <option value="" disabled>Select a Dataset</option>
           {this.renderDatasetTitles()}
         </select>
 
-        <select required value={this.state.x_axis} ref={(input) => this.input = input} onChange={this.handleXDataSource}>
+        <select required value={this.state.x_axis} className="chart-form-part" ref={(input) => this.input = input} onChange={this.handleXDataSource}>
           <option value="" disabled>Select data for X axis</option>
           {this.renderColumnOptions()}
         </select>
 
-        <select required value={this.state.y_axis} ref={(input) => this.input = input} onChange={this.handleYDataSource}>
+        <select required value={this.state.y_axis} className="chart-form-part" ref={(input) => this.input = input} onChange={this.handleYDataSource}>
           <option value="" disabled>Select data for X axis</option>
           {this.renderColumnOptions()}
         </select>
 
-        <input type="text" onChange={this.handleTitleChange} value={this.state.title}></input>
-        <input type="text" onChange={this.handleXNameChange} value={this.state.x_name}></input>
-        <input type="text" onChange={this.handleYNameChange} value={this.state.y_name}></input>
-        <div className="chart-type-button-holder">
-          <button type="button" onClick={() => this.setChartType("PIE")}><PieChart/></button>
-          <button type="button" onClick={() => this.setChartType("AREA")}><AreaChart/></button>
-          <button type="button" onClick={() => this.setChartType("BAR")}><BarChart/></button>
-          <button type="button" onClick={() => this.setChartType("LINE")}><LineChart/></button>
-          <button type="button" onClick={() => this.setChartType("SCATTER")}></button>
+        <input type="text" className="chart-form-part" onChange={this.handleTitleChange} value={this.state.title}></input>
+        <input type="text" className="chart-form-part" onChange={this.handleXNameChange} value={this.state.x_name}></input>
+        <input type="text" className="chart-form-part" onChange={this.handleYNameChange} value={this.state.y_name}></input>
+        <div className="chart-form-buttons" >
+          <button className="chart-form-button" type="button" onClick={() => this.setChartType("PIE")}><PieChart/></button>
+          <button className="chart-form-button" type="button" onClick={() => this.setChartType("AREA")}><AreaChart/></button>
+          <button className="chart-form-button" type="button" onClick={() => this.setChartType("BAR")}><BarChart/></button>
+          <button className="chart-form-button" type="button" onClick={() => this.setChartType("LINE")}><LineChart/></button>
+          <button className="chart-form-button" type="button" onClick={() => this.setChartType("SCATTER")}></button>
         </div>
-        <input type="submit" value="Save Changes"></input>
+        <input className="chart-form-part" id="chart-form-submit-button" type="submit" value="Save Changes"></input>
       </form>
       < ChartElementContainer chartState={this.state}/>
   </div>;
