@@ -4,4 +4,6 @@ class Chart < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :dataset
+  has_many :shares
+  has_many :sharedToUsers, through: :shares, source: :user
 end

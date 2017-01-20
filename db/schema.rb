@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170117174627) do
+ActiveRecord::Schema.define(version: 20170120062140) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,14 @@ ActiveRecord::Schema.define(version: 20170117174627) do
   end
 
   add_index "datasets", ["user_id"], name: "index_datasets_on_user_id", using: :btree
+
+  create_table "shares", force: :cascade do |t|
+    t.integer "user_id",  null: false
+    t.integer "chart_id", null: false
+  end
+
+  add_index "shares", ["chart_id"], name: "index_shares_on_chart_id", using: :btree
+  add_index "shares", ["user_id"], name: "index_shares_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "username",        null: false

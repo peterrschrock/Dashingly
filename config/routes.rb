@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     resources :datasets, only: [:create, :destroy, :show]
     resource :sessions, only: [:create, :destroy]
     resources :charts, only: [:create, :destroy, :update, :show]
+    resources :shares, only: [:index, :create, :destroy]
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

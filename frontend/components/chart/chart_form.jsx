@@ -16,44 +16,21 @@ class ChartForm extends React.Component {
     bindAll(this, 'setChartType', 'handleSubmitChart','renderDatasetTitles', 'renderColumnOptions', 'handleDataChange', 'handleXDataSource', 'handleYDataSource', 'handleTitleChange', 'handleXNameChange', 'handleYNameChange');
 
     this.state = {id: null, user_id: this.props.user_id, title: "Title", x_name: "X Axis Name", y_name: "Y Axis Name", chartType: "SCATTER", dataset_id:"", x_data: "", y_data: ""};
-
-    // this.setStateBegin();
   }
 
-  // setStateBegin(){
-  //   debugger
-  //   if(this.props.formType !== "new" && this.props.charts.length > 0){
-  //     const chartObj = this.props.charts[this.props.formType];
-  //     this.setState(chartObj);
-  //   } else if(this.props.formType !== "new") {
-  //     setTimeout(this.setStateBegin(), 100);
-  //   } else {
-  //     return ;
-  //   }
-  // }
-
   componentWillReceiveProps(newProps){
-    // debugger
     if(newProps.formType !== "new"){
       if(newProps.charts.length > 0) {
-        // const chartObj = newProps.charts[newProps.formType];
         const chartObj = $.grep(newProps.charts, e => {return e.id === parseInt(newProps.formType);})[0];
         this.setState(chartObj);
       }
     }
-    // debugger
   }
 
-
-  // getChartToEdit(chartObj){
-  //   this.setState({dataset_id: chartObj.dataset_id.toString()});
-  //   this.setState({x_data: chartObj.x_data});
-  //   this.props.receiveYData({y_data: chartObj.y_data});
-  //   this.setState({title: chartObj.title});
-  //   this.setState({x_name: chartObj.x_name});
-  //   this.setState({y_name: chartObj.y_name});
-  //   this.setState({chartType: chartObj.chartType});
+  // componentWillUnmount(){
+  //   this.setState({id: null, user_id: this.props.user_id, title: "Title", x_name: "X Axis Name", y_name: "Y Axis Name", chartType: "SCATTER", dataset_id:"", x_data: "", y_data: ""});
   // }
+
 
   setChartType(newChartType){
     this.setState({chartType: newChartType});
@@ -111,18 +88,20 @@ class ChartForm extends React.Component {
   }
 
   render(){
-    return <div>
-      <form className="chart-form-holder" onSubmit={() => this.handleSubmitChart()}>
-        <select value={this.state.dataset_id} onChange={this.handleDataChange}>
-          <option disabled selected value> -- select a dataset -- </option>
+    return <div className="chart-form-element">
+      <form className="chart-form-holder"  onSubmit={() => this.handleSubmitChart()}>
+        <select required value={this.state.dataset_id} ref={(input) => this.input = input} onChange={this.handleDataChange}>
+          <option value="" disabled>Select a Dataset</option>
           {this.renderDatasetTitles()}
         </select>
 
-        <select value={this.state.x_axis} onChange={this.handleXDataSource}>
+        <select required value={this.state.x_axis} ref={(input) => this.input = input} onChange={this.handleXDataSource}>
+          <option value="" disabled>Select data for X axis</option>
           {this.renderColumnOptions()}
         </select>
 
-        <select value={this.state.y_axis} onChange={this.handleYDataSource}>
+        <select required value={this.state.y_axis} ref={(input) => this.input = input} onChange={this.handleYDataSource}>
+          <option value="" disabled>Select data for X axis</option>
           {this.renderColumnOptions()}
         </select>
 
@@ -137,8 +116,8 @@ class ChartForm extends React.Component {
           <button type="button" onClick={() => this.setChartType("SCATTER")}></button>
         </div>
         <input type="submit" value="Save Changes"></input>
-      </form>;
-      < ChartElementContainer chartState={this.state}/>;
+      </form>
+      < ChartElementContainer chartState={this.state}/>
   </div>;
   }
 }

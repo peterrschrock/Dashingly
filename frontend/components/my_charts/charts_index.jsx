@@ -5,11 +5,14 @@ import ChartElementContainer from './charts_index_element_container';
 import ChartOptionsContainer from './chart_options_container';
 import NavBarContainer from '../nav_bar/nav_bar_container';
 
+import Right from 'react-icons/lib/fa/arrow-circle-right';
+import Left from 'react-icons/lib/fa/arrow-circle-left';
+
 class ChartsIndex extends React.Component {
   constructor(props){
     super(props);
 
-    bindAll(this, 'chartsContainer');
+    bindAll(this, 'chartsContainer', 'handleLeft', 'handleRight');
     this.state = {whichChart: 0, charts: this.props.charts};
     window.addEventListener('mousewheel', e => {
       if(e.wheelDelta > 0) {
@@ -45,10 +48,23 @@ class ChartsIndex extends React.Component {
     }
   }
 
+  handleLeft(){
+    let newWhichChartLeft = (this.state.whichChart - 1) % this.state.charts.length;
+    newWhichChartLeft = (newWhichChartLeft + this.state.charts.length) % this.state.charts.length;
+    this.setState({whichChart: newWhichChartLeft});
+  }
+
+  handleRight(){
+    let newWhichChartRight = (this.state.whichChart + 1) % this.state.charts.length;
+    this.setState({whichChart: newWhichChartRight});
+  }
+
   render(){
-    return <div>
+    return <div className="charts-index-page">
       <NavBarContainer/>
+      <Left onClick={() => this.handleLeft()}/>
       {this.chartsContainer()}
+      <Right onClick={() => this.handleRight()}/>
       <ChartOptionsContainer passState={this.state}/>
     </div>;
 

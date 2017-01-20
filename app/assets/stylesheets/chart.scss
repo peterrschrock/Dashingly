@@ -9,6 +9,7 @@
   background-size: cover;
   -o-background-size: cover;
   min-height: 100%;
+  height: 100%;
   position: absolute;
   width: 100%;
   left: 0;
@@ -16,18 +17,33 @@
   // z-index: -101;
 }
 
+.chart-form-element {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+}
+
 
 .chart-element-holder{
   // background-color:
-  width: auto;
-  margin: 50px;
+  width: calc(100% - 350px);
+  height: calc(100% - 200px);
+  margin: 100px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
 }
 
 
 .chart-form-holder {
   display: flex;
   flex-direction: column;
-  margin: 50px;
+  justify-content: center;
+  margin-left: 50px;
 }
 
 .chart-type-button-holder{
@@ -35,4 +51,17 @@
 }
 
 .chart-show {
+
+}
+
+.recharts-surface {
+  overflow: visible;
+  margin: 20px;
+  background-color: rgb(211,200,176);
+  background-color: rgba(211,200,176,.95);
+  border-radius: 10px;
+}
+
+tspan {
+  margin: 10px;
 }
