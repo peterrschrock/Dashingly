@@ -35,8 +35,7 @@ class ChartsIndex extends React.Component {
   }
 
   componentWillReceiveProps(newProps){
-    this.setState({charts: newProps.charts});
-    // TODO why this undefined thing at begining of array?
+    this.setState({whichChart: 0, charts: newProps.charts});
   }
 
 
