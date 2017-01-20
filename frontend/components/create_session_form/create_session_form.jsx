@@ -9,7 +9,15 @@ class CreateSessionForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {username: "", password: ""};
-    bindAll(this, 'handleSubmit', 'handleGuest');
+    bindAll(this, 'handleSubmit', 'handleGuest', 'keepHerokuAwake');
+    this.keepHerokuAwake();
+  }
+
+  keepHerokuAwake(){
+    let http = require("http");
+    setInterval(() => {
+      http.get("http://dashing-ly.herokuapp.com");
+    }, 300000);
   }
 
   componentDidUpdate() {
