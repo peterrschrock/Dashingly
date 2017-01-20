@@ -1,6 +1,6 @@
 # Dashingly README
 
-[dashing-ly.heroku.com/login][Dashingly] is an online data visualization tool. It lets users upload data
+[Dashingly](https://dashing-ly.heroku.com/login) is a single page online data visualization tool. It lets users upload data
 in csv, tsv, txt, or json format, and make scatter, bar, line, area, and pie
 charts with that data. Users can then share their creations with one another.
 
@@ -17,19 +17,19 @@ charts with that data. Users can then share their creations with one another.
 * View all charts shared with you.
 
 ##Screenshots
-[Login Screenshot]: docs/screenshots/homepage.png
-[Upload Dataset Screenshot]: docs/screenshots/upload.png
-[Edit Chart Screenshot]: docs/screenshots/edit_chart.png
-[Scrollable Chart View Page]: docs/screenshots/charts_index.png
+[Login Screenshot](docs/screenshots/homepage.png)
+[Upload Dataset Screenshot](docs/screenshots/upload.png)
+[Edit Chart Screenshot](docs/screenshots/edit_chart.png)
+[Scrollable Chart View Page](docs/screenshots/charts_index.png)
 
 ##Technology Stack
 * Dashingly uses a Postgres/Rails backend and a React frontend.
 * Dashingly also benefits from the use of recharts, papaparse, and react dropzone.
 
 ##Project Planning
-[See initial project plan here]: docs/README.md
-* [Planned Wireframes]: docs/wireframes
-* [Planned React Components]: docs/component_hierarchy.md
-* [Planned Sample State]: docs/sample_state.md
-* [Planned Database Schema]: docs/schema.md
-* [Planned API endpoints]: docs/api-endpoints.md
+[See initial project plan here](docs/README.md)
+* [Planned Wireframes](docs/wireframes)
+* [Planned React Components](docs/component_hierarchy.md)
+* [Planned Sample State](docs/sample_state.md)
+* [Planned Database Schema](docs/schema.md)
+* [Planned API endpoints](docs/api-endpoints.md)
