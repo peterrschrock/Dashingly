@@ -1,6 +1,6 @@
 import React from 'react';
 import {bindAll} from 'lodash';
-import {ResponsiveContainer, PieChart, Pie, AreaChart, Area, BarChart, Bar, LineChart, Line, ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts';
+import {Cell, ResponsiveContainer, PieChart, Pie, AreaChart, Area, BarChart, Bar, LineChart, Line, ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts';
 
 class ChartElement extends React.Component {
   constructor(props) {
@@ -8,6 +8,7 @@ class ChartElement extends React.Component {
     bindAll(this, 'dataKey', 'rowKey', 'columnKey', 'completeChart', 'renderChart', 'renderScatterChart', 'renderLineChart', 'renderBarChart', 'renderAreaChart', 'renderPieChart');
 
     // debugger
+
   }
 
   dataKey(){
@@ -62,6 +63,7 @@ class ChartElement extends React.Component {
 
   renderBarChart(){
     // debugger
+    const colors = ['green', 'purple', 'red', 'black', 'yellow', 'blue', 'brown', 'orange', 'gray'];
     return <ResponsiveContainer width="80%" height="100%">
       <BarChart className="chart-show" data={this.dataKey()}>
        <XAxis fill='#000000' stroke='#000000' label={this.props.chartState.x_name} dataKey={this.rowKey()}/>
@@ -69,7 +71,12 @@ class ChartElement extends React.Component {
        <CartesianGrid strokeDasharray="3 3"/>
        <Tooltip/>
        <Legend />
-       <Bar dataKey={this.columnKey()} fill="#000000" />
+       <Bar dataKey={this.columnKey()} fill="#000000">
+         {this.dataKey().map((entry, index) => (
+           <Cell key={`cell-${index}`} fill={colors[index % colors.length]}/>
+           ))
+         }
+       </Bar>
       </BarChart>
     </ResponsiveContainer>;
   }
@@ -87,9 +94,15 @@ class ChartElement extends React.Component {
   }
 
   renderPieChart(){
+    const colors = ['green', 'purple', 'red', 'black', 'yellow', 'blue', 'brown', 'orange', 'gray'];
     return <ResponsiveContainer width="80%" height="100%">
       <PieChart className="chart-show">
-        <Pie label data={this.dataKey()} nameKey={this.rowKey()} valueKey={this.columnKey()} fill="#000000" label/>
+        <Pie label data={this.dataKey()} nameKey={this.rowKey()} valueKey={this.columnKey()} fill="#000000" label>
+          {this.dataKey().map((entry, index) => (
+            <Cell key={`cell-${index}`} fill={colors[index % colors.length]}/>
+            ))
+          }
+        </Pie>
         <Tooltip/>
        </PieChart>
      </ResponsiveContainer>;
