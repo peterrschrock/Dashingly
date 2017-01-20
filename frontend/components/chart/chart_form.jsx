@@ -6,6 +6,10 @@ import PieChart from 'react-icons/lib/fa/pie-chart';
 import AreaChart from 'react-icons/lib/fa/area-chart';
 import BarChart from 'react-icons/lib/fa/bar-chart';
 import LineChart from 'react-icons/lib/fa/line-chart';
+import ScatterChart from 'react-icons/lib/md/border-bottom';
+// react-icons/lib/md/apps
+// react-icons/lib/md/business
+// react-icons/lib/md/image-aspect-ratio
 
 import ChartElementContainer from './chart_element_container';
 
@@ -113,7 +117,7 @@ class ChartForm extends React.Component {
           <button className="chart-form-button" type="button" onClick={() => this.setChartType("AREA")}><AreaChart/></button>
           <button className="chart-form-button" type="button" onClick={() => this.setChartType("BAR")}><BarChart/></button>
           <button className="chart-form-button" type="button" onClick={() => this.setChartType("LINE")}><LineChart/></button>
-          <button className="chart-form-button" type="button" onClick={() => this.setChartType("SCATTER")}></button>
+          <button className="chart-form-button" type="button" onClick={() => this.setChartType("SCATTER")}><ScatterChart/></button>
         </div>
         <input className="chart-form-part" id="chart-form-submit-button" type="submit" value="Save Changes"></input>
       </form>

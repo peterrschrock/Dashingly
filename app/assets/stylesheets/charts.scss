@@ -4,10 +4,10 @@
 
 .charts-index-page {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: url('/assets/chart.jpg') no-repeat center center fixed;
+  background: url('/assets/all_charts.jpg') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
@@ -18,4 +18,36 @@
   width: 100%;
   left: 0;
   top: 0;
+}
+
+.chart-with-arrows {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 100%;
+  align-items: center;
+}
+
+.change-current-chart-arrows {
+  font-size: 50px;
+}
+
+.change-current-chart-arrows:hover{
+  cursor: pointer;
+  font-size: 70px;
+}
+
+
+
+.chart-options-crud{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.chart-options-crud button:hover {
+  cursor: pointer;
+  background-color: #E4B395;
+
 }

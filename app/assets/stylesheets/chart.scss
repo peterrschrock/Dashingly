@@ -30,8 +30,8 @@
 .chart-element-holder{
   // background-color:
   width: calc(100% - 350px);
-  height: calc(100% - 200px);
-  margin: 100px 0;
+  height: calc(90% - 150px);
+  margin-top: 100px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -65,11 +65,12 @@
 .recharts-surface {
   overflow: visible;
   margin: 20px;
-
+  fill: black;
 }
 
 tspan {
   margin: 10px;
+  fill: black;
 }
 
 
@@ -80,6 +81,11 @@ tspan {
   border-width: 2px;
   border-radius: 5px;
   border-color: black;
+}
+
+.chart-form-part:hover{
+
+  background-color: #E4B395;
 }
 
 .chart-form-buttons {
@@ -108,4 +114,8 @@ tspan {
 #chart-form-submit-button:hover {
   cursor: pointer;
   background-color: #E4B395;
+}
+
+select.chart-form-part:hover{
+  cursor: pointer;
 }

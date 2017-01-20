@@ -38,8 +38,8 @@ class ChartElement extends React.Component {
   renderScatterChart(){
     return <ResponsiveContainer width="80%" height="100%">
       <ScatterChart className="chart-show">
-        <XAxis label={this.props.chartState.x_name} dataKey={this.rowKey()}/>
-        <YAxis label={this.props.chartState.y_name} dataKey={this.columnKey()}/>
+        <XAxis fill='#000000' stroke='#000000' label={this.props.chartState.x_name} dataKey={this.rowKey()}/>
+        <YAxis fill='#000000' stroke='#000000' label={this.props.chartState.y_name} dataKey={this.columnKey()}/>
         <Scatter name='A school' data={this.dataKey()} fill='#000000'/>
         <CartesianGrid />
         <Tooltip cursor={{strokeDasharray: '3 3'}}/>
@@ -50,8 +50,8 @@ class ChartElement extends React.Component {
   renderLineChart(){
     return <ResponsiveContainer width="80%" height="100%">
       <LineChart className="chart-show" data={this.dataKey()}>
-       <XAxis label={this.props.chartState.x_name} dataKey={this.rowKey()}/>
-       <YAxis label={this.props.chartState.y_name}/>
+       <XAxis fill='#000000' stroke='#000000' label={this.props.chartState.x_name} dataKey={this.rowKey()}/>
+       <YAxis fill='#000000' stroke='#000000' label={this.props.chartState.y_name}/>
        <CartesianGrid strokeDasharray="3 3"/>
        <Tooltip/>
        <Legend />
@@ -64,8 +64,8 @@ class ChartElement extends React.Component {
     // debugger
     return <ResponsiveContainer width="80%" height="100%">
       <BarChart className="chart-show" data={this.dataKey()}>
-       <XAxis label={this.props.chartState.x_name} dataKey={this.rowKey()}/>
-       <YAxis label={this.props.chartState.y_name}/>
+       <XAxis fill='#000000' stroke='#000000' label={this.props.chartState.x_name} dataKey={this.rowKey()}/>
+       <YAxis fill='#000000' stroke='#000000' label={this.props.chartState.y_name}/>
        <CartesianGrid strokeDasharray="3 3"/>
        <Tooltip/>
        <Legend />
@@ -77,8 +77,8 @@ class ChartElement extends React.Component {
   renderAreaChart(){
     return <ResponsiveContainer width="80%" height="100%">
       <AreaChart className="chart-show" data={this.dataKey()}>
-        <XAxis label={this.props.chartState.x_name} dataKey={this.rowKey()}/>
-        <YAxis label={this.props.chartState.y_name}/>
+        <XAxis fill='#000000' stroke='#000000' label={this.props.chartState.x_name} dataKey={this.rowKey()}/>
+        <YAxis fill='#000000' stroke='#000000' label={this.props.chartState.y_name}/>
         <CartesianGrid strokeDasharray="3 3"/>
         <Tooltip/>
         <Area type='monotone' dataKey={this.columnKey()} stroke='#000000' fill='#000000' />
@@ -110,10 +110,10 @@ class ChartElement extends React.Component {
         case "PIE":
           return this.renderPieChart();
         default:
-          return <h2> Not Enough Data</h2>;
+          return <h2> Not Enough Data to Render Chart</h2>;
       }
     } else {
-        return <h2> Not Enough Data</h2>;
+        return <h2> Not Enough Data to Render Chart</h2>;
     }
   }
 

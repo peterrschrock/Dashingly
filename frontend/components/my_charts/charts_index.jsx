@@ -62,9 +62,11 @@ class ChartsIndex extends React.Component {
   render(){
     return <div className="charts-index-page">
       <NavBarContainer/>
-      <Left onClick={() => this.handleLeft()}/>
-      {this.chartsContainer()}
-      <Right onClick={() => this.handleRight()}/>
+      <div className="chart-with-arrows">
+        <Left className="change-current-chart-arrows" onClick={() => this.handleLeft()}/>
+        {this.chartsContainer()}
+        <Right className="change-current-chart-arrows" onClick={() => this.handleRight()}/>
+      </div>
       <ChartOptionsContainer passState={this.state}/>
     </div>;
 
