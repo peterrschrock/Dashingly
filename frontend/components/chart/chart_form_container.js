@@ -3,7 +3,6 @@ import {changeViewChart, receiveChartType, createChart, updateChart, receiveUser
 import ChartForm from './chart_form';
 
 const mapStateToProps = (store, {location}) => {
-  // debugger
   return {
     user_id: store.session.id,
     datasets: store.data.datasets,

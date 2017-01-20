@@ -20,3 +20,10 @@ export const getCharts = userId => {
     url: `api/users/${userId}/charts`,
   });
 };
+
+export const deleteChart = chartId => {
+  return $.ajax({
+    method: "DELETE",
+    url: `api/charts/${chartId}`
+  });
+};

@@ -12,7 +12,6 @@ import ChartElementContainer from './chart_element_container';
 class ChartForm extends React.Component {
   constructor(props) {
     super(props);
-    // debugger
 
     bindAll(this, 'setChartType', 'handleSubmitChart','renderDatasetTitles', 'renderColumnOptions', 'handleDataChange', 'handleXDataSource', 'handleYDataSource', 'handleTitleChange', 'handleXNameChange', 'handleYNameChange');
 
@@ -37,7 +36,8 @@ class ChartForm extends React.Component {
     // debugger
     if(newProps.formType !== "new"){
       if(newProps.charts.length > 0) {
-        const chartObj = newProps.charts[parseInt(newProps.formType)];
+        // const chartObj = newProps.charts[newProps.formType];
+        const chartObj = $.grep(newProps.charts, e => {return e.id === parseInt(newProps.formType);})[0];
         this.setState(chartObj);
       }
     }
