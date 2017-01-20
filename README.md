@@ -17,9 +17,13 @@ charts with that data. Users can then share their creations with one another.
 * View all charts shared with you.
 
 ##Screenshots
+Login Screenshot:
 ![Login Screenshot](docs/screenshots/homepage.png)
+Upload Dataset Screenshot:
 ![Upload Dataset Screenshot](docs/screenshots/upload.png)
+Edit Chart Screenshot:
 ![Edit Chart Screenshot](docs/screenshots/edit_chart.png)
+Scrollable Chart View Screenshot:
 ![Scrollable Chart View Page](docs/screenshots/charts_index.png)
 
 ##Technology Stack
