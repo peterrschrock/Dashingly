@@ -1,6 +1,6 @@
 # dashingly
 
-[Dashingly](https://dashing-ly.heroku.com/login)
+[Dashingly](https://dashingly.space)
 
 <!-- TODO did I actually use react-d3? -->
 dashingly uses React.js, Redux, react-d3, Ruby on Rails, and Postgresql to create a chart making application based on Chartio.
