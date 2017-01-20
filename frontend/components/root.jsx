@@ -20,7 +20,7 @@ const Root = ({store}) => {
   const _redirectToHome= (nextState,replace) => {
     const currentUser = store.getState().session.username;
     if(store.getState().session.username){
-      replace("/upload");
+      replace("/charts");
     }
   };
 
@@ -46,9 +46,9 @@ const Root = ({store}) => {
         <Route path="/charts/new" component={ChartPage} onEnter={_redirectToLogin}></Route>
         <Route path="/charts/:chartId/edit" component={ChartPage} onEnter={_redirectToLogin}></Route>
         <Route path="/upload" component={UploadPage} onEnter={_redirectToLogin}></Route>
-        <Route path="/login" component={CreateSessionFormContainer} onEnter={_redirectToHome}></Route>
-        <Route path="/signup" component={CreateSessionFormContainer} onEnter={_redirectToHome}></Route>
       </Route>
+      <Route path="/login" component={CreateSessionFormContainer} onEnter={_redirectToHome}></Route>
+      <Route path="/signup" component={CreateSessionFormContainer} onEnter={_redirectToHome}></Route>
     </Router>
   </Provider>;
 };

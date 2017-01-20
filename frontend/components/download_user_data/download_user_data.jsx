@@ -8,13 +8,18 @@ class DownloadUserData extends React.Component {
   }
 
   componentDidMount(){
-    this.props.getCharts(this.props.userId);
-    this.props.getDatasets(this.props.userId);
+    if(this.props.userId){
+      this.props.getCharts(this.props.userId);
+      this.props.getDatasets(this.props.userId);
+    }
   }
 
-  componentWillReceiveProps(){    
-    this.props.getCharts(this.props.userId);
-    this.props.getDatasets(this.props.userId);
+  componentWillReceiveProps(newProps){
+    debugger
+    if(this.props.userId){
+      this.props.getCharts(this.props.userId);
+      this.props.getDatasets(this.props.userId);
+    }
   }
 
   render(){
