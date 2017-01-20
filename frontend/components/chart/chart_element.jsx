@@ -63,7 +63,7 @@ class ChartElement extends React.Component {
 
   renderBarChart(){
     // debugger
-    const colors = ['green', 'purple', 'red', 'black', 'yellow', 'blue', 'brown', 'orange', 'gray'];
+    const colors = ['green', 'purple', 'red', 'black', 'yellow', 'blue', 'brown', 'orange'];
     return <ResponsiveContainer width="80%" height="100%">
       <BarChart className="chart-show" data={this.dataKey()}>
        <XAxis fill='#000000' stroke='#000000' label={this.props.chartState.x_name} dataKey={this.rowKey()}/>
@@ -94,7 +94,7 @@ class ChartElement extends React.Component {
   }
 
   renderPieChart(){
-    const colors = ['green', 'purple', 'red', 'black', 'yellow', 'blue', 'brown', 'orange', 'gray'];
+    const colors = ['green', 'purple', 'red', 'black', 'yellow', 'blue', 'brown', 'orange'];
     return <ResponsiveContainer width="80%" height="100%">
       <PieChart className="chart-show">
         <Pie label data={this.dataKey()} nameKey={this.rowKey()} valueKey={this.columnKey()} fill="#000000" label>

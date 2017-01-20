@@ -28,6 +28,8 @@ class ChartForm extends React.Component {
         const chartObj = $.grep(newProps.charts, e => {return e.id === parseInt(newProps.formType);})[0];
         this.setState(chartObj);
       }
+    } else {
+      this.setState({id: null, user_id: this.props.user_id, title: "Enter Title...", x_name: "X Axis Name...", y_name: "Y Axis Name...", chartType: "SCATTER", dataset_id:"", x_data: "", y_data: ""});
     }
   }
 

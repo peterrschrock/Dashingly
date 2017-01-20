@@ -1,4 +1,1 @@
-json.array! (@users) do |user|
-  json.id user.id
-  json.username user.username
-end
+json.users Hash[@users.map{ |user| [user.id, user]}]
