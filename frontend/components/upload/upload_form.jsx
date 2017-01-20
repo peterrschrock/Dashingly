@@ -5,6 +5,7 @@ import Dropzone from 'react-dropzone';
 import Papa from 'papaparse';
 
 import CloudUpload from 'react-icons/lib/fa/cloud-upload';
+import CheckMark from 'react-icons/lib/fa/check';
 
 class UploadForm extends React.Component {
   constructor(props) {
@@ -14,7 +15,7 @@ class UploadForm extends React.Component {
       user_id: this.props.user_id,
       data: {}
     };
-    bindAll(this, 'uploadButtonClass','handleDrop', 'handleManualUpload', 'uploadFile');
+    bindAll(this, 'greenCheck', 'uploadButtonClass','handleDrop', 'handleManualUpload', 'uploadFile');
   }
 
   handleDrop(files, header = true){
@@ -67,16 +68,26 @@ class UploadForm extends React.Component {
     }
   }
 
+  greenCheck(){
+    // debugger
+    if(Object.keys(this.state.data).length > 0) {
+      return <h6 id="upload-instructions"><CheckMark className="nav-icon" id="green-check"/>File Accepted!</h6>;
+    } else {
+      return <h6 id="upload-instructions">Upload a file to the left.</h6>;
+    }
+  }
+
   render() {
     return <div className="upload-container">
       <Dropzone className="dropzone" activeClassName="active-dz" ref="dropzone" accept="application/json, text/csv, text/plain, text/tab-separated-values" onDrop={this.handleDrop} multiple={false} maxSize={10000000}>
-        <h5 className="dropzone-instructions">Drop csv, txt, or json data files here to upload!</h5>
+        <h5 className="dropzone-instructions">Drop csv, txt, tsv, or json data files here to upload!</h5>
         <h5 className="dropzone-instructions">Or click to open a file.</h5>
         <h5 className="dropzone-instructions"><CloudUpload id="cloud-nav-icon"></CloudUpload></h5>
       </Dropzone>
 
       <section id="upload-metadata">
         <form id="upload-metadata-form" onSubmit={this.uploadFile}>
+          {this.greenCheck()}
           <input id="title-input-field" type="text" value={this.state.title} placeholder="Title Data... (*Required)" onChange={this.refresh("title")}></input>
           {this.uploadButtonClass()}
         </form>

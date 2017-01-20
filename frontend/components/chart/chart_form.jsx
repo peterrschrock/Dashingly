@@ -19,7 +19,7 @@ class ChartForm extends React.Component {
 
     bindAll(this, 'setChartType', 'handleSubmitChart','renderDatasetTitles', 'renderColumnOptions', 'handleDataChange', 'handleXDataSource', 'handleYDataSource', 'handleTitleChange', 'handleXNameChange', 'handleYNameChange');
 
-    this.state = {id: null, user_id: this.props.user_id, title: "Title", x_name: "X Axis Name", y_name: "Y Axis Name", chartType: "SCATTER", dataset_id:"", x_data: "", y_data: ""};
+    this.state = {id: null, user_id: this.props.user_id, title: "Enter Title...", x_name: "X Axis Name...", y_name: "Y Axis Name...", chartType: "SCATTER", dataset_id:"", x_data: "", y_data: ""};
   }
 
   componentWillReceiveProps(newProps){
@@ -99,12 +99,12 @@ class ChartForm extends React.Component {
           {this.renderDatasetTitles()}
         </select>
 
-        <select required value={this.state.x_axis} className="chart-form-part" ref={(input) => this.input = input} onChange={this.handleXDataSource}>
+        <select required value={this.state.x_data} className="chart-form-part" ref={(input) => this.input = input} onChange={this.handleXDataSource}>
           <option value="" disabled>Select data for X axis</option>
           {this.renderColumnOptions()}
         </select>
 
-        <select required value={this.state.y_axis} className="chart-form-part" ref={(input) => this.input = input} onChange={this.handleYDataSource}>
+        <select required value={this.state.y_data} className="chart-form-part" onChange={this.handleYDataSource}>
           <option value="" disabled>Select data for X axis</option>
           {this.renderColumnOptions()}
         </select>
