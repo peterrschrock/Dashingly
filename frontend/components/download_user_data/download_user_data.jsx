@@ -15,7 +15,7 @@ class DownloadUserData extends React.Component {
   }
 
   componentWillReceiveProps(newProps){
-    debugger
+    // debugger
     if(this.props.userId){
       this.props.getCharts(this.props.userId);
       this.props.getDatasets(this.props.userId);
