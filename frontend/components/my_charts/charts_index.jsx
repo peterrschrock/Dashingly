@@ -2,6 +2,7 @@ import React from 'react';
 import {bindAll} from 'lodash';
 
 import ChartElementContainer from './charts_index_element_container';
+import SharedChartElementContainer from '../charts_to_me/to_me_chart_index_container';
 import ChartOptionsContainer from './chart_options_container';
 import NavBarContainer from '../nav_bar/nav_bar_container';
 
@@ -42,7 +43,11 @@ class ChartsIndex extends React.Component {
 
   chartsContainer(){
     if(this.props.charts.length > 0){
-      return <ChartElementContainer passState={this.state}/>;
+      if(this.props.shared){
+        return <SharedChartElementContainer passState={this.state}/>;
+      }else{
+        return <ChartElementContainer passState={this.state}/>;
+      }
     } else {
       if(this.props.shared){
         return <h3>No one has shared a chart with you yet!</h3>;
