@@ -11,6 +11,8 @@ class DownloadUserData extends React.Component {
     if(this.props.userId){
       this.props.getCharts(this.props.userId);
       this.props.getDatasets(this.props.userId);
+      this.props.getSharedToMeCharts(this.props.userId);
+      this.props.getUsers(this.props.userId);
     }
   }
 
@@ -19,6 +21,8 @@ class DownloadUserData extends React.Component {
     if(this.props.userId){
       this.props.getCharts(this.props.userId);
       this.props.getDatasets(this.props.userId);
+      this.props.getSharedToMeCharts(this.props.userId);
+      this.props.getUsers(this.props.userId);
     }
   }
 

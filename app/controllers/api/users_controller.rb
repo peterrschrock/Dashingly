@@ -9,6 +9,11 @@ class Api::UsersController < ApplicationController
     end
   end
 
+  def index
+    # debugger
+    @users = User.where.not(id: params[:userId])
+    render "api/users/index"
+  end
 
 
 end

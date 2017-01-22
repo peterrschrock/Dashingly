@@ -1,12 +1,13 @@
 class Api::SharesController < ApplicationController
   def index
-    debugger
     if(params[:userId].to_i >= 0)
-      @charts = User.find(params[:userId]).sharedCharts
-      render "api/charts/index"
+
+      @user = User.find(params[:userId])
+      @charts = @user.sharedCharts
+      @datasets = @user.sharedDatasets
+      render "api/shares/charts_index"
     elsif(params[:chartId].to_i >= 0)
       @users = Chart.find(params[:chartId]).sharedToUsers
-      # TODO why don't these join properly???
       render "api/users/index"
     else
       @shares = Share.all

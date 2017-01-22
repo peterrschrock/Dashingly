@@ -4,8 +4,10 @@ import {hashHistory} from 'react-router';
 import {bindAll} from 'lodash';
 
 import CloudUpload from 'react-icons/lib/fa/cloud-upload';
-import Dashboard from 'react-icons/lib/fa/dashboard';
+// import Dashboard from 'react-icons/lib/fa/dashboard';
+
 import SignOut from 'react-icons/lib/fa/sign-out';
+import Friend from 'react-icons/lib/fa/child';
 import InsertChart from 'react-icons/lib/md/insert-chart';
 import AllCharts from 'react-icons/lib/fa/list-ol';
 
@@ -14,7 +16,7 @@ import AllCharts from 'react-icons/lib/fa/list-ol';
 class NavBar extends React.Component {
   constructor(props){
     super(props);
-    bindAll(this, 'handleLogout', 'redirectToDashboards', 'redirectToAllCharts', 'redirectToCreateChart', 'redirectToUpload');
+    bindAll(this, 'handleLogout', 'redirectToSharedCharts', 'redirectToAllCharts', 'redirectToCreateChart', 'redirectToUpload');
   }
 
   handleLogout(e){
@@ -32,8 +34,8 @@ class NavBar extends React.Component {
 		}
 	}
 
-  redirectToDashboards() {
-    hashHistory.push("/dashboards");
+  redirectToSharedCharts() {
+    hashHistory.push("/charts/shared");
   }
   redirectToAllCharts() {
     hashHistory.push("/charts");
@@ -57,8 +59,8 @@ class NavBar extends React.Component {
       return <div className="nav-bar-div">
         <ul className="navBarHeader">
           {this.renderLogo()}
-          <button className="nav-icon-button" onClick={this.redirectToDashboards}><Dashboard className="nav-icon"/>My Dashboards</button>
           <button className="nav-icon-button" onClick={this.redirectToAllCharts}><AllCharts className="nav-icon"/>My Charts</button>
+          <button className="nav-icon-button" onClick={this.redirectToSharedCharts}><Friend className="nav-icon"/>Friend's Charts</button>
           <button className="nav-icon-button" onClick={this.redirectToCreateChart}><InsertChart className="nav-icon"/>Create Chart</button>
           <button className="nav-icon-button" onClick={this.redirectToUpload}><CloudUpload className="nav-icon"/>Upload Data</button>
           <button className="nav-icon-button" onClick={this.handleLogout}><SignOut className="nav-icon"/>Logout</button>

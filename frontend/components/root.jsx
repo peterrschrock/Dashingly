@@ -9,6 +9,7 @@ import CreateSessionFormContainer from './create_session_form/create_session_for
 import UploadPage from './upload_page';
 import ChartPage from './chart_page';
 import ChartsIndexPage from './my_charts/my_charts_container';
+import SharedChartsIndexPage from './charts_to_me/charts_to_me_container';
 
 // <Route path="/dashboards/me" component={MyDashboardsContainer} onEnter={_redirectToLogin}></Route>
 // <Route path="/charts" component={MyChartsContainer} onEnter={_redirectToLogin}></Route>
@@ -43,6 +44,7 @@ const Root = ({store}) => {
     <Router history={ hashHistory }>
       <Route path="/" component={App} onEnter={_redirectToLogin}>
         <Route path="/charts" component={ChartsIndexPage} onEnter={_redirectToLogin}></Route>
+        <Route path="/charts/shared" component={SharedChartsIndexPage} onEnter={_redirectToLogin}></Route>
         <Route path="/charts/new" component={ChartPage} onEnter={_redirectToLogin}></Route>
         <Route path="/charts/:chartId/edit" component={ChartPage} onEnter={_redirectToLogin}></Route>
         <Route path="/upload" component={UploadPage} onEnter={_redirectToLogin}></Route>

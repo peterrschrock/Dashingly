@@ -12,7 +12,7 @@ class ChartsIndex extends React.Component {
   constructor(props){
     super(props);
 
-    bindAll(this, 'chartsContainer', 'handleLeft', 'handleRight');
+    bindAll(this, 'chartsContainer', 'handleLeft', 'handleRight', 'includeChartOptions');
     this.state = {whichChart: 0, charts: this.props.charts};
     window.addEventListener('mousewheel', e => {
       if(e.wheelDelta > 0) {
@@ -31,6 +31,7 @@ class ChartsIndex extends React.Component {
     if(this.props.charts.length === 0 && Object.keys(this.props.datasets).length === 0){
       this.props.getCharts(this.props.userId);
       this.props.getDatasets(this.props.userId);
+      this.props.getUsers(this.props.userId);
     }
   }
 
@@ -43,7 +44,11 @@ class ChartsIndex extends React.Component {
     if(this.props.charts.length > 0){
       return <ChartElementContainer passState={this.state}/>;
     } else {
-      return <h3>You haven't made any charts yet!</h3>;
+      if(this.props.shared){
+        return <h3>No one has shared a chart with you yet!</h3>;
+      } else{
+        return <h3>You haven't made any charts yet!</h3>;
+      }
     }
   }
 
@@ -58,6 +63,19 @@ class ChartsIndex extends React.Component {
     this.setState({whichChart: newWhichChartRight});
   }
 
+  includeChartOptions(){
+    if(this.props.shared){
+      if(this.props.charts.length > 0 && this.props.otherUsers) {
+        const ownerId = this.props.charts[this.state.whichChart].user_id;
+        return <h4>Shared by {this.props.otherUsers[ownerId].username}</h4>;
+      } else {
+        return <div></div>;
+      }
+    } else {
+      return <ChartOptionsContainer passState={this.state}/>;
+    }
+  }
+
   render(){
     return <div className="charts-index-page">
       <NavBarContainer/>
@@ -66,7 +84,7 @@ class ChartsIndex extends React.Component {
         {this.chartsContainer()}
         <Right className="change-current-chart-arrows" onClick={() => this.handleRight()}/>
       </div>
-      <ChartOptionsContainer passState={this.state}/>
+      {this.includeChartOptions()}
     </div>;
 
   }

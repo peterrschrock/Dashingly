@@ -3,5 +3,6 @@ class Dataset < ActiveRecord::Base
   validates :title, uniqueness: {scope: :user_id}
 
   belongs_to :user
-  has_many :charts
+  has_many :charts, dependent: :destroy
+  has_many :sharedToUsers, through: :charts, source: :sharedToUsers
 end

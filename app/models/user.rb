@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
   has_many :charts
   has_many :shares
   has_many :sharedCharts, through: :shares, source: :chart
+  has_many :sharedDatasets, through: :sharedCharts, source: :dataset
 
 
   def self.find_by_credentials(username, password)

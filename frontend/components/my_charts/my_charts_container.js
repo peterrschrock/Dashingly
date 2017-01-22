@@ -7,12 +7,15 @@ const mapStateToProps = store => {
   return {
     datasets: store.data.datasets,
     charts: store.chartsInfo.charts,
-    userId: store.session.id
+    userId: store.session.id,
+    shared: false,
+    otherUsers: false
 };};
 
 const mapDispatchToProps = dispatch => ({
   getCharts: userId => dispatch(getCharts(userId)),
   getDatasets: userId => dispatch(getDatasets(userId)),
+  getUsers: () => dispatch(() => {return;}),
 });
 
 

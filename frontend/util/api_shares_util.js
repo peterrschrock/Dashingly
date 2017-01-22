@@ -22,3 +22,11 @@ export const createShare = (shareObj) => {
     data: {share: shareObj}
   });
 };
+
+export const getOtherUsers = userId => {
+  return $.ajax({
+    method: 'GET',
+    url: 'api/users',
+    data: {userId: userId}
+  });
+};

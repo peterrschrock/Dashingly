@@ -111,6 +111,7 @@ class ChartElement extends React.Component {
   renderChart(){
     // debugger
     if(this.completeChart() && this.dataKey()) {
+      debugger
       switch (this.props.chartState.chartType) {
         case "SCATTER":
           return this.renderScatterChart();
@@ -123,6 +124,7 @@ class ChartElement extends React.Component {
         case "PIE":
           return this.renderPieChart();
         default:
+          debugger
           return <h2> Not Enough Data to Render Chart</h2>;
       }
     } else {
