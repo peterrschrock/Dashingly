@@ -16,7 +16,7 @@ class ChartOptions extends React.Component {
   }
 
   shareChart(){
-    // hashHistory.push(`/charts/${this.props.charts[this.props.whichChart].id}/share`);
+    hashHistory.push(`/charts/${this.props.charts[this.props.whichChart].id}/share`);
   }
 
   editChart(){

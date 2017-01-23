@@ -7,7 +7,7 @@ const mapStateToProps = store => {
     datasets: store.shareInfo.sharedData,
     charts: store.shareInfo.sharedCharts,
     userId: store.session.id,
-    otherUsers: store.shareInfo.allOtherUsers.users,
+    otherUsers: store.shareInfo.allOtherUsers,
     shared: true
 };};
 

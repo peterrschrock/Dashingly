@@ -36,14 +36,16 @@ export const createShare = (userId, chartId) => dispatch => (
     .then(shareObj => dispatch(receiveShare(shareObj)))
 );
 
-export const removeShare = share => ({
+export const removeShare = (share, userId) => ({
   type: REMOVE_SHARE,
-  share
+  share,
+  userId
 });
 
-export const deleteShare = shareId => dispatch => (
-  APIUtil.deleteShare(shareId)
-    .then(shareObj => dispatch(removeShare(shareObj)))
+export const deleteShare = (userId, chartId) => dispatch => (
+  APIUtil.deleteShare(userId, chartId)
+    .then(shareObj => dispatch(removeShare(shareObj)),
+    shareObj => dispatch(removeShare(shareObj, userId)))
 );
 
 export const receiveUsers = users => ({
@@ -51,7 +53,7 @@ export const receiveUsers = users => ({
   users
 });
 
-export const getUsers = userId => dispatch => (
-  APIUtil.getOtherUsers(userId)
+export const getUsers = (userId, chartId) => dispatch => (
+  APIUtil.getOtherUsers(userId, chartId)
     .then(usersObj => dispatch(receiveUsers(usersObj)))
 );

@@ -7,10 +7,11 @@ export const getShares = (userId, chartId) => {
 };
 
 
-export const deleteShare = shareId => {
+export const deleteShare = (userId, chartId) => {
   return $.ajax({
     method: "DELETE",
-    url: `api/shares/${shareId}`
+    url: `api/shares/1`,
+    data: {userId: userId, chartId: chartId}
   });
 };
 

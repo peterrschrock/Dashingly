@@ -25,7 +25,7 @@ class Api::SharesController < ApplicationController
   end
 
   def destroy
-    @share = Share.find(params["id"])
+    @share = Share.find_by_user_id_and_chart_id(params["userId"], params["chartId"])
     if @share
       @share.destroy
       render json: "api/shares/show"
