@@ -70,9 +70,9 @@ class ChartsIndex extends React.Component {
 
   includeChartOptions(){
     if(this.props.shared){
-      if(this.props.charts.length > 0 && this.props.otherUsers) {
+      if(this.props.charts.length > 0 && Object.keys(this.props.otherUsers).length > 0) {
         const ownerId = this.props.charts[this.state.whichChart].user_id;
-        return <h4>Shared by {this.props.otherUsers[ownerId].username}</h4>;
+        return <h4>Shared by {this.props.otherUsers.users[ownerId].username}</h4>;
       } else {
         return <div></div>;
       }

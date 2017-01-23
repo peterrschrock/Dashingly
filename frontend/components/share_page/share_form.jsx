@@ -16,6 +16,8 @@ class ShareForm extends React.Component {
       this.props.getCharts(this.props.userId);
       this.props.getUsers(this.props.userId);
       this.props.getUsersSharedTo(this.props.formType);
+    } else {
+      this.props.getUsersSharedTo(this.props.formType);
     }
   }
 
