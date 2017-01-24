@@ -1,6 +1,6 @@
 # Dashingly README
 
-[Dashingly](https://dashingly.space) is a single page online data visualization tool. It lets users upload data
+[Dashingly](http://www.dashingly.space/#/login) is a single page online data visualization tool. It lets users upload data
 in csv, tsv, txt, or json format, and make scatter, bar, line, area, and pie
 charts with that data. Users can then share their creations with one another.
 
