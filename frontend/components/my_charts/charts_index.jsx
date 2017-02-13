@@ -50,9 +50,9 @@ class ChartsIndex extends React.Component {
       }
     } else {
       if(this.props.shared){
-        return <h3>No one has shared a chart with you yet!</h3>;
+        return (<h3>No one has shared a chart with you yet!</h3>);
       } else{
-        return <h3>You haven't made any charts yet!</h3>;
+        return (<h3>You have not made any charts yet!</h3>);
       }
     }
   }
@@ -81,13 +81,30 @@ class ChartsIndex extends React.Component {
     }
   }
 
+  renderRightArrow(){
+    if(this.props.charts.length > 1){
+      return <Right className="change-current-chart-arrows" onClick={() => this.handleRight()}/>
+    } else{
+      return <div></div>;
+    }
+  }
+
+  renderLeftArrow(){
+    if(this.props.charts.length > 1){
+      return <Left className="change-current-chart-arrows" onClick={() => this.handleLeft()}/>
+    } else{
+      return <div></div>;
+    }
+  }
+
+
   render(){
     return <div className="charts-index-page">
       <NavBarContainer/>
       <div className="chart-with-arrows">
-        <Left className="change-current-chart-arrows" onClick={() => this.handleLeft()}/>
+        {this.renderLeftArrow()}
         {this.chartsContainer()}
-        <Right className="change-current-chart-arrows" onClick={() => this.handleRight()}/>
+        {this.renderRightArrow()}
       </div>
       {this.includeChartOptions()}
     </div>;
