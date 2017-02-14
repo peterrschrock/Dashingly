@@ -97,11 +97,11 @@ class ChartForm extends React.Component {
 
   handleSubmitChart(){
     if(this.props.formType === "new") {
-      this.props.createChart(this.state);
       localStorage.setItem('SelectedChart', this.props.charts.length);
+      this.props.createChart(this.state);
     } else {
-      this.props.updateChart(this.state, this.state.id);
       localStorage.setItem('SelectedChart', this.props.charts.length - 1);
+      this.props.updateChart(this.state, this.state.id);
     }
     hashHistory.push("/charts");
   }

@@ -130,34 +130,63 @@ class ChartElement extends React.Component {
         switch (this.props.chartState.chartType) {
           case "SCATTER":
           if(this.quantatativeCheck(rowKey)){
-            return this.renderScatterChart();
+            return (
+              <div className="chart-element-holder">
+                <h2 id="chart-title-header">{this.props.chartState.title}</h2>
+                {this.renderScatterChart()}
+              </div>);
           }else{
-            return <h2> ERROR: X Column must be entirely numeric for Scatter Charts</h2>;
+            return (
+              <div className="chart-element-holder">
+                <h2 className="chart-create-error"> ERROR: X Column must be entirely numeric for Scatter Charts</h2>;
+              </div>);
           }
           case "LINE":
-          return this.renderLineChart();
+            return (
+              <div className="chart-element-holder">
+                <h2 id="chart-title-header">{this.props.chartState.title}</h2>
+                {this.renderLineChart()}
+              </div>);
           case "BAR":
-          return this.renderBarChart();
+            return (
+              <div className="chart-element-holder">
+                <h2 id="chart-title-header">{this.props.chartState.title}</h2>
+                {this.renderBarChart()}
+              </div>);
           case "AREA":
-          return this.renderAreaChart();
+            return (
+              <div className="chart-element-holder">
+                <h2 id="chart-title-header">{this.props.chartState.title}</h2>
+                {this.renderAreaChart()}
+              </div>);
           case "PIE":
-          return this.renderPieChart();
+            return (
+              <div className="chart-element-holder">
+                <h2 id="chart-title-header">{this.props.chartState.title}</h2>
+                {this.renderPieChart()}
+              </div>);
           default:
-          return <h2> ERROR: Not Enough Data to Render Chart</h2>;
+            return (
+              <div className="chart-element-holder">
+                <h2 className="chart-create-error"> ERROR: Not Enough Data to Render Chart</h2>;
+              </div>);
         }
       }else{
-        return <h2> ERROR: Y Column must be entirely numeric</h2>;
+        return (
+          <div className="chart-element-holder">
+            <h2 className="chart-create-error"> ERROR: Y Column must be entirely numeric</h2>;
+          </div>);
       }
     } else {
-        return <h2> ERROR: Not Enough Data to Render Chart</h2>;
+        return (
+          <div className="chart-element-holder">
+            <h2 className="chart-create-error"> ERROR: Not Enough Data to Render Chart</h2>;
+          </div>);
     }
   }
 
   render(){
-    return (<div className="chart-element-holder">
-      <h2 id="chart-title-header">{this.props.chartState.title}</h2>
-      {this.renderChart()}
-    </div>);
+    return this.renderChart();
   }
 }
 
