@@ -5,7 +5,7 @@ import {Cell, ResponsiveContainer, PieChart, Pie, AreaChart, Area, BarChart, Bar
 class ChartElement extends React.Component {
   constructor(props) {
     super(props);
-    bindAll(this, 'dataKey', 'rowKey', 'columnKey', 'completeChart', 'renderChart', 'renderScatterChart', 'renderLineChart', 'renderBarChart', 'renderAreaChart', 'renderPieChart');
+    bindAll(this, 'quantatativeCheck', 'isNumber', 'dataKey', 'rowKey', 'columnKey', 'completeChart', 'renderChart', 'renderScatterChart', 'renderLineChart', 'renderBarChart', 'renderAreaChart', 'renderPieChart');
 
     // debugger
 
@@ -37,7 +37,7 @@ class ChartElement extends React.Component {
   }
 
   renderScatterChart(){
-    return <ResponsiveContainer width="80%" height="100%">
+    return (<ResponsiveContainer width="80%" height="100%">
       <ScatterChart className="chart-show">
         <XAxis fill='#000000' stroke='#000000' label={this.props.chartState.x_name} dataKey={this.rowKey()}/>
         <YAxis fill='#000000' stroke='#000000' label={this.props.chartState.y_name} dataKey={this.columnKey()}/>
@@ -45,26 +45,26 @@ class ChartElement extends React.Component {
         <CartesianGrid />
         <Tooltip cursor={{strokeDasharray: '3 3'}}/>
       </ScatterChart>
-    </ResponsiveContainer>;
+    </ResponsiveContainer>);
   }
 
   renderLineChart(){
-    return <ResponsiveContainer width="80%" height="100%">
+    return (<ResponsiveContainer width="80%" height="100%">
       <LineChart className="chart-show" data={this.dataKey()}>
        <XAxis fill='#000000' stroke='#000000' label={this.props.chartState.x_name} dataKey={this.rowKey()}/>
        <YAxis fill='#000000' stroke='#000000' label={this.props.chartState.y_name}/>
        <CartesianGrid strokeDasharray="3 3"/>
        <Tooltip/>
        <Legend />
-       <Line type="monotone" dataKey={this.columnKey()} stroke="#000000" activeDot={{r: 8}}/>
+       <Line type="monotone" dataKey={this.columnKey()} fill="#000000" activeDot={{r: 8}}/>
       </LineChart>
-    </ResponsiveContainer>;
+    </ResponsiveContainer>);
   }
 
   renderBarChart(){
     // debugger
     const colors = ['green', 'purple', 'red', 'black', 'yellow', 'blue', 'brown', 'orange'];
-    return <ResponsiveContainer width="80%" height="100%">
+    return (<ResponsiveContainer width="80%" height="100%">
       <BarChart className="chart-show" data={this.dataKey()}>
        <XAxis fill='#000000' stroke='#000000' label={this.props.chartState.x_name} dataKey={this.rowKey()}/>
        <YAxis fill='#000000' stroke='#000000' label={this.props.chartState.y_name}/>
@@ -78,11 +78,11 @@ class ChartElement extends React.Component {
          }
        </Bar>
       </BarChart>
-    </ResponsiveContainer>;
+    </ResponsiveContainer>);
   }
 
   renderAreaChart(){
-    return <ResponsiveContainer width="80%" height="100%">
+    return (<ResponsiveContainer width="80%" height="100%">
       <AreaChart className="chart-show" data={this.dataKey()}>
         <XAxis fill='#000000' stroke='#000000' label={this.props.chartState.x_name} dataKey={this.rowKey()}/>
         <YAxis fill='#000000' stroke='#000000' label={this.props.chartState.y_name}/>
@@ -90,12 +90,12 @@ class ChartElement extends React.Component {
         <Tooltip/>
         <Area type='monotone' dataKey={this.columnKey()} stroke='#000000' fill='#000000' />
       </AreaChart>
-    </ResponsiveContainer>;
+    </ResponsiveContainer>);
   }
 
   renderPieChart(){
     const colors = ['green', 'purple', 'red', 'black', 'yellow', 'blue', 'brown', 'orange'];
-    return <ResponsiveContainer width="80%" height="100%">
+    return (<ResponsiveContainer width="80%" height="100%">
       <PieChart className="chart-show">
         <Pie label data={this.dataKey()} nameKey={this.rowKey()} valueKey={this.columnKey()} fill="#000000" label>
           {this.dataKey().map((entry, index) => (
@@ -105,35 +105,59 @@ class ChartElement extends React.Component {
         </Pie>
         <Tooltip/>
        </PieChart>
-     </ResponsiveContainer>;
+     </ResponsiveContainer>);
+  }
+
+  quantatativeCheck(column){
+    let isQuant = true;
+    this.dataKey().forEach(object => {
+      if(!this.isNumber(object[column])){
+        isQuant = false;
+      }
+    });
+    return isQuant;
+  }
+
+  isNumber(n) {
+    return !isNaN(parseFloat(n)) && isFinite(n);
   }
 
   renderChart(){
+    const colKey = this.columnKey();
+    const rowKey = this.rowKey();
     if(this.completeChart() && this.dataKey()) {
-      switch (this.props.chartState.chartType) {
-        case "SCATTER":
-          return this.renderScatterChart();
-        case "LINE":
+      if(this.quantatativeCheck(colKey)){
+        switch (this.props.chartState.chartType) {
+          case "SCATTER":
+          if(this.quantatativeCheck(rowKey)){
+            return this.renderScatterChart();
+          }else{
+            return <h2> ERROR: X Column must be entirely numeric for Scatter Charts</h2>;
+          }
+          case "LINE":
           return this.renderLineChart();
-        case "BAR":
+          case "BAR":
           return this.renderBarChart();
-        case "AREA":
+          case "AREA":
           return this.renderAreaChart();
-        case "PIE":
+          case "PIE":
           return this.renderPieChart();
-        default:
-          return <h2> Not Enough Data to Render Chart</h2>;
+          default:
+          return <h2> ERROR: Not Enough Data to Render Chart</h2>;
+        }
+      }else{
+        return <h2> ERROR: Y Column must be entirely numeric</h2>;
       }
     } else {
-        return <h2> Not Enough Data to Render Chart</h2>;
+        return <h2> ERROR: Not Enough Data to Render Chart</h2>;
     }
   }
 
   render(){
-    return <div className="chart-element-holder">
+    return (<div className="chart-element-holder">
       <h2 id="chart-title-header">{this.props.chartState.title}</h2>
       {this.renderChart()}
-    </div>;
+    </div>);
   }
 }
 

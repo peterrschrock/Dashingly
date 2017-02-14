@@ -19,7 +19,7 @@ class ChartForm extends React.Component {
 
     bindAll(this, 'setChartType', 'handleSubmitChart','renderDatasetTitles', 'renderColumnOptions', 'handleDataChange', 'handleXDataSource', 'handleYDataSource', 'handleTitleChange', 'handleXNameChange', 'handleYNameChange');
 
-    this.state = {id: null, user_id: this.props.user_id, title: "Enter Title...", x_name: "X Axis Name...", y_name: "Y Axis Name...", chartType: "SCATTER", dataset_id:"", x_data: "", y_data: ""};
+    this.state = {id: null, user_id: this.props.user_id, title: "Enter Title...", x_name: "X Axis Name...", y_name: "Y Axis Name...", chartType: "BAR", dataset_id:"", x_data: "", y_data: ""};
   }
 
   componentWillReceiveProps(newProps){
@@ -29,12 +29,12 @@ class ChartForm extends React.Component {
         this.setState(chartObj);
       }
     } else {
-      this.setState({id: null, user_id: this.props.user_id, title: "Enter Title...", x_name: "X Axis Name...", y_name: "Y Axis Name...", chartType: "SCATTER", dataset_id:"", x_data: "", y_data: ""});
+      this.setState({id: null, user_id: this.props.user_id, title: "Enter Title...", x_name: "X Axis Name...", y_name: "Y Axis Name...", chartType: "BAR", dataset_id:"", x_data: "", y_data: ""});
     }
   }
 
   // componentWillUnmount(){
-  //   this.setState({id: null, user_id: this.props.user_id, title: "Title", x_name: "X Axis Name", y_name: "Y Axis Name", chartType: "SCATTER", dataset_id:"", x_data: "", y_data: ""});
+  //   this.setState({id: null, user_id: this.props.user_id, title: "Title", x_name: "X Axis Name", y_name: "Y Axis Name", chartType: "BAR", dataset_id:"", x_data: "", y_data: ""});
   // }
 
 

@@ -83,7 +83,7 @@ class ChartsIndex extends React.Component {
       } else {
         return <div></div>;
       }
-    } else {
+    } else if(this.props.charts.length > 0) {
       return <ChartOptionsContainer passState={this.state}/>;
     }
   }
