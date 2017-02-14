@@ -14,15 +14,19 @@ class ChartsIndex extends React.Component {
     super(props);
 
     bindAll(this, 'chartsContainer', 'handleLeft', 'handleRight', 'includeChartOptions');
-    this.state = {whichChart: 0, charts: this.props.charts};
+    const startingChart = localStorage.getItem('SelectedChart') || 0;
+    this.state = {whichChart: startingChart, charts: this.props.charts};
+
     window.addEventListener('mousewheel', e => {
       if(e.wheelDelta > 0) {
         let newWhichChart = (this.state.whichChart - 1) % this.state.charts.length;
         newWhichChart = (newWhichChart + this.state.charts.length) % this.state.charts.length;
         this.setState({whichChart: newWhichChart});
+        localStorage.setItem('SelectedChart', newWhichChart);
       } else{
         let newWhichChartDown = (this.state.whichChart + 1) % this.state.charts.length;
         this.setState({whichChart: newWhichChartDown});
+        localStorage.setItem('SelectedChart', newWhichChartDown);
       }
     });
   }
@@ -37,7 +41,8 @@ class ChartsIndex extends React.Component {
   }
 
   componentWillReceiveProps(newProps){
-    this.setState({whichChart: 0, charts: newProps.charts});
+    const startingChart = localStorage.getItem('SelectedChart') || 0;
+    this.setState({whichChart: startingChart, charts: newProps.charts});
   }
 
 
@@ -60,11 +65,13 @@ class ChartsIndex extends React.Component {
   handleLeft(){
     let newWhichChartLeft = (this.state.whichChart - 1) % this.state.charts.length;
     newWhichChartLeft = (newWhichChartLeft + this.state.charts.length) % this.state.charts.length;
+    localStorage.setItem('SelectedChart', newWhichChartLeft);
     this.setState({whichChart: newWhichChartLeft});
   }
 
   handleRight(){
     let newWhichChartRight = (this.state.whichChart + 1) % this.state.charts.length;
+    localStorage.setItem('SelectedChart', newWhichChartRight);
     this.setState({whichChart: newWhichChartRight});
   }
 

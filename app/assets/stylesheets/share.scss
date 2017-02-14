@@ -45,3 +45,28 @@
   margin: 10px;
 
 }
+
+.back-button{
+  font-size: 14px;
+  text-decoration: none;
+  margin: 10px;
+  width: 100%;
+  background-color: transparent;
+  color: transparent;
+  border: 0px;
+  padding: 10px 0 20px 0;
+  font-family: 'Indie Flower', cursive;
+  -webkit-text-stroke-width: .7px;
+  -webkit-text-stroke-color: black;
+}
+
+.back-button:hover {
+  background-color: black;
+  cursor: pointer;
+  font-size: 18px;
+  -webkit-text-stroke-color: #E4B395;
+}
+
+.back-button:hover > .back-icon {
+  color: #E4B395;
+}

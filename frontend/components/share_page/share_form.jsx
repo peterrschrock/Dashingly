@@ -1,13 +1,14 @@
 import React from 'react';
 import {hashHistory} from 'react-router';
 import {bindAll} from 'lodash';
+import Back from 'react-icons/lib/ti/arrow-back';
 
 import NavBarContainer from '../nav_bar/nav_bar_container';
 
 class ShareForm extends React.Component {
   constructor(props) {
     super(props);
-    bindAll(this, 'renderShares', 'renderTitle', 'handleChange', 'isShared');
+    bindAll(this, 'handleBack', 'renderBackButton', 'renderShares', 'renderTitle', 'handleChange', 'isShared');
     this.state = {};
   }
 
@@ -67,8 +68,16 @@ class ShareForm extends React.Component {
     }
   }
 
+  handleBack(){
+    hashHistory.push("/charts");
+  }
+
+  renderBackButton(){
+    return <button className="back-button" onClick={this.handleBack}><Back className="nav-icon back-icon"/>Back To Chart Homepage</button>
+  }
+
   render() {
-    return <div id="shared-page">
+    return (<div id="shared-page">
       <NavBarContainer/>
       <div id="shared-container" className="shared-container">
         {this.renderTitle()}
@@ -76,8 +85,9 @@ class ShareForm extends React.Component {
         <div id="other-users-container">
           {this.renderShares()}
         </div>
+        {this.renderBackButton()}
       </div>
-    </div>;
+    </div>);
   }
 }
 
