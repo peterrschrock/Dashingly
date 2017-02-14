@@ -1,6 +1,6 @@
 import React from 'react';
 import {bindAll} from 'lodash';
-import {withRouter, Link} from 'react-router';
+import {withRouter, Link, hashHistory} from 'react-router';
 
 import PieChart from 'react-icons/lib/fa/pie-chart';
 import AreaChart from 'react-icons/lib/fa/area-chart';
@@ -85,16 +85,29 @@ class ChartForm extends React.Component {
     this.setState({y_name: event.target.value});
   }
 
+  // getCaroselPos(){
+  //   this.props.charts.forEach((chart, idx) => {
+  //     if(chart.id === this.state.id){
+  //       console.log(idx);
+  //       return idx;
+  //     }
+  //   });
+  //   return 0;
+  // }
+
   handleSubmitChart(){
     if(this.props.formType === "new") {
       this.props.createChart(this.state);
+      localStorage.setItem('SelectedChart', this.props.charts.length);
     } else {
       this.props.updateChart(this.state, this.state.id);
+      localStorage.setItem('SelectedChart', this.props.charts.length - 1);
     }
+    hashHistory.push("/charts");
   }
 
   render(){
-    return <div className="chart-form-element">
+    return (<div className="chart-form-element">
       <form className="chart-form-holder"  onSubmit={() => this.handleSubmitChart()}>
         <select required value={this.state.dataset_id} className="chart-form-part" ref={(input) => this.input = input} onChange={this.handleDataChange}>
           <option value="" disabled>Select a Dataset</option>
@@ -124,7 +137,7 @@ class ChartForm extends React.Component {
         <input className="chart-form-part" id="chart-form-submit-button" type="submit" value="Save Changes"></input>
       </form>
       < ChartElementContainer chartState={this.state}/>
-  </div>;
+  </div>);
   }
 }
 

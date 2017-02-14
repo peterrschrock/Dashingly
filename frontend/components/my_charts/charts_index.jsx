@@ -14,19 +14,20 @@ class ChartsIndex extends React.Component {
     super(props);
 
     bindAll(this, 'chartsContainer', 'handleLeft', 'handleRight', 'includeChartOptions');
-    const startingChart = localStorage.getItem('SelectedChart') || 0;
+    const storage = localStorage.getItem('SelectedChart');
+    const startingChart = storage > 0 ? storage : 0;
     this.state = {whichChart: startingChart, charts: this.props.charts};
 
     window.addEventListener('mousewheel', e => {
       if(e.wheelDelta > 0) {
         let newWhichChart = (this.state.whichChart - 1) % this.state.charts.length;
         newWhichChart = (newWhichChart + this.state.charts.length) % this.state.charts.length;
-        this.setState({whichChart: newWhichChart});
         localStorage.setItem('SelectedChart', newWhichChart);
+        this.setState({whichChart: newWhichChart});
       } else{
         let newWhichChartDown = (this.state.whichChart + 1) % this.state.charts.length;
-        this.setState({whichChart: newWhichChartDown});
         localStorage.setItem('SelectedChart', newWhichChartDown);
+        this.setState({whichChart: newWhichChartDown});
       }
     });
   }
@@ -41,7 +42,8 @@ class ChartsIndex extends React.Component {
   }
 
   componentWillReceiveProps(newProps){
-    const startingChart = localStorage.getItem('SelectedChart') || 0;
+    const storage = localStorage.getItem('SelectedChart');
+    const startingChart = storage > 0 ? storage : 0;
     this.setState({whichChart: startingChart, charts: newProps.charts});
   }
 
@@ -90,23 +92,23 @@ class ChartsIndex extends React.Component {
 
   renderRightArrow(){
     if(this.props.charts.length > 1){
-      return <Right className="change-current-chart-arrows" onClick={() => this.handleRight()}/>
+      return <Right className="change-current-chart-arrows" onClick={() => this.handleRight()}/>;
     } else{
-      return <div></div>;
+      return <div className="null-div"></div>;
     }
   }
 
   renderLeftArrow(){
     if(this.props.charts.length > 1){
-      return <Left className="change-current-chart-arrows" onClick={() => this.handleLeft()}/>
+      return <Left className="change-current-chart-arrows" onClick={() => this.handleLeft()}/>;
     } else{
-      return <div></div>;
+      return <div className="null-div" ></div>;
     }
   }
 
 
   render(){
-    return <div className="charts-index-page">
+    return (<div className="charts-index-page">
       <NavBarContainer/>
       <div className="chart-with-arrows">
         {this.renderLeftArrow()}
@@ -114,7 +116,7 @@ class ChartsIndex extends React.Component {
         {this.renderRightArrow()}
       </div>
       {this.includeChartOptions()}
-    </div>;
+    </div>);
 
   }
 
